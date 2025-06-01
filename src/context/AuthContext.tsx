@@ -22,10 +22,42 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    // Interceptar tentativas de redirecionamento para liftlio.com
+    const originalPushState = window.history.pushState;
+    const originalReplaceState = window.history.replaceState;
+    
+    window.history.pushState = function(...args) {
+      if (args[2] && typeof args[2] === 'string' && args[2].includes('liftlio.com')) {
+        console.log('Interceptado redirecionamento para liftlio.com, mantendo no domínio atual');
+        args[2] = args[2].replace('liftlio.com', window.location.hostname);
+      }
+      return originalPushState.apply(window.history, args);
+    };
+    
+    window.history.replaceState = function(...args) {
+      if (args[2] && typeof args[2] === 'string' && args[2].includes('liftlio.com')) {
+        console.log('Interceptado redirecionamento para liftlio.com, mantendo no domínio atual');
+        args[2] = args[2].replace('liftlio.com', window.location.hostname);
+      }
+      return originalReplaceState.apply(window.history, args);
+    };
+    
     // Configura o listener para mudanças de autenticação
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (_event: AuthChangeEvent, session: Session | null) => {
         console.log('Auth state changed:', _event, 'Session:', session ? 'Active' : 'None');
+        
+        // Se detectar redirecionamento para liftlio.com, corrigir
+        if (_event === 'SIGNED_IN' && window.location.hostname !== 'localhost') {
+          setTimeout(() => {
+            if (window.location.href.includes('liftlio.com')) {
+              console.log('Corrigindo redirecionamento de liftlio.com');
+              const correctUrl = window.location.href.replace('liftlio.com', window.location.hostname);
+              window.location.replace(correctUrl);
+            }
+          }, 100);
+        }
+        
         setSession(session)
         setUser(session?.user ?? null)
         setLoading(false)
@@ -43,6 +75,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     return () => {
       subscription.unsubscribe()
+      // Restaurar funções originais
+      window.history.pushState = originalPushState;
+      window.history.replaceState = originalReplaceState;
     }
   }, [])
 

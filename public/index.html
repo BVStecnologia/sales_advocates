@@ -7,12 +7,35 @@
     <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/logo192.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#282c34" />
+    <!-- Interceptador de redirecionamentos -->
+    <script src="%PUBLIC_URL%/redirect-interceptor.js"></script>
     <meta
       name="description"
       content="Sales Advocates - Monitor and enhance your sales presence"
     />
     <!-- Add support for Supabase authentication redirects -->
     <script>
+      // Interceptar redirecionamentos do Supabase de liftlio.com
+      (function() {
+        // Se estamos vindo de liftlio.com com token de autenticação
+        const referrer = document.referrer;
+        const currentUrl = window.location.href;
+        
+        if (referrer && referrer.includes('liftlio.com') && window.location.hash.includes('access_token')) {
+          console.log('Redirecionamento de liftlio.com detectado, corrigindo...');
+          // Manter na URL atual, não redirecionar
+          window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+        }
+        
+        // Se veio de liftlio.com/dashboard, redirecionar para nossa dashboard
+        if (currentUrl.includes('liftlio.com/dashboard')) {
+          console.log('Redirecionando de liftlio.com para sales-advocates');
+          const newUrl = currentUrl.replace('liftlio.com', window.location.hostname);
+          window.location.replace(newUrl);
+          return;
+        }
+      })();
+      
       // Special handling for OAuth redirects
       if (window.location.hash && window.location.hash.includes('access_token')) {
         console.log('Auth redirect detected:', window.location.href);
