@@ -21,10 +21,10 @@ const translations = {
       login: "Sign In",
     },
     hero: {
-      badge: "Organic Traffic Snowball Effect",
-      title: "Multiply Your Organic Traffic",
-      titleHighlight: "Exponentially",
-      subtitle: "Liftlio finds videos about your niche and responds to comments from qualified leads. Monitor relevant channels to comment as soon as videos are posted, creating a snowball effect of organic traffic that grows forever.",
+      badge: "Strategic Comment Management",
+      title: "Manage Comments and",
+      titleHighlight: "Discover Opportunities",
+      subtitle: "Sales Advocates helps you manage YouTube comments strategically and discover relevant channels in your niche. Organize comments for manual review and build authentic relationships with your community.",
       cta: {
         primary: "Start Growing Today",
         secondary: "See How It Works"
@@ -38,44 +38,44 @@ const translations = {
     features: {
       title: "Features That",
       titleHighlight: "Drive Results",
-      subtitle: "Everything you need to monitor, analyze, and convert mentions into real opportunities",
+      subtitle: "Tools to help you manage comments and discover engagement opportunities",
       items: [
         {
-          title: "Real-Time Channel Monitoring",
-          description: "Monitor relevant channels 24/7. Comment within minutes of new videos being posted to capture early traffic."
+          title: "Channel Discovery",
+          description: "Discover relevant channels in your niche. Find opportunities to engage with your target audience through thoughtful comments."
         },
         {
-          title: "AI Sentiment Analysis",
-          description: "Advanced AI analyzes context and sentiment, helping you prioritize responses and identify crises quickly."
+          title: "Sentiment Organization",
+          description: "Our system helps organize comments by sentiment, making it easy for you to prioritize which ones to respond to manually."
         },
         {
-          title: "Human-Like Comments",
-          description: "AI creates genuine, helpful comments that cite specific timestamps and provide real value - just like a real user would."
+          title: "Comment Management",
+          description: "Organize and manage your YouTube comments efficiently. Keep track of your responses and build genuine relationships."
         },
         {
-          title: "Snowball Traffic Effect",
-          description: "Comments stay forever on videos, continuously bringing qualified leads to your business month after month."
+          title: "Long-Term Relationships",
+          description: "Build lasting connections with your audience. Your thoughtful responses create ongoing engagement opportunities."
         },
         {
-          title: "Intelligent Scheduling",
-          description: "Posts are scheduled at different times daily, mixing promotional and non-promotional content to appear genuinely human."
+          title: "Response Organization",
+          description: "Organize your responses by priority and context. Manage your engagement strategy with our intuitive dashboard."
         },
         {
-          title: "No Blocks, No Bans",
-          description: "Our AI behaves exactly like a helpful YouTube user, not a salesperson. Zero risk of channel penalties."
+          title: "Compliant Engagement",
+          description: "Follow YouTube's best practices for authentic engagement. Build your community the right way with manual, thoughtful responses."
         }
       ]
     },
     stats: {
       monitored: "Mentions Monitored",
       leads: "Leads Generated",
-      accuracy: "AI Accuracy",
+      accuracy: "Organization Accuracy",
       monitoring: "Monitoring"
     },
     exponential: {
-      title: "The Organic Traffic",
-      titleHighlight: "Snowball Effect",
-      subtitle: "Unlike paid ads that stop when you stop paying, Liftlio creates permanent assets that grow exponentially",
+      title: "Build Lasting",
+      titleHighlight: "Community Connections",
+      subtitle: "Unlike automated tools, Sales Advocates helps you build genuine relationships through organized comment management",
       items: [
         {
           month: "Month 1",
@@ -99,16 +99,16 @@ const translations = {
         }
       ],
       benefits: [
-        "Comments never expire - they work 24/7 forever",
-        "Zero additional cost as traffic grows",
-        "Builds authority in your niche over time",
-        "Each comment is a permanent salesperson"
+        "Build authentic relationships with your audience",
+        "Organize comments for efficient management",
+        "Establish authority through thoughtful responses",
+        "Create lasting connections with your community"
       ]
     },
     painPoints: {
-      title: "Stop Burning Money on",
-      titleHighlight: "Paid Ads",
-      subtitle: "Every day you wait, your competitors are building permanent organic traffic while you're renting temporary clicks",
+      title: "Stop Missing",
+      titleHighlight: "Engagement Opportunities",
+      subtitle: "Every day, potential customers are commenting on videos in your niche. Don't miss the chance to connect with them",
       items: [
         {
           icon: "fire",
@@ -130,19 +130,19 @@ const translations = {
     calculator: {
       title: "See Your",
       titleHighlight: "Savings",
-      subtitle: "Compare your current ad spend with Liftlio's permanent organic traffic",
+      subtitle: "See how organized comment management can help you build authentic relationships",
       adSpendLabel: "Monthly Ad Spend",
       calculateButton: "Calculate Savings",
       results: {
         currentCost: "Cost Per Visitor (Ads)",
-        liftlioCost: "Cost Per Visitor (Liftlio)",
+        liftlioCost: "Cost Per Engagement (Sales Advocates)",
         savings: "You Save Per Visitor",
         organicValue: "Lifetime Value Per Visitor",
         roi: "Your ROI"
       }
     },
     liveDemo: {
-      title: "Watch Liftlio",
+      title: "Watch Sales Advocates",
       titleHighlight: "In Action",
       subtitle: "See real comments being posted right now",
       recentActivity: "Recent Activity",
@@ -154,7 +154,7 @@ const translations = {
       guarantee: "10x cheaper than any advertising platform"
     },
     process: {
-      title: "How Liftlio",
+      title: "How Sales Advocates",
       titleHighlight: "Works",
       subtitle: "Our intelligent 6-step process creates an organic traffic snowball that grows forever",
       steps: [
@@ -164,7 +164,7 @@ const translations = {
         },
         {
           title: "Video Analysis",
-          description: "AI watches videos and identifies key topics, finding perfect moments to reference"
+          description: "Organize videos by topics and themes, making it easier to find engagement opportunities"
         },
         {
           title: "Lead Detection",
@@ -210,7 +210,7 @@ const translations = {
           features: [
             "Up to 300 mentions/month",
             "Unlimited channels",
-            "Advanced AI leads",
+            "Advanced lead organization",
             "Custom reports",
             "API access",
             "Priority support"
@@ -223,7 +223,7 @@ const translations = {
           features: [
             "Up to 500 mentions/month",
             "All Professional features",
-            "Custom AI training",
+            "Custom workflow setup",
             "Dedicated account manager",
             "SLA guaranteed",
             "White-label options"
@@ -238,7 +238,7 @@ const translations = {
       subtitle: "See how companies are transforming mentions into growth",
       items: [
         {
-          text: "Liftlio revolutionized our marketing strategy. We can identify and convert leads that previously went unnoticed.",
+          text: "Sales Advocates transformed how we manage comments. We can now organize and respond to our community more effectively.",
           author: "Sarah Johnson",
           role: "CMO, TechStart"
         },
@@ -248,7 +248,7 @@ const translations = {
           role: "CEO, E-commerce Plus"
         },
         {
-          text: "Incredible ROI! In just 3 months, Liftlio paid for itself with the new customers we gained.",
+          text: "Amazing results! In just 3 months, Sales Advocates helped us build stronger relationships with our audience.",
           author: "Jessica Miller",
           role: "Sales Director, SaaS Co"
         }
@@ -262,7 +262,7 @@ const translations = {
       button: "Start Growing Your Traffic Today"
     },
     footer: {
-      description: "Transforming mentions into business opportunities through intelligent monitoring and real-time analysis.",
+      description: "Helping creators manage YouTube comments efficiently and build authentic relationships with their audience.",
       product: "Product",
       company: "Company",
       legal: "Legal",
@@ -279,7 +279,7 @@ const translations = {
         terms: "Terms",
         security: "Security"
       },
-      copyright: "© 2024 Liftlio. All rights reserved."
+      copyright: "© 2024 Sales Advocates. All rights reserved."
     }
   },
   pt: {
@@ -293,7 +293,7 @@ const translations = {
       badge: "Efeito Bola de Neve de Tráfego Orgânico",
       title: "Multiplique Seu Tráfego Orgânico",
       titleHighlight: "Exponencialmente",
-      subtitle: "O Liftlio encontra vídeos sobre seu nicho e responde comentários de leads qualificados. Monitora canais relevantes para comentar assim que vídeos são postados, criando uma bola de neve de tráfego orgânico que cresce para sempre.",
+      subtitle: "O Sales Advocates ajuda você a gerenciar comentários do YouTube de forma estratégica e descobrir canais relevantes do seu nicho. Organize comentários para revisão manual e construa relacionamentos autênticos com sua comunidade.",
       cta: {
         primary: "Comece a Crescer Hoje",
         secondary: "Veja Como Funciona"
@@ -307,44 +307,44 @@ const translations = {
     features: {
       title: "Recursos que",
       titleHighlight: "Geram Resultados",
-      subtitle: "Tudo o que você precisa para monitorar, analisar e converter menções em oportunidades reais",
+      subtitle: "Ferramentas para ajudar você a gerenciar comentários e descobrir oportunidades de engajamento",
       items: [
         {
-          title: "Monitoramento de Canais em Tempo Real",
-          description: "Monitore canais relevantes 24/7. Comente em minutos após novos vídeos serem postados para capturar o tráfego inicial."
+          title: "Descoberta de Canais",
+          description: "Descubra canais relevantes do seu nicho. Encontre oportunidades para engajar com seu público-alvo através de comentários pensados."
         },
         {
-          title: "Análise de Sentimentos IA",
-          description: "IA avançada analisa contexto e sentimento, ajudando você a priorizar respostas rapidamente."
+          title: "Organização por Sentimento",
+          description: "Nosso sistema ajuda a organizar comentários por sentimento, facilitando para você priorizar quais responder manualmente."
         },
         {
-          title: "Comentários Humanizados",
-          description: "IA cria comentários genuínos e úteis que citam timestamps específicos e fornecem valor real - como um usuário real faria."
+          title: "Gestão de Comentários",
+          description: "Organize e gerencie seus comentários do YouTube com eficiência. Acompanhe suas respostas e construa relacionamentos genuínos."
         },
         {
-          title: "Efeito Bola de Neve de Tráfego",
-          description: "Comentários ficam para sempre nos vídeos, trazendo leads qualificados continuamente para seu negócio mês após mês."
+          title: "Relacionamentos Duradouros",
+          description: "Construa conexões duradouras com seu público. Suas respostas pensadas criam oportunidades contínuas de engajamento."
         },
         {
-          title: "Agendamento Inteligente",
-          description: "Posts agendados em horários diferentes diariamente, misturando conteúdo promocional e não-promocional para parecer genuinamente humano."
+          title: "Organização de Respostas",
+          description: "Organize suas respostas por prioridade e contexto. Gerencie sua estratégia de engajamento com nosso painel intuitivo."
         },
         {
-          title: "Sem Bloqueios, Sem Banimentos",
-          description: "Nossa IA se comporta exatamente como um usuário útil do YouTube, não como um vendedor. Zero risco de penalidades."
+          title: "Engajamento Conforme",
+          description: "Siga as melhores práticas do YouTube para engajamento autêntico. Construa sua comunidade do jeito certo com respostas manuais e pensadas."
         }
       ]
     },
     stats: {
       monitored: "Menções Monitoradas",
       leads: "Leads Gerados",
-      accuracy: "Precisão da IA",
+      accuracy: "Precisão da Organização",
       monitoring: "Monitoramento"
     },
     exponential: {
       title: "O Efeito",
       titleHighlight: "Bola de Neve",
-      subtitle: "Diferente de anúncios pagos que param quando você para de pagar, o Liftlio cria ativos permanentes que crescem exponencialmente",
+      subtitle: "Diferente de ferramentas automatizadas, o Sales Advocates ajuda você a construir relacionamentos genuínos através da gestão organizada de comentários",
       items: [
         {
           month: "Mês 1",
@@ -399,19 +399,19 @@ const translations = {
     calculator: {
       title: "Veja Sua",
       titleHighlight: "Economia",
-      subtitle: "Compare seu gasto atual com anúncios com o tráfego orgânico permanente do Liftlio",
+      subtitle: "Veja como a gestão organizada de comentários pode ajudar você a construir relacionamentos autênticos",
       adSpendLabel: "Gasto Mensal com Anúncios",
       calculateButton: "Calcular Economia",
       results: {
         currentCost: "Custo Por Visitante (Anúncios)",
-        liftlioCost: "Custo Por Visitante (Liftlio)",
+        liftlioCost: "Custo Por Engajamento (Sales Advocates)",
         savings: "Você Economiza Por Visitante",
         organicValue: "Valor Vitalício Por Visitante",
         roi: "Seu ROI"
       }
     },
     liveDemo: {
-      title: "Veja o Liftlio",
+      title: "Veja o Sales Advocates",
       titleHighlight: "Em Ação",
       subtitle: "Veja comentários reais sendo postados agora mesmo",
       recentActivity: "Atividade Recente",
@@ -423,7 +423,7 @@ const translations = {
       guarantee: "10x mais barato que qualquer plataforma de anúncios"
     },
     process: {
-      title: "Como o Liftlio",
+      title: "Como o Sales Advocates",
       titleHighlight: "Funciona",
       subtitle: "Nosso processo inteligente de 6 etapas cria uma bola de neve de tráfego orgânico que cresce para sempre",
       steps: [
@@ -507,7 +507,7 @@ const translations = {
       subtitle: "Veja como empresas estão transformando menções em crescimento",
       items: [
         {
-          text: "O Liftlio revolucionou nossa estratégia de marketing. Conseguimos identificar e converter leads que antes passavam despercebidos.",
+          text: "O Sales Advocates transformou como gerenciamos comentários. Agora podemos organizar e responder nossa comunidade de forma mais eficaz.",
           author: "Ana Silva",
           role: "CMO, TechStart"
         },
@@ -517,7 +517,7 @@ const translations = {
           role: "CEO, E-commerce Plus"
         },
         {
-          text: "ROI incrível! Em apenas 3 meses, o Liftlio se pagou com os novos clientes que conseguimos.",
+          text: "Resultados incríveis! Em apenas 3 meses, o Sales Advocates nos ajudou a construir relacionamentos mais fortes com nosso público.",
           author: "Juliana Costa",
           role: "Diretora de Vendas, SaaS Co"
         }
@@ -531,7 +531,7 @@ const translations = {
       button: "Comece a Crescer seu Tráfego Hoje"
     },
     footer: {
-      description: "Transformando menções em oportunidades de negócio através de monitoramento inteligente e análise em tempo real.",
+      description: "Ajudando criadores a gerenciar comentários do YouTube de forma eficiente e construir relacionamentos autênticos com seu público.",
       product: "Produto",
       company: "Empresa",
       legal: "Legal",
@@ -548,7 +548,7 @@ const translations = {
         terms: "Termos",
         security: "Segurança"
       },
-      copyright: "© 2024 Liftlio. Todos os direitos reservados."
+      copyright: "© 2024 Sales Advocates. Todos os direitos reservados."
     }
   }
 };
@@ -2367,7 +2367,7 @@ const LandingPage: React.FC = () => {
         <HeaderContent>
           <Logo>
             {renderIcon(BiPulse)}
-            LIFTLIO
+            SALES ADVOCATES
           </Logo>
           <Nav>
             <NavLink href="#features">{t.nav.features}</NavLink>
@@ -3221,7 +3221,7 @@ const LandingPage: React.FC = () => {
                 opacity: 1
               }}>
                 {renderIcon(BiPulse)}
-                LIFTLIO
+                SALES ADVOCATES
               </Logo>
             </FooterTitle>
             <FooterDescription>
@@ -3257,7 +3257,35 @@ const LandingPage: React.FC = () => {
         </FooterContent>
 
         <FooterBottom>
-          {t.footer.copyright}
+          <div>{t.footer.copyright}</div>
+          <div style={{ marginTop: '12px', fontSize: '12px', opacity: 0.8 }}>
+            By using Sales Advocates, you agree to be bound by the{' '}
+            <a 
+              href="https://www.youtube.com/t/terms" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{ color: theme.colors.primary, textDecoration: 'none' }}
+            >
+              YouTube Terms of Service
+            </a>
+            . This application uses the YouTube API Services.
+          </div>
+          <div style={{ marginTop: '8px', fontSize: '12px', opacity: 0.8 }}>
+            <a href="/privacy" style={{ color: theme.colors.primary, textDecoration: 'none', marginRight: '16px' }}>
+              Privacy Policy
+            </a>
+            <a href="/terms" style={{ color: theme.colors.primary, textDecoration: 'none', marginRight: '16px' }}>
+              Terms of Use
+            </a>
+            <a 
+              href="https://www.youtube.com/t/terms" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{ color: theme.colors.primary, textDecoration: 'none' }}
+            >
+              YouTube Terms
+            </a>
+          </div>
         </FooterBottom>
       </Footer>
 

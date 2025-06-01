@@ -225,9 +225,12 @@ const OAuthHandler = () => {
           
           // Construir os parâmetros para troca de token
           // Determinar o URI de redirecionamento correto com base no ambiente
-          const isProduction = window.location.hostname === 'liftlio.fly.dev';
+          const isProduction = 
+            window.location.hostname === 'salesadvocate.ai' || 
+            window.location.hostname === 'sales-advocates.fly.dev' ||
+            window.location.hostname === 'liftlio.fly.dev';
           const redirectUri = isProduction 
-            ? 'https://liftlio.fly.dev' 
+            ? `https://${window.location.hostname}` 
             : 'http://localhost:3000';
             
           console.log('Ambiente detectado:', isProduction ? 'Produção' : 'Desenvolvimento');

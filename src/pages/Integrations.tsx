@@ -682,9 +682,12 @@ const Integrations: React.FC = () => {
   // Verificar que os URIs de redirecionamento estão corretamente configurados no startup
   useEffect(() => {
     // Detectar ambiente
-    const isProduction = window.location.hostname === 'liftlio.fly.dev';
+    const isProduction = 
+      window.location.hostname === 'salesadvocate.ai' || 
+      window.location.hostname === 'sales-advocates.fly.dev' ||
+      window.location.hostname === 'liftlio.fly.dev';
     const redirectUri = isProduction 
-      ? 'https://liftlio.fly.dev' 
+      ? `https://${window.location.hostname}` 
       : 'http://localhost:3000';
       
     console.log('----------------------');
@@ -784,9 +787,12 @@ const Integrations: React.FC = () => {
     // Importante: Este URI deve corresponder EXATAMENTE ao configurado no Google Cloud Console
     
     // Determinar o URI de redirecionamento correto com base no ambiente
-    const isProduction = window.location.hostname === 'liftlio.fly.dev';
+    const isProduction = 
+      window.location.hostname === 'salesadvocate.ai' || 
+      window.location.hostname === 'sales-advocates.fly.dev' ||
+      window.location.hostname === 'liftlio.fly.dev';
     const redirectUri = isProduction 
-      ? 'https://liftlio.fly.dev' 
+      ? `https://${window.location.hostname}` 
       : 'http://localhost:3000';
       
     console.log('Ambiente detectado no iniciateOAuth:', isProduction ? 'Produção' : 'Desenvolvimento');
