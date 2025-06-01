@@ -290,9 +290,9 @@ const translations = {
       login: "Entrar",
     },
     hero: {
-      badge: "Efeito Bola de Neve de Tráfego Orgânico",
-      title: "Multiplique Seu Tráfego Orgânico",
-      titleHighlight: "Exponencialmente",
+      badge: "Gestão Estratégica de Comentários",
+      title: "Gerencie Comentários e",
+      titleHighlight: "Descubra Oportunidades",
       subtitle: "O Sales Advocates ajuda você a gerenciar comentários do YouTube de forma estratégica e descobrir canais relevantes do seu nicho. Organize comentários para revisão manual e construa relacionamentos autênticos com sua comunidade.",
       cta: {
         primary: "Comece a Crescer Hoje",
@@ -368,16 +368,16 @@ const translations = {
         }
       ],
       benefits: [
-        "Comentários nunca expiram - trabalham 24/7 para sempre",
-        "Zero custo adicional conforme tráfego cresce",
-        "Constrói autoridade no seu nicho ao longo do tempo",
-        "Cada comentário é um vendedor permanente"
+        "Construa relacionamentos autênticos com seu público",
+        "Organize comentários para gerenciamento eficiente",
+        "Estabeleça autoridade através de respostas pensadas",
+        "Crie conexões duradouras com sua comunidade"
       ]
     },
     painPoints: {
-      title: "Pare de Queimar Dinheiro com",
-      titleHighlight: "Anúncios Pagos",
-      subtitle: "A cada dia que você espera, seus concorrentes estão construindo tráfego orgânico permanente enquanto você aluga cliques temporários",
+      title: "Pare de Perder",
+      titleHighlight: "Oportunidades de Engajamento",
+      subtitle: "A cada dia, potenciais clientes estão comentando em vídeos do seu nicho. Não perca a chance de se conectar com eles",
       items: [
         {
           icon: "fire",
@@ -479,7 +479,7 @@ const translations = {
           features: [
             "Até 300 menções/mês",
             "Canais ilimitados",
-            "IA avançada de leads",
+            "Organização avançada de leads",
             "Relatórios personalizados",
             "Acesso à API",
             "Suporte prioritário"
@@ -492,7 +492,7 @@ const translations = {
           features: [
             "Até 500 menções/mês",
             "Todos recursos Professional",
-            "IA personalizada",
+            "Fluxo de trabalho personalizado",
             "Gerente de conta dedicado",
             "SLA garantido",
             "Opções white-label"
@@ -2269,6 +2269,13 @@ const LandingPage: React.FC = () => {
   const [lang, setLang] = useState<'en' | 'pt'>(getInitialLanguage());
   const t = translations[lang];
   
+  // Debug
+  useEffect(() => {
+    console.log('Current language:', lang);
+    console.log('Translations available:', Object.keys(translations));
+    console.log('Current translations:', t);
+  }, [lang, t]);
+  
   // Calculator state
   const [adSpend, setAdSpend] = useState(1000);
   const [showCalculatorResults, setShowCalculatorResults] = useState(false);
@@ -2328,9 +2335,10 @@ const LandingPage: React.FC = () => {
 
   const toggleLanguage = () => {
     const newLang = lang === 'en' ? 'pt' : 'en';
+    console.log('Toggling language from', lang, 'to', newLang);
     setLang(newLang);
     // Save preference in cookie (expires in 365 days)
-    Cookies.set('language', newLang, { expires: 365 });
+    Cookies.set('language', newLang, { expires: 365, path: '/' });
   };
 
   // Calculator functions
