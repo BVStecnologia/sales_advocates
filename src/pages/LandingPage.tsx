@@ -759,19 +759,17 @@ const HeroBackground = styled.div`
 `;
 
 const HeroContent = styled.div`
-  max-width: 1440px;
+  max-width: 1200px;
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   z-index: 10;
   position: relative;
+  text-align: center;
 
-  @media (max-width: 968px) {
-    grid-template-columns: 1fr;
-    gap: 60px;
-    text-align: center;
+  @media (min-width: 968px) {
+    max-width: 1440px;
   }
 `;
 
@@ -915,9 +913,11 @@ const HeroVisual = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  margin-top: 60px;
 
   @media (max-width: 968px) {
-    display: none;
+    margin-top: 40px;
   }
 `;
 
@@ -2446,18 +2446,27 @@ const LandingPage: React.FC = () => {
                 Dashboard {lang === 'pt' ? 'em Tempo Real' : 'Real-Time'}
               </h3>
               
-              {/* Imagem do Dashboard */}
-              <DashboardImage 
-                src={theme.name === 'dark' 
-                  ? "/imagens/dashboard-hero-dark.png" 
-                  : "/imagens/dashboard-hero-light.png"
-                }
-                alt="Liftlio Dashboard"
-                onError={(e) => {
-                  // Fallback se a imagem não existir
-                  e.currentTarget.style.display = 'none';
-                }}
-              />
+              {/* Dashboard Visual Placeholder */}
+              <div style={{
+                background: theme.name === 'dark' 
+                  ? 'linear-gradient(135deg, rgba(0, 245, 255, 0.1) 0%, rgba(139, 0, 255, 0.1) 100%)'
+                  : 'linear-gradient(135deg, rgba(0, 245, 255, 0.05) 0%, rgba(139, 0, 255, 0.05) 100%)',
+                border: `2px solid ${theme.colors.borderLight}`,
+                borderRadius: '16px',
+                padding: '40px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: '200px',
+                marginBottom: '24px'
+              }}>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: '48px', marginBottom: '16px' }}>📊</div>
+                  <p style={{ color: theme.colors.textSecondary, fontSize: '14px' }}>
+                    {lang === 'pt' ? 'Visualização em tempo real' : 'Real-time visualization'}
+                  </p>
+                </div>
+              </div>
               
               <MetricsGrid>
                 <MetricCard>
@@ -2715,78 +2724,7 @@ const LandingPage: React.FC = () => {
       </CalculatorSection>
 
       {/* Visual Demo Section */}
-      <VisualDemoSection>
-        <SectionHeader>
-          <SectionTitle>
-            {lang === 'pt' ? 'Veja o' : 'See'} <Gradient>Liftlio</Gradient> {lang === 'pt' ? 'em Ação' : 'in Action'}
-          </SectionTitle>
-          <SectionDescription>
-            {lang === 'pt' 
-              ? 'Transforme menções em oportunidades com nossa plataforma inteligente'
-              : 'Transform mentions into opportunities with our intelligent platform'
-            }
-          </SectionDescription>
-        </SectionHeader>
-
-        <DemoGrid>
-          <DemoCard>
-            <DemoImage 
-              src={theme.name === 'dark' 
-                ? "/imagens/DASHBOARD HERO - VERSÃO ESCURA.png" 
-                : "/imagens/DASHBOARD HERO - VERSÃO clara.png"
-              }
-              alt="Liftlio Dashboard"
-            />
-            <DemoContent>
-              <DemoTitle>
-                {lang === 'pt' ? 'Dashboard em Tempo Real' : 'Real-Time Dashboard'}
-              </DemoTitle>
-              <DemoDescription>
-                {lang === 'pt' 
-                  ? 'Monitore menções, sentimentos e leads em um painel intuitivo e poderoso.'
-                  : 'Monitor mentions, sentiment, and leads in an intuitive and powerful dashboard.'
-                }
-              </DemoDescription>
-            </DemoContent>
-          </DemoCard>
-
-          <DemoCard reverse>
-            <DemoImage 
-              src="/imagens/transformacao-empresarial.png"
-              alt="Business Transformation"
-            />
-            <DemoContent>
-              <DemoTitle>
-                {lang === 'pt' ? 'Transformação Comprovada' : 'Proven Transformation'}
-              </DemoTitle>
-              <DemoDescription>
-                {lang === 'pt' 
-                  ? 'De zero leads para 147 leads qualificados em apenas 30 dias. Resultados reais, crescimento real.'
-                  : 'From zero leads to 147 qualified leads in just 30 days. Real results, real growth.'
-                }
-              </DemoDescription>
-            </DemoContent>
-          </DemoCard>
-
-          <DemoCard>
-            <DemoImage 
-              src="/imagens/CEO CELEBRATION MOMENT.png"
-              alt="Success Story"
-            />
-            <DemoContent>
-              <DemoTitle>
-                {lang === 'pt' ? 'Histórias de Sucesso' : 'Success Stories'}
-              </DemoTitle>
-              <DemoDescription>
-                {lang === 'pt' 
-                  ? 'CEOs e líderes celebram resultados extraordinários com o Liftlio. Junte-se a eles!'
-                  : 'CEOs and leaders celebrate extraordinary results with Liftlio. Join them!'
-                }
-              </DemoDescription>
-            </DemoContent>
-          </DemoCard>
-        </DemoGrid>
-      </VisualDemoSection>
+      {/* Visual Demo Section removida - sem imagens disponíveis */}
 
       {/* NEW Real Results Section - EXTREMELY PERSUASIVE */}
       <section style={{
