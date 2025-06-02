@@ -29,6 +29,7 @@ import { useAuth } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import { ProjectProvider, useProject } from './context/ProjectContext';
 import { OAUTH_CONFIG } from './config/oauth';
+import Footer from './components/Footer';
 
 const AppContainer = styled.div`
   display: flex;
@@ -50,10 +51,13 @@ const MainContent = styled.main`
   overflow-y: auto;
   background-color: ${props => props.theme.colors.background};
   width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 const ContentWrapper = styled.div`
   padding: 20px;
+  flex: 1;
   
   @media (max-width: 768px) {
     padding: 16px 12px;
@@ -712,6 +716,7 @@ const ProtectedLayout = ({ sidebarOpen, toggleSidebar }: { sidebarOpen: boolean,
                 <Route path="*" element={<Navigate to="/dashboard" replace />} />
               </Routes>
             </ContentWrapper>
+            <Footer />
           </MainContent>
           
           {/* Floating hamburger menu button for mobile */}

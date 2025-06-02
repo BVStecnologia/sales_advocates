@@ -921,14 +921,20 @@ const ActionArea = styled.div`
   margin-top: 20px;
   display: flex;
   align-items: center;
-  color: ${props => props.theme.name === 'dark' 
-    ? props.theme.colors.accent.primary 
-    : '#007BFF'};
+  color: ${props => props.theme.colors.primary};
   font-size: 14px;
   font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    opacity: 0.8;
+    transform: translateX(3px);
+  }
   
   svg {
     margin-right: 8px;
+    color: ${props => props.theme.colors.primary};
   }
 `;
 
