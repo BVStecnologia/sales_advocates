@@ -594,6 +594,10 @@ const ProtectedLayout = ({ sidebarOpen, toggleSidebar }: { sidebarOpen: boolean,
   
   // Redirecionar para a página inicial (login) se não estiver autenticado
   if (!user) {
+    console.log('No user found in ProtectedLayout, redirecting to login');
+    console.log('Auth loading state:', loading);
+    console.log('Project loading state:', isLoading);
+    console.log('Onboarding ready:', onboardingReady);
     return <Navigate to="/" replace />;
   }
   

@@ -68,9 +68,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     supabase.auth.getSession().then(({ data }: { data: { session: Session | null } }) => {
       const { session } = data
       console.log('Initial session check:', session ? 'Found' : 'Not found', 'Environment:', window.location.hostname);
+      if (session) {
+        console.log('Session user:', session.user.email);
+        console.log('Session expires at:', new Date(session.expires_at! * 1000).toLocaleString());
+      }
       setSession(session)
       setUser(session?.user ?? null)
       setLoading(false)
+    }).catch(error => {
+      console.error('Error getting initial session:', error);
+      setLoading(false);
     })
 
     return () => {
