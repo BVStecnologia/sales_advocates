@@ -660,7 +660,7 @@ const ProtectedLayout = ({ sidebarOpen, toggleSidebar }: { sidebarOpen: boolean,
                 fontSize: "24px"
               }}
             >
-              LIFTLIO
+              SALES ADVOCATES
             </div>
             
             {/* Container de conteúdo */}

@@ -1309,7 +1309,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = false, onClose }) => {
                 <div className="rocket-path"></div>
                 <PremiumTitle>
                   <IconComponent icon={FaIcons.FaCrown} />
-                  Liftlio Premium
+                  Sales Advocates Premium
                   {isLoading && <LoadingIndicator />}
                 </PremiumTitle>
                 
