@@ -25,6 +25,9 @@ liftlio_2/
 .env.test.local
 .env.production.local
 
+# OAuth config
+src/config/oauth.js
+
 # arquivos grandes
 *.dmg
 *.iso

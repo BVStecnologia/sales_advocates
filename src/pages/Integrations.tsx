@@ -10,6 +10,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
 import { supabase, supabaseUrl, supabaseAnonKey } from '../lib/supabaseClient';
 import LoadingDataIndicator from '../components/LoadingDataIndicator';
+import { OAUTH_CONFIG } from '../config/oauth';
 
 // Animations
 const fadeIn = keyframes`
@@ -574,8 +575,8 @@ const ModalButton = styled(ActionButton)`
 `;
 
 // Constants for OAuth
-const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || "";
-const GOOGLE_CLIENT_SECRET = process.env.REACT_APP_GOOGLE_CLIENT_SECRET || "";
+const GOOGLE_CLIENT_ID = OAUTH_CONFIG.GOOGLE_CLIENT_ID;
+const GOOGLE_CLIENT_SECRET = OAUTH_CONFIG.GOOGLE_CLIENT_SECRET;
 const GOOGLE_SCOPES = [
   "https://www.googleapis.com/auth/userinfo.email",
   "https://www.googleapis.com/auth/userinfo.profile",

@@ -28,6 +28,7 @@ import { AuthProvider } from './context/AuthContext';
 import { useAuth } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import { ProjectProvider, useProject } from './context/ProjectContext';
+import { OAUTH_CONFIG } from './config/oauth';
 
 const AppContainer = styled.div`
   display: flex;
@@ -237,8 +238,8 @@ const OAuthHandler = () => {
           console.log('Usando redirect URI:', redirectUri);
           
           const tokenEndpoint = 'https://oauth2.googleapis.com/token';
-          const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID || "";
-          const clientSecret = process.env.REACT_APP_GOOGLE_CLIENT_SECRET || "";
+          const clientId = OAUTH_CONFIG.GOOGLE_CLIENT_ID;
+          const clientSecret = OAUTH_CONFIG.GOOGLE_CLIENT_SECRET;
           
           // Criar dados do formulário para a solicitação de token
           const formData = new URLSearchParams();
