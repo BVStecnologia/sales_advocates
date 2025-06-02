@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
+import Footer from '../components/Footer';
 
 // Reset de estilos coloridos para páginas institucionais
 const InstitutionalReset = createGlobalStyle`
@@ -78,6 +79,8 @@ const InstitutionalContainer = styled.div`
   min-height: 100vh;
   background: ${props => props.theme.colors.background};
   color: ${props => props.theme.colors.text.primary};
+  display: flex;
+  flex-direction: column;
   
   /* Garante que o container principal não tenha gradientes */
   & > * {
@@ -89,12 +92,19 @@ interface InstitutionalWrapperProps {
   children: React.ReactNode;
 }
 
+const ContentWrapper = styled.div`
+  flex: 1;
+`;
+
 const InstitutionalWrapper: React.FC<InstitutionalWrapperProps> = ({ children }) => {
   return (
     <>
       <InstitutionalReset />
       <InstitutionalContainer>
-        {children}
+        <ContentWrapper>
+          {children}
+        </ContentWrapper>
+        <Footer />
       </InstitutionalContainer>
     </>
   );
