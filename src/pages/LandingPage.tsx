@@ -32,7 +32,7 @@ const translations = {
       metrics: {
         mentions: "Mentions",
         positive: "Positive",
-        leads: "Leads"
+        leads: "Advocates"
       }
     },
     features: {
@@ -67,15 +67,15 @@ const translations = {
       ]
     },
     stats: {
-      monitored: "Mentions Monitored",
-      leads: "Leads Generated",
+      monitored: "Comments Organized",
+      leads: "Comments Organized",
       accuracy: "Organization Accuracy",
-      monitoring: "Monitoring"
+      tracking: "Channels Tracked"
     },
     exponential: {
       title: "Build Lasting",
       titleHighlight: "Community Connections",
-      subtitle: "Unlike automated tools, Sales Advocates helps you build genuine relationships through organized comment management",
+      subtitle: "Sales Advocates helps you build genuine relationships through organized comment management",
       items: [
         {
           month: "Month 1",
@@ -105,132 +105,72 @@ const translations = {
         "Create lasting connections with your community"
       ]
     },
-    painPoints: {
-      title: "Stop Missing",
-      titleHighlight: "Engagement Opportunities",
-      subtitle: "Every day, potential customers are commenting on videos in your niche. Don't miss the chance to connect with them",
-      items: [
-        {
-          icon: "fire",
-          title: "Ads Cost $5-20 Per Click",
-          description: "And they disappear the moment you stop paying"
-        },
-        {
-          icon: "warning",
-          title: "Ad Costs Keep Rising",
-          description: "CPCs increased 50% last year alone"
-        },
-        {
-          icon: "infinity",
-          title: "Organic Traffic is Forever",
-          description: "One comment can bring leads for years"
-        }
-      ]
-    },
-    calculator: {
-      title: "See Your",
-      titleHighlight: "Savings",
-      subtitle: "See how organized comment management can help you build authentic relationships",
-      adSpendLabel: "Monthly Ad Spend",
-      calculateButton: "Calculate Savings",
-      results: {
-        currentCost: "Cost Per Visitor (Ads)",
-        liftlioCost: "Cost Per Engagement (Sales Advocates)",
-        savings: "You Save Per Visitor",
-        organicValue: "Lifetime Value Per Visitor",
-        roi: "Your ROI"
-      }
-    },
-    liveDemo: {
-      title: "Watch Sales Advocates",
-      titleHighlight: "In Action",
-      subtitle: "See real comments being posted right now",
-      recentActivity: "Recent Activity",
-      viewMore: "View Live Dashboard"
-    },
-    urgency: {
-      spots: "Only {spots} clients accepted this month",
-      price: "Price per qualified visitor: $0.10 vs $5-20 in ads",
-      guarantee: "10x cheaper than any advertising platform"
-    },
     process: {
       title: "How Sales Advocates",
       titleHighlight: "Works",
-      subtitle: "Our intelligent 6-step process creates an organic traffic snowball that grows forever",
+      subtitle: "Our organized 6-step process helps you build genuine connections through thoughtful engagement",
       steps: [
         {
-          title: "Channel Monitoring",
-          description: "Monitor relevant channels 24/7. Get alerts the moment new videos are posted"
+          title: "Channel Discovery",
+          description: "Discover relevant channels and check for new videos when you want"
         },
         {
           title: "Video Analysis",
           description: "Organize videos by topics and themes, making it easier to find engagement opportunities"
         },
         {
-          title: "Lead Detection",
-          description: "Identifies comments from potential customers asking questions or seeking solutions"
+          title: "Comment Organization",
+          description: "Organize and categorize comments from potential customers for efficient response"
         },
         {
-          title: "Human-Like Response",
-          description: "Creates helpful comments citing specific timestamps (e.g., 'at 3:42 they mention...')"
+          title: "Thoughtful Responses",
+          description: "Craft helpful comments with specific references (e.g., 'at 3:42 they mention...')"
         },
         {
-          title: "Natural Behavior",
-          description: "Mixes promotional and non-promotional comments to appear genuinely helpful"
+          title: "Authentic Engagement",
+          description: "Balance promotional and helpful content to build genuine community connections"
         },
         {
           title: "Snowball Effect",
-          description: "Comments stay forever, continuously bringing qualified traffic as videos grow"
+          description: "Comments stay forever, continuously bringing engaged visitors as videos grow"
         }
       ]
     },
     pricing: {
       title: "Simple Pricing,",
-      titleHighlight: "Powerful Results",
-      subtitle: "Choose the perfect plan for your monitoring needs",
+      titleHighlight: "No Hidden Fees",
+      subtitle: "Choose the plan that fits your needs",
       monthly: "per month",
       plans: {
-        starter: {
-          name: "Starter",
-          description: "Perfect for small businesses",
-          mentions: "mentions/month",
+        single: {
+          name: "Single Project",
+          price: "$10",
+          description: "Perfect for managing one YouTube channel",
           features: [
-            "Up to 80 mentions/month",
-            "3 monitored channels",
-            "Sentiment analysis",
-            "Basic dashboard",
+            "1 YouTube channel",
+            "Unlimited comment organization",
+            "Channel discovery tools",
+            "Comment management dashboard",
+            "Export comments to CSV",
             "Email support"
           ]
         },
-        professional: {
-          name: "Professional",
-          description: "Ideal for growing companies",
-          mentions: "mentions/month",
-          badge: "Most Popular",
+        multi: {
+          name: "Multiple Projects",
+          price: "$20",
+          description: "For agencies and creators with multiple channels",
+          badge: "Best Value",
           features: [
-            "Up to 300 mentions/month",
-            "Unlimited channels",
-            "Advanced lead organization",
-            "Custom reports",
-            "API access",
-            "Priority support"
-          ]
-        },
-        enterprise: {
-          name: "Enterprise",
-          description: "For large organizations",
-          mentions: "mentions/month",
-          features: [
-            "Up to 500 mentions/month",
-            "All Professional features",
-            "Custom workflow setup",
-            "Dedicated account manager",
-            "SLA guaranteed",
-            "White-label options"
+            "Unlimited YouTube channels",
+            "All Single Project features",
+            "Cross-channel analytics",
+            "Team collaboration tools",
+            "Priority support",
+            "Advanced export options"
           ]
         }
       },
-      cta: "Get Started Now"
+      cta: "Start Free Trial"
     },
     testimonials: {
       title: "What Our",
@@ -243,7 +183,7 @@ const translations = {
           role: "CMO, TechStart"
         },
         {
-          text: "Real-time sentiment analysis helped us prevent several crises and improve our customer service.",
+          text: "The comment organization tools helped us identify important feedback and improve our customer service.",
           author: "Michael Chen",
           role: "CEO, E-commerce Plus"
         },
@@ -301,7 +241,7 @@ const translations = {
       metrics: {
         mentions: "Menções",
         positive: "Positivas",
-        leads: "Leads"
+        leads: "Advocates"
       }
     },
     features: {
@@ -336,15 +276,15 @@ const translations = {
       ]
     },
     stats: {
-      monitored: "Menções Monitoradas",
-      leads: "Leads Gerados",
+      monitored: "Comentários Organizados",
+      leads: "Comentários Organizados",
       accuracy: "Precisão da Organização",
-      monitoring: "Monitoramento"
+      tracking: "Canais Acompanhados"
     },
     exponential: {
       title: "O Efeito",
       titleHighlight: "Bola de Neve",
-      subtitle: "Diferente de ferramentas automatizadas, o Sales Advocates ajuda você a construir relacionamentos genuínos através da gestão organizada de comentários",
+      subtitle: "O Sales Advocates ajuda você a construir relacionamentos genuínos através da gestão organizada de comentários e respostas pensadas",
       items: [
         {
           month: "Mês 1",
@@ -374,132 +314,72 @@ const translations = {
         "Crie conexões duradouras com sua comunidade"
       ]
     },
-    painPoints: {
-      title: "Pare de Perder",
-      titleHighlight: "Oportunidades de Engajamento",
-      subtitle: "A cada dia, potenciais clientes estão comentando em vídeos do seu nicho. Não perca a chance de se conectar com eles",
-      items: [
-        {
-          icon: "fire",
-          title: "Anúncios Custam R$5-20 Por Clique",
-          description: "E desaparecem no momento que você para de pagar"
-        },
-        {
-          icon: "warning",
-          title: "Custos de Anúncios Só Aumentam",
-          description: "CPCs aumentaram 50% só no ano passado"
-        },
-        {
-          icon: "infinity",
-          title: "Tráfego Orgânico é Para Sempre",
-          description: "Um comentário pode trazer leads por anos"
-        }
-      ]
-    },
-    calculator: {
-      title: "Veja Sua",
-      titleHighlight: "Economia",
-      subtitle: "Veja como a gestão organizada de comentários pode ajudar você a construir relacionamentos autênticos",
-      adSpendLabel: "Gasto Mensal com Anúncios",
-      calculateButton: "Calcular Economia",
-      results: {
-        currentCost: "Custo Por Visitante (Anúncios)",
-        liftlioCost: "Custo Por Engajamento (Sales Advocates)",
-        savings: "Você Economiza Por Visitante",
-        organicValue: "Valor Vitalício Por Visitante",
-        roi: "Seu ROI"
-      }
-    },
-    liveDemo: {
-      title: "Veja o Sales Advocates",
-      titleHighlight: "Em Ação",
-      subtitle: "Veja comentários reais sendo postados agora mesmo",
-      recentActivity: "Atividade Recente",
-      viewMore: "Ver Dashboard Ao Vivo"
-    },
-    urgency: {
-      spots: "Apenas {spots} clientes aceitos este mês",
-      price: "Preço por visitante qualificado: R$0,50 vs R$25-100 em anúncios",
-      guarantee: "10x mais barato que qualquer plataforma de anúncios"
-    },
     process: {
       title: "Como o Sales Advocates",
       titleHighlight: "Funciona",
-      subtitle: "Nosso processo inteligente de 6 etapas cria uma bola de neve de tráfego orgânico que cresce para sempre",
+      subtitle: "Nosso processo organizado de 6 etapas cria uma bola de neve de tráfego orgânico que cresce continuamente",
       steps: [
         {
-          title: "Monitoramento de Canais",
-          description: "Monitora canais relevantes 24/7. Recebe alertas no momento que novos vídeos são postados"
+          title: "Descoberta de Canais",
+          description: "Descubra canais relevantes e verifique novos vídeos quando desejar"
         },
         {
           title: "Análise de Vídeos",
-          description: "IA assiste vídeos e identifica tópicos-chave, encontrando momentos perfeitos para referenciar"
+          description: "Organize vídeos por tópicos e temas, facilitando encontrar oportunidades de engajamento"
         },
         {
-          title: "Detecção de Leads",
-          description: "Identifica comentários de potenciais clientes fazendo perguntas ou buscando soluções"
+          title: "Organização de Comentários",
+          description: "Organize e categorize comentários de potenciais clientes para resposta eficiente"
         },
         {
-          title: "Resposta Humanizada",
-          description: "Cria comentários úteis citando timestamps específicos (ex: 'aos 3:42 eles mencionam...')"
+          title: "Respostas Pensadas",
+          description: "Crie comentários úteis com referências específicas (ex: 'aos 3:42 eles mencionam...')"
         },
         {
-          title: "Comportamento Natural",
-          description: "Mistura comentários promocionais e não-promocionais para parecer genuinamente útil"
+          title: "Engajamento Autêntico",
+          description: "Equilibre conteúdo promocional e útil para construir conexões genuínas com a comunidade"
         },
         {
           title: "Efeito Bola de Neve",
-          description: "Comentários ficam para sempre, trazendo tráfego qualificado continuamente conforme vídeos crescem"
+          description: "Comentários ficam para sempre, trazendo visitantes engajados continuamente conforme vídeos crescem"
         }
       ]
     },
     pricing: {
       title: "Preços Simples,",
-      titleHighlight: "Resultados Poderosos",
-      subtitle: "Escolha o plano perfeito para suas necessidades",
+      titleHighlight: "Sem Taxas Ocultas",
+      subtitle: "Escolha o plano que atende suas necessidades",
       monthly: "por mês",
       plans: {
-        starter: {
-          name: "Iniciante",
-          description: "Perfeito para pequenas empresas",
-          mentions: "menções/mês",
+        single: {
+          name: "Projeto Único",
+          price: "R$ 50",
+          description: "Perfeito para gerenciar um canal do YouTube",
           features: [
-            "Até 80 menções/mês",
-            "3 canais monitorados",
-            "Análise de sentimentos",
-            "Dashboard básico",
+            "1 canal do YouTube",
+            "Organização ilimitada de comentários",
+            "Ferramentas de descoberta de canais",
+            "Dashboard de gerenciamento",
+            "Exportar comentários para CSV",
             "Suporte por email"
           ]
         },
-        professional: {
-          name: "Profissional",
-          description: "Ideal para empresas em crescimento",
-          mentions: "menções/mês",
-          badge: "Mais Popular",
+        multi: {
+          name: "Múltiplos Projetos",
+          price: "R$ 100",
+          description: "Para agências e criadores com vários canais",
+          badge: "Melhor Valor",
           features: [
-            "Até 300 menções/mês",
-            "Canais ilimitados",
-            "Organização avançada de leads",
-            "Relatórios personalizados",
-            "Acesso à API",
-            "Suporte prioritário"
-          ]
-        },
-        enterprise: {
-          name: "Empresarial",
-          description: "Para grandes organizações",
-          mentions: "menções/mês",
-          features: [
-            "Até 500 menções/mês",
-            "Todos recursos Professional",
-            "Fluxo de trabalho personalizado",
-            "Gerente de conta dedicado",
-            "SLA garantido",
-            "Opções white-label"
+            "Canais ilimitados do YouTube",
+            "Todos os recursos do Projeto Único",
+            "Análise entre canais",
+            "Ferramentas de colaboração",
+            "Suporte prioritário",
+            "Opções avançadas de exportação"
           ]
         }
       },
-      cta: "Começar Agora"
+      cta: "Iniciar Teste Gratuito"
     },
     testimonials: {
       title: "O Que Nossos",
@@ -512,7 +392,7 @@ const translations = {
           role: "CMO, TechStart"
         },
         {
-          text: "A análise de sentimentos em tempo real nos ajudou a prevenir várias crises e melhorar nosso atendimento.",
+          text: "As ferramentas de organização de comentários nos ajudaram a identificar feedbacks importantes e melhorar nosso atendimento.",
           author: "Carlos Mendes",
           role: "CEO, E-commerce Plus"
         },
@@ -2276,14 +2156,6 @@ const LandingPage: React.FC = () => {
     console.log('Current translations:', t);
   }, [lang, t]);
   
-  // Calculator state
-  const [adSpend, setAdSpend] = useState(1000);
-  const [showCalculatorResults, setShowCalculatorResults] = useState(false);
-  
-  // Urgency state
-  const [showUrgencyBanner, setShowUrgencyBanner] = useState(false); // Disabled - removing floating elements
-  const spotsLeft = 5;
-  const daysUntilPriceIncrease = 3;
   
   // Live counter state
   const [liveVisitorCount, setLiveVisitorCount] = useState(12847);
@@ -2341,30 +2213,6 @@ const LandingPage: React.FC = () => {
     Cookies.set('language', newLang, { expires: 365, path: '/' });
   };
 
-  // Calculator functions
-  const calculateROI = () => {
-    setShowCalculatorResults(true);
-    // Scroll to results
-    setTimeout(() => {
-      document.getElementById('calculator-results')?.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
-  };
-
-  // Calculate cost per visitor
-  const avgCPC = 5; // Average $5 per click in ads
-  const monthlyVisitorsFromAds = Math.floor(adSpend / avgCPC);
-  const annualVisitorsFromAds = monthlyVisitorsFromAds * 12;
-  
-  const liftlioPlan = adSpend > 5000 ? 200 : adSpend > 2000 ? 100 : 30; // Monthly cost
-  const liftlioMentions = adSpend > 5000 ? 500 : adSpend > 2000 ? 300 : 80; // Mentions per month
-  const visitorsPerMention = 10; // Average visitors per comment over time
-  const monthlyVisitorsFromLiftlio = liftlioMentions * visitorsPerMention;
-  
-  const costPerVisitorAds = avgCPC;
-  const costPerVisitorLiftlio = liftlioPlan / monthlyVisitorsFromLiftlio;
-  const savingsPerVisitor = costPerVisitorAds - costPerVisitorLiftlio;
-  const lifetimeValuePerVisitor = 50; // Each visitor worth $50 over time
-  const roi = Math.round((lifetimeValuePerVisitor / costPerVisitorLiftlio) * 100);
 
   return (
     <LandingContainer>
@@ -2406,8 +2254,8 @@ const LandingPage: React.FC = () => {
         </LiveCounterNumber>
         <LiveCounterLabel>
           {lang === 'pt' 
-            ? 'visitantes qualificados gerados hoje' 
-            : 'qualified visitors generated today'
+            ? 'visitantes engajados hoje' 
+            : 'engaged visitors today'
           }
         </LiveCounterLabel>
       </LiveCounter> */}
@@ -2443,7 +2291,7 @@ const LandingPage: React.FC = () => {
           <HeroVisual>
             <DashboardPreview>
               <h3 style={{ marginBottom: '24px', fontSize: '20px', fontWeight: '700' }}>
-                Dashboard {lang === 'pt' ? 'em Tempo Real' : 'Real-Time'}
+                Dashboard {lang === 'pt' ? 'de Organização' : 'Organization'}
               </h3>
               
               {/* Dashboard Visual Placeholder */}
@@ -2463,7 +2311,7 @@ const LandingPage: React.FC = () => {
                 <div style={{ textAlign: 'center' }}>
                   <div style={{ fontSize: '48px', marginBottom: '16px' }}>📊</div>
                   <p style={{ color: theme.colors.textSecondary, fontSize: '14px' }}>
-                    {lang === 'pt' ? 'Visualização em tempo real' : 'Real-time visualization'}
+                    {lang === 'pt' ? 'Visualização organizada' : 'Organized visualization'}
                   </p>
                 </div>
               </div>
@@ -2505,8 +2353,8 @@ const LandingPage: React.FC = () => {
           <TrustItem>
             <TrustIcon>{renderIcon(FaClock)}</TrustIcon>
             <TrustText>
-              <TrustValue>24/7</TrustValue>
-              <TrustLabel>{lang === 'pt' ? 'Monitoramento' : 'Monitoring'}</TrustLabel>
+              <TrustValue>Daily</TrustValue>
+              <TrustLabel>{lang === 'pt' ? 'Acompanhamento' : 'Updates'}</TrustLabel>
             </TrustText>
           </TrustItem>
           <TrustItem>
@@ -2562,33 +2410,6 @@ const LandingPage: React.FC = () => {
         </VideoContainer>
       </section>
 
-      {/* Pain Points Section */}
-      <PainPointsSection>
-        <SectionHeader>
-          <SectionTitle>
-            {t.painPoints.title} <Gradient>{t.painPoints.titleHighlight}</Gradient>
-          </SectionTitle>
-          <SectionDescription>
-            {t.painPoints.subtitle}
-          </SectionDescription>
-        </SectionHeader>
-
-        <PainPointsGrid>
-          {t.painPoints.items.map((item, index) => (
-            <PainPointCard key={index}>
-              <PainPointIcon icon={item.icon}>
-                {renderIcon(
-                  item.icon === 'fire' ? FaFire :
-                  item.icon === 'warning' ? FaExclamationTriangle :
-                  FaInfinity
-                )}
-              </PainPointIcon>
-              <PainPointTitle>{item.title}</PainPointTitle>
-              <PainPointDescription>{item.description}</PainPointDescription>
-            </PainPointCard>
-          ))}
-        </PainPointsGrid>
-      </PainPointsSection>
 
       <FeaturesSection id="features">
         <FeaturesContainer>
@@ -2665,322 +2486,6 @@ const LandingPage: React.FC = () => {
         </FeaturesContainer>
       </FeaturesSection>
 
-      {/* Calculator Section */}
-      <CalculatorSection>
-        <SectionHeader>
-          <SectionTitle>
-            {t.calculator.title} <Gradient>{t.calculator.titleHighlight}</Gradient>
-          </SectionTitle>
-          <SectionDescription>
-            {t.calculator.subtitle}
-          </SectionDescription>
-        </SectionHeader>
-
-        <CalculatorContainer>
-          <CalculatorInput>
-            <CalculatorLabel>
-              {t.calculator.adSpendLabel}: ${adSpend.toLocaleString()}
-            </CalculatorLabel>
-            <CalculatorSlider
-              type="range"
-              min="100"
-              max="10000"
-              step="100"
-              value={adSpend}
-              onChange={(e) => setAdSpend(Number(e.target.value))}
-            />
-          </CalculatorInput>
-
-          <CalculatorValue>
-            ${adSpend.toLocaleString()}/month
-          </CalculatorValue>
-
-          <PrimaryButton onClick={calculateROI} style={{ margin: '0 auto', display: 'block' }}>
-            {renderIcon(AiOutlineCalculator)}
-            {t.calculator.calculateButton}
-          </PrimaryButton>
-
-          {showCalculatorResults && (
-            <CalculatorResults id="calculator-results">
-              <ResultCard>
-                <ResultLabel>{t.calculator.results.currentCost}</ResultLabel>
-                <ResultValue>${costPerVisitorAds.toFixed(2)}</ResultValue>
-              </ResultCard>
-              <ResultCard>
-                <ResultLabel>{t.calculator.results.liftlioCost}</ResultLabel>
-                <ResultValue>${costPerVisitorLiftlio.toFixed(2)}</ResultValue>
-              </ResultCard>
-              <ResultCard highlight>
-                <ResultLabel>{t.calculator.results.savings}</ResultLabel>
-                <ResultValue>${savingsPerVisitor.toFixed(2)}</ResultValue>
-              </ResultCard>
-              <ResultCard highlight>
-                <ResultLabel>{t.calculator.results.roi}</ResultLabel>
-                <ResultValue>{roi.toLocaleString()}%</ResultValue>
-              </ResultCard>
-            </CalculatorResults>
-          )}
-        </CalculatorContainer>
-      </CalculatorSection>
-
-      {/* Visual Demo Section */}
-      {/* Visual Demo Section removida - sem imagens disponíveis */}
-
-      {/* NEW Real Results Section - EXTREMELY PERSUASIVE */}
-      <section style={{
-        padding: '100px 64px',
-        background: theme.name === 'dark' 
-          ? 'linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%)' 
-          : 'linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%)',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
-        <SectionHeader>
-          <SectionTitle>
-            {lang === 'en' ? 'Real Results. Real Growth.' : 'Resultados Reais. Crescimento Real.'}
-          </SectionTitle>
-          <SectionDescription style={{ fontSize: '20px', fontWeight: '600', marginBottom: '40px' }}>
-            {lang === 'en' 
-              ? '🚀 See how companies are multiplying their organic traffic in just 30 days'
-              : '🚀 Veja como empresas estão multiplicando seu tráfego orgânico em apenas 30 dias'
-            }
-          </SectionDescription>
-        </SectionHeader>
-
-        {/* Live Metrics Banner */}
-        <div style={{ 
-          maxWidth: '1200px', 
-          margin: '0 auto 60px', 
-          padding: '32px',
-          background: theme.colors.gradient.landing,
-          borderRadius: '24px',
-          color: 'white',
-          textAlign: 'center',
-          boxShadow: '0 20px 60px rgba(0,0,0,0.3)'
-        }}>
-          <div style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', gap: '40px' }}>
-            <div>
-              <div style={{ fontSize: '48px', fontWeight: '900' }}>1,118,903</div>
-              <div style={{ fontSize: '18px', opacity: 0.9 }}>
-                {lang === 'en' ? 'Views Monitored' : 'Visualizações Monitoradas'}
-              </div>
-            </div>
-            <div>
-              <div style={{ fontSize: '48px', fontWeight: '900' }}>90,573</div>
-              <div style={{ fontSize: '18px', opacity: 0.9 }}>
-                {lang === 'en' ? 'Engagements Generated' : 'Engajamentos Gerados'}
-              </div>
-            </div>
-            <div>
-              <div style={{ fontSize: '48px', fontWeight: '900' }}>8.2%</div>
-              <div style={{ fontSize: '18px', opacity: 0.9 }}>
-                {lang === 'en' ? 'Conversion Rate' : 'Taxa de Conversão'}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <DemoGrid>
-          {/* LIVE DASHBOARD PREVIEW */}
-          <DemoCard style={{ gridColumn: 'span 2' }}>
-            <LaptopWrapper rotate={-5} scale={0.95}>
-              <LaptopContainer>
-                <LaptopScreen>
-                  <div style={{
-                    position: 'absolute',
-                    top: '20px',
-                    left: '20px',
-                    background: theme.colors.gradient.landing,
-                    color: 'white',
-                    padding: '8px 16px',
-                    borderRadius: '20px',
-                    fontSize: '14px',
-                    fontWeight: '700',
-                    zIndex: 2,
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px'
-                  }}>
-                    <div style={{
-                      width: '8px',
-                      height: '8px',
-                      background: 'white',
-                      borderRadius: '50%',
-                      animation: 'pulse 2s infinite'
-                    }}></div>
-                    LIVE DASHBOARD
-                  </div>
-                  <LaptopScreenContent>
-                    <img 
-                      src="/imagens/Captura de Tela 2025-05-27 às 15.58.00.png"
-                      alt="Liftlio Live Dashboard"
-                    />
-                  </LaptopScreenContent>
-                </LaptopScreen>
-                <LaptopBase />
-              </LaptopContainer>
-            </LaptopWrapper>
-            <DemoContent style={{ padding: '40px' }}>
-              <DemoTitle style={{ fontSize: '32px', marginBottom: '20px' }}>
-                {lang === 'en' 
-                  ? '🎯 18 Channels. 30 Videos. 87 Qualified Mentions.'
-                  : '🎯 18 Canais. 30 Vídeos. 87 Menções Qualificadas.'
-                }
-              </DemoTitle>
-              <DemoDescription style={{ fontSize: '18px', lineHeight: '1.8' }}>
-                {lang === 'en' 
-                  ? 'This is a REAL dashboard from a client who started just 30 days ago. Each mention is a qualified lead who showed genuine interest. Imagine these numbers growing exponentially month after month.'
-                  : 'Este é um dashboard REAL de um cliente que começou há apenas 30 dias. Cada menção é um lead qualificado que demonstrou interesse genuíno. Imagine esses números crescendo exponencialmente mês após mês.'
-                }
-              </DemoDescription>
-              <div style={{ marginTop: '30px' }}>
-                <PrimaryButton onClick={handleGetStarted} style={{ fontSize: '20px', padding: '20px 40px' }}>
-                  {renderIcon(FaRocket)}
-                  {lang === 'en' ? 'I Want These Results Now' : 'Quero Esses Resultados Agora'}
-                </PrimaryButton>
-              </div>
-            </DemoContent>
-          </DemoCard>
-
-          {/* AI DETECTION SHOWCASE */}
-          <DemoCard>
-            <LaptopWrapper rotate={10} scale={0.9}>
-              <LaptopContainer>
-                <LaptopScreen>
-                  <LaptopScreenContent>
-                    <img 
-                      src="/imagens/Captura de Tela 2025-05-27 às 15.57.31.png"
-                      alt="AI-Powered Detection"
-                    />
-                  </LaptopScreenContent>
-                </LaptopScreen>
-                <LaptopBase />
-              </LaptopContainer>
-            </LaptopWrapper>
-            <DemoContent>
-              <DemoTitle style={{ color: theme.colors.success }}>
-                {lang === 'en' 
-                  ? '🤖 AI Detects Opportunities in Real-Time'
-                  : '🤖 IA Detecta Oportunidades em Tempo Real'
-                }
-              </DemoTitle>
-              <DemoDescription>
-                {lang === 'en' 
-                  ? 'Our AI identifies the best videos to comment on. Smart algorithms find opportunities before your competitors!'
-                  : 'Nossa IA identifica os melhores vídeos para comentar. Algoritmos inteligentes encontram oportunidades antes dos concorrentes!'
-                }
-              </DemoDescription>
-            </DemoContent>
-          </DemoCard>
-
-          {/* MONITORING POWER */}
-          <DemoCard>
-            <LaptopWrapper rotate={-10} scale={0.9}>
-              <LaptopContainer>
-                <LaptopScreen>
-                  <LaptopScreenContent>
-                    <img 
-                      src="/imagens/Captura de Tela 2025-05-27 às 15.58.36.png"
-                      alt="YouTube Monitoring Power"
-                    />
-                  </LaptopScreenContent>
-                </LaptopScreen>
-                <LaptopBase />
-              </LaptopContainer>
-            </LaptopWrapper>
-            <DemoContent>
-              <DemoTitle style={{ background: theme.colors.gradient.landing, 
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent'
-              }}> 
-                {lang === 'en' 
-                  ? '📈 1.1M+ Views Monitored'
-                  : '📈 1.1M+ Visualizações Monitoradas'
-                }
-              </DemoTitle>
-              <DemoDescription>
-                {lang === 'en' 
-                  ? '24/7 monitoring of ALL relevant videos. Never miss a business opportunity again.'
-                  : 'Monitoramento 24/7 de TODOS os vídeos relevantes. Nunca perca uma oportunidade de negócio novamente.'
-                }
-              </DemoDescription>
-            </DemoContent>
-          </DemoCard>
-
-          {/* MENTION DETAILS */}
-          <DemoCard style={{ gridColumn: 'span 2' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px' }}>
-              <LaptopWrapper rotate={15} scale={0.85}>
-                <LaptopContainer>
-                  <LaptopScreen>
-                    <LaptopScreenContent>
-                      <img 
-                        src="/imagens/Captura de Tela 2025-05-27 às 15.56.49.png"
-                        alt="Mentions Dashboard"
-                      />
-                    </LaptopScreenContent>
-                  </LaptopScreen>
-                  <LaptopBase />
-                </LaptopContainer>
-              </LaptopWrapper>
-              <LaptopWrapper rotate={-15} scale={0.85}>
-                <LaptopContainer>
-                  <LaptopScreen>
-                    <LaptopScreenContent>
-                      <img 
-                        src="/imagens/Captura de Tela 2025-05-27 às 15.58.57.png"
-                        alt="Performance Analytics"
-                      />
-                    </LaptopScreenContent>
-                  </LaptopScreen>
-                  <LaptopBase />
-                </LaptopContainer>
-              </LaptopWrapper>
-            </div>
-            <DemoContent>
-              <DemoTitle style={{ fontSize: '28px', textAlign: 'center' }}>
-                {lang === 'en' 
-                  ? '💬 Smart Comments that Convert'
-                  : '💬 Comentários Inteligentes que Convertem'
-                }
-              </DemoTitle>
-              <DemoDescription style={{ fontSize: '16px', textAlign: 'center' }}>
-                {lang === 'en' 
-                  ? 'Track every mention, analyze performance, and watch your organic traffic grow exponentially. Our AI ensures maximum conversion with human-like interactions.'
-                  : 'Acompanhe cada menção, analise o desempenho e veja seu tráfego orgânico crescer exponencialmente. Nossa IA garante máxima conversão com interações humanizadas.'
-                }
-              </DemoDescription>
-            </DemoContent>
-          </DemoCard>
-        </DemoGrid>
-
-        {/* URGENCY CTA */}
-        <div style={{ 
-          textAlign: 'center', 
-          marginTop: '80px',
-          padding: '40px',
-          background: theme.name === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)',
-          borderRadius: '24px',
-          border: `2px dashed ${theme.colors.primary}`
-        }}>
-          <h3 style={{ fontSize: '36px', marginBottom: '20px' }}>
-            {lang === 'en' 
-              ? '⚠️ Every Day Without Liftlio = Money Lost'
-              : '⚠️ Cada Dia Sem Liftlio = Dinheiro Perdido'
-            }
-          </h3>
-          <p style={{ fontSize: '20px', marginBottom: '30px', opacity: 0.9 }}>
-            {lang === 'en' 
-              ? 'While you read this, your competitors are capturing leads that could be yours.'
-              : 'Enquanto você lê isso, seus concorrentes estão capturando leads que poderiam ser seus.'
-            }
-          </p>
-          <PrimaryButton onClick={handleGetStarted} style={{ fontSize: '20px', padding: '20px 40px' }}>
-            {renderIcon(FaRocket)}
-            {lang === 'en' ? 'Start Growing Today' : 'Comece a Crescer Hoje'}
-          </PrimaryButton>
-        </div>
-      </section>
 
       {/* Process Section */}
       <ProcessSection>
@@ -3022,8 +2527,8 @@ const LandingPage: React.FC = () => {
             <StatLabel>{t.stats.accuracy}</StatLabel>
           </StatItem>
           <StatItem>
-            <StatNumber>24/7</StatNumber>
-            <StatLabel>{t.stats.monitoring}</StatLabel>
+            <StatNumber>Daily</StatNumber>
+            <StatLabel>{t.stats.tracking}</StatLabel>
           </StatItem>
         </StatsGrid>
       </StatsSection>
@@ -3073,17 +2578,17 @@ const LandingPage: React.FC = () => {
           </SectionDescription>
         </SectionHeader>
 
-        <PricingGrid>
+        <PricingGrid style={{ gridTemplateColumns: 'repeat(2, 1fr)', maxWidth: '800px', margin: '0 auto' }}>
           <PricingCard>
-            <PricingPlan>{t.pricing.plans.starter.name}</PricingPlan>
+            <PricingPlan>{t.pricing.plans.single.name}</PricingPlan>
             <PricingPrice>
-              $30<span>/{t.pricing.monthly}</span>
+              {t.pricing.plans.single.price}<span>/{t.pricing.monthly}</span>
             </PricingPrice>
             <PricingDescription>
-              {t.pricing.plans.starter.description}
+              {t.pricing.plans.single.description}
             </PricingDescription>
             <PricingFeatures>
-              {t.pricing.plans.starter.features.map((feature, index) => (
+              {t.pricing.plans.single.features.map((feature, index) => (
                 <PricingFeature key={index}>
                   {renderIcon(FaCheck)} {feature}
                 </PricingFeature>
@@ -3095,36 +2600,16 @@ const LandingPage: React.FC = () => {
           </PricingCard>
 
           <PricingCard featured>
-            <PricingBadge>{t.pricing.plans.professional.badge}</PricingBadge>
-            <PricingPlan>{t.pricing.plans.professional.name}</PricingPlan>
+            <PricingBadge>{t.pricing.plans.multi.badge}</PricingBadge>
+            <PricingPlan>{t.pricing.plans.multi.name}</PricingPlan>
             <PricingPrice>
-              $100<span>/{t.pricing.monthly}</span>
+              {t.pricing.plans.multi.price}<span>/{t.pricing.monthly}</span>
             </PricingPrice>
             <PricingDescription>
-              {t.pricing.plans.professional.description}
+              {t.pricing.plans.multi.description}
             </PricingDescription>
             <PricingFeatures>
-              {t.pricing.plans.professional.features.map((feature, index) => (
-                <PricingFeature key={index}>
-                  {renderIcon(FaCheck)} {feature}
-                </PricingFeature>
-              ))}
-            </PricingFeatures>
-            <PrimaryButton onClick={handleGetStarted} style={{ width: '100%' }}>
-              {t.pricing.cta}
-            </PrimaryButton>
-          </PricingCard>
-
-          <PricingCard>
-            <PricingPlan>{t.pricing.plans.enterprise.name}</PricingPlan>
-            <PricingPrice>
-              $200<span>/{t.pricing.monthly}</span>
-            </PricingPrice>
-            <PricingDescription>
-              {t.pricing.plans.enterprise.description}
-            </PricingDescription>
-            <PricingFeatures>
-              {t.pricing.plans.enterprise.features.map((feature, index) => (
+              {t.pricing.plans.multi.features.map((feature, index) => (
                 <PricingFeature key={index}>
                   {renderIcon(FaCheck)} {feature}
                 </PricingFeature>

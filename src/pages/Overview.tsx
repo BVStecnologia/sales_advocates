@@ -3306,7 +3306,7 @@ const Overview: React.FC = () => {
                 <Line 
                   type="monotone" 
                   dataKey="leads" 
-                  name="Leads"
+                  name="Advocates"
                   stroke={theme.name === 'dark' ? '#66BB6A' : '#4CAF50'} 
                   strokeWidth={3}
                   dot={{ r: 4, strokeWidth: 0, fill: theme.name === 'dark' ? '#66BB6A' : '#4CAF50' }}

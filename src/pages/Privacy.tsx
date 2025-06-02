@@ -111,6 +111,17 @@ const ListItem = styled.li`
   margin-bottom: 8px;
 `;
 
+const Link = styled.a`
+  color: ${props => props.theme.colors.primary};
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  
+  &:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+`;
+
 const Privacy: React.FC = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -119,63 +130,73 @@ const Privacy: React.FC = () => {
     en: {
       back: "Back",
       title: "Privacy Policy",
-      lastUpdated: "Last updated: January 2024",
+      lastUpdated: "Last updated: August 16, 2024",
       sections: {
-        commitment: {
-          title: "Our Commitment",
+        introduction: {
+          title: "Introduction",
           icon: FaShieldAlt,
-          content: "At Liftlio, we operate with a fundamental principle: your data is your business asset, not ours. We've built our entire infrastructure around protecting your privacy while delivering exceptional value."
+          content: "Welcome to Sales Advocates. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our application and services, including our use of the YouTube API Services."
         },
         dataCollection: {
-          title: "Data We Collect",
+          title: "Information We Collect",
           icon: FaDatabase,
-          content: "We collect only what's essential to deliver our service:",
+          content: "We collect information you provide directly to us, as well as data we receive from the YouTube API Services, including but not limited to:",
           items: [
-            "Account information (email, company name) for authentication",
-            "YouTube channel preferences for monitoring",
-            "Performance metrics to improve our service",
-            "Usage patterns to enhance user experience"
+            "Personal information (e.g., name, email address)",
+            "YouTube account information",
+            "Video viewing history and preferences",
+            "Comments and interactions on YouTube"
           ]
         },
         dataUsage: {
-          title: "How We Use Your Data",
+          title: "How We Use Your Information",
           icon: FaUserShield,
-          content: "Your data powers your success, nothing more:",
+          content: "We use the collected information for various purposes, including:",
           items: [
-            "Monitoring relevant YouTube channels based on your preferences",
-            "Generating intelligent responses to identified opportunities",
-            "Providing analytics and insights about your performance",
-            "Improving our AI algorithms (anonymized and aggregated only)"
+            "Providing and improving our services",
+            "Personalizing user experience",
+            "Analyzing usage patterns",
+            "Communicating with users"
           ]
+        },
+        dataSharing: {
+          title: "Data Sharing and Disclosure",
+          icon: FaUserShield,
+          content: "We may share your information with:",
+          items: [
+            "Service providers and partners who assist in our operations",
+            "Legal authorities when required by law",
+            "Other parties with your consent"
+          ]
+        },
+        youtubeApi: {
+          title: "YouTube API Services",
+          icon: FaDatabase,
+          content: "Our application uses the YouTube API Services. By using our service, you are also bound by YouTube's Terms of Service. Additionally, Google's Privacy Policy applies to our use of the YouTube API Services."
         },
         dataSecurity: {
-          title: "Data Security",
+          title: "Data Storage and Security",
           icon: FaLock,
-          content: "We employ bank-level security measures:",
-          items: [
-            "End-to-end encryption for all data transmission",
-            "Encrypted storage with regular security audits",
-            "Limited access controls with detailed audit logs",
-            "Regular penetration testing and vulnerability assessments"
-          ]
+          content: "We implement appropriate security measures to protect your data. Information obtained through the YouTube API Services is stored temporarily and is refreshed or deleted after 30 days."
         },
         yourRights: {
-          title: "Your Rights",
-          content: "You maintain complete control over your data:",
-          items: [
-            "Access all your data anytime through your dashboard",
-            "Export your data in standard formats",
-            "Delete your account and all associated data instantly",
-            "Opt-out of any non-essential data processing"
-          ]
+          title: "Your Rights and Choices",
+          content: "You have the right to access, correct, or delete your personal information. You can also revoke our access to your YouTube data through the Google security settings page."
         },
-        sharing: {
-          title: "Data Sharing",
-          content: "We never sell, rent, or trade your data. Period. We share data only when:",
+        cookies: {
+          title: "Cookies and Similar Technologies",
+          content: "We use cookies and similar tracking technologies to collect and store certain information about your use of our services."
+        },
+        changes: {
+          title: "Changes to This Policy",
+          content: "We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page."
+        },
+        contact: {
+          title: "Contact Us",
+          content: "If you have any questions about this Privacy Policy, please contact us at:",
           items: [
-            "You explicitly request us to (e.g., integrations)",
-            "Required by law (with notification unless legally prohibited)",
-            "Necessary to protect rights, safety, or property"
+            "Email: privacy@salesadvocates.com",
+            "Address: 1309 Coffeen Ave STE 1200, Sheridan, WY 82801"
           ]
         }
       }
@@ -183,63 +204,73 @@ const Privacy: React.FC = () => {
     pt: {
       back: "Voltar",
       title: "Política de Privacidade",
-      lastUpdated: "Última atualização: Janeiro 2024",
+      lastUpdated: "Última atualização: 16 de Agosto de 2024",
       sections: {
-        commitment: {
-          title: "Nosso Compromisso",
+        introduction: {
+          title: "Introdução",
           icon: FaShieldAlt,
-          content: "No Liftlio, operamos com um princípio fundamental: seus dados são seu ativo empresarial, não nosso. Construímos toda nossa infraestrutura para proteger sua privacidade enquanto entregamos valor excepcional."
+          content: "Bem-vindo ao Sales Advocates. Esta Política de Privacidade explica como coletamos, usamos, divulgamos e protegemos suas informações quando você usa nosso aplicativo e serviços, incluindo nosso uso dos Serviços da API do YouTube."
         },
         dataCollection: {
-          title: "Dados que Coletamos",
+          title: "Informações que Coletamos",
           icon: FaDatabase,
-          content: "Coletamos apenas o essencial para entregar nosso serviço:",
+          content: "Coletamos informações que você nos fornece diretamente, bem como dados que recebemos dos Serviços da API do YouTube, incluindo, mas não limitado a:",
           items: [
-            "Informações de conta (email, nome da empresa) para autenticação",
-            "Preferências de canais do YouTube para monitoramento",
-            "Métricas de desempenho para melhorar nosso serviço",
-            "Padrões de uso para aprimorar a experiência do usuário"
+            "Informações pessoais (por exemplo, nome, endereço de e-mail)",
+            "Informações da conta do YouTube",
+            "Histórico e preferências de visualização de vídeos",
+            "Comentários e interações no YouTube"
           ]
         },
         dataUsage: {
-          title: "Como Usamos Seus Dados",
+          title: "Como Usamos Suas Informações",
           icon: FaUserShield,
-          content: "Seus dados impulsionam seu sucesso, nada mais:",
+          content: "Usamos as informações coletadas para vários fins, incluindo:",
           items: [
-            "Monitorar canais relevantes do YouTube baseado em suas preferências",
-            "Gerar respostas inteligentes para oportunidades identificadas",
-            "Fornecer análises e insights sobre seu desempenho",
-            "Melhorar nossos algoritmos de IA (apenas anonimizados e agregados)"
+            "Fornecer e melhorar nossos serviços",
+            "Personalizar a experiência do usuário",
+            "Analisar padrões de uso",
+            "Comunicar-se com os usuários"
           ]
+        },
+        dataSharing: {
+          title: "Compartilhamento e Divulgação de Dados",
+          icon: FaUserShield,
+          content: "Podemos compartilhar suas informações com:",
+          items: [
+            "Provedores de serviços e parceiros que auxiliam em nossas operações",
+            "Autoridades legais quando exigido por lei",
+            "Outras partes com seu consentimento"
+          ]
+        },
+        youtubeApi: {
+          title: "Serviços da API do YouTube",
+          icon: FaDatabase,
+          content: "Nosso aplicativo usa os Serviços da API do YouTube. Ao usar nosso serviço, você também está vinculado aos Termos de Serviço do YouTube. Além disso, a Política de Privacidade do Google se aplica ao nosso uso dos Serviços da API do YouTube."
         },
         dataSecurity: {
-          title: "Segurança dos Dados",
+          title: "Armazenamento e Segurança de Dados",
           icon: FaLock,
-          content: "Empregamos medidas de segurança de nível bancário:",
-          items: [
-            "Criptografia ponta a ponta para toda transmissão de dados",
-            "Armazenamento criptografado com auditorias regulares",
-            "Controles de acesso limitados com logs detalhados",
-            "Testes de penetração e avaliações de vulnerabilidade regulares"
-          ]
+          content: "Implementamos medidas de segurança apropriadas para proteger seus dados. As informações obtidas por meio dos Serviços da API do YouTube são armazenadas temporariamente e são atualizadas ou excluídas após 30 dias."
         },
         yourRights: {
-          title: "Seus Direitos",
-          content: "Você mantém controle total sobre seus dados:",
-          items: [
-            "Acesse todos seus dados a qualquer momento pelo dashboard",
-            "Exporte seus dados em formatos padrão",
-            "Delete sua conta e todos os dados associados instantaneamente",
-            "Opte por não participar de processamento não essencial"
-          ]
+          title: "Seus Direitos e Escolhas",
+          content: "Você tem o direito de acessar, corrigir ou excluir suas informações pessoais. Você também pode revogar nosso acesso aos seus dados do YouTube através da página de configurações de segurança do Google."
         },
-        sharing: {
-          title: "Compartilhamento de Dados",
-          content: "Nunca vendemos, alugamos ou negociamos seus dados. Ponto. Compartilhamos dados apenas quando:",
+        cookies: {
+          title: "Cookies e Tecnologias Similares",
+          content: "Usamos cookies e tecnologias de rastreamento similares para coletar e armazenar certas informações sobre seu uso de nossos serviços."
+        },
+        changes: {
+          title: "Alterações nesta Política",
+          content: "Podemos atualizar esta Política de Privacidade de tempos em tempos. Notificaremos você sobre quaisquer alterações publicando a nova Política de Privacidade nesta página."
+        },
+        contact: {
+          title: "Entre em Contato",
+          content: "Se você tiver alguma dúvida sobre esta Política de Privacidade, entre em contato conosco:",
           items: [
-            "Você solicita explicitamente (ex: integrações)",
-            "Exigido por lei (com notificação, exceto se proibido legalmente)",
-            "Necessário para proteger direitos, segurança ou propriedade"
+            "Email: privacy@salesadvocates.com",
+            "Endereço: 1309 Coffeen Ave STE 1200, Sheridan, WY 82801"
           ]
         }
       }
@@ -258,7 +289,7 @@ const Privacy: React.FC = () => {
         </BackButton>
         <Logo>
           <IconComponent icon={BiPulse} />
-          LIFTLIO
+          SALES ADVOCATES
         </Logo>
       </Header>
       
@@ -268,10 +299,10 @@ const Privacy: React.FC = () => {
         
         <Section>
           <SectionTitle>
-            <SectionIcon><IconComponent icon={t.sections.commitment.icon} /></SectionIcon>
-            {t.sections.commitment.title}
+            <SectionIcon><IconComponent icon={t.sections.introduction.icon} /></SectionIcon>
+            {t.sections.introduction.title}
           </SectionTitle>
-          <Paragraph>{t.sections.commitment.content}</Paragraph>
+          <Paragraph>{t.sections.introduction.content}</Paragraph>
         </Section>
         
         <Section>
@@ -302,32 +333,65 @@ const Privacy: React.FC = () => {
         
         <Section>
           <SectionTitle>
+            <SectionIcon><IconComponent icon={t.sections.dataSharing.icon} /></SectionIcon>
+            {t.sections.dataSharing.title}
+          </SectionTitle>
+          <Paragraph>{t.sections.dataSharing.content}</Paragraph>
+          <List>
+            {t.sections.dataSharing.items.map((item: string, index: number) => (
+              <ListItem key={index}>{item}</ListItem>
+            ))}
+          </List>
+        </Section>
+        
+        <Section>
+          <SectionTitle>
+            <SectionIcon><IconComponent icon={t.sections.youtubeApi.icon} /></SectionIcon>
+            {t.sections.youtubeApi.title}
+          </SectionTitle>
+          <Paragraph>
+            {language === 'en' ? (
+              <>Our application uses the YouTube API Services. By using our service, you are also bound by <Link href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube's Terms of Service</Link>. Additionally, Google's Privacy Policy applies to our use of the YouTube API Services. You can find Google's Privacy Policy at <Link href="http://www.google.com/policies/privacy" target="_blank" rel="noopener noreferrer">http://www.google.com/policies/privacy</Link>.</>
+            ) : (
+              <>Nosso aplicativo usa os Serviços da API do YouTube. Ao usar nosso serviço, você também está vinculado aos <Link href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">Termos de Serviço do YouTube</Link>. Além disso, a Política de Privacidade do Google se aplica ao nosso uso dos Serviços da API do YouTube. Você pode encontrar a Política de Privacidade do Google em <Link href="http://www.google.com/policies/privacy" target="_blank" rel="noopener noreferrer">http://www.google.com/policies/privacy</Link>.</>
+            )}
+          </Paragraph>
+        </Section>
+        
+        <Section>
+          <SectionTitle>
             <SectionIcon><IconComponent icon={t.sections.dataSecurity.icon} /></SectionIcon>
             {t.sections.dataSecurity.title}
           </SectionTitle>
           <Paragraph>{t.sections.dataSecurity.content}</Paragraph>
-          <List>
-            {t.sections.dataSecurity.items.map((item: string, index: number) => (
-              <ListItem key={index}>{item}</ListItem>
-            ))}
-          </List>
         </Section>
         
         <Section>
           <SectionTitle>{t.sections.yourRights.title}</SectionTitle>
-          <Paragraph>{t.sections.yourRights.content}</Paragraph>
-          <List>
-            {t.sections.yourRights.items.map((item: string, index: number) => (
-              <ListItem key={index}>{item}</ListItem>
-            ))}
-          </List>
+          <Paragraph>
+            {language === 'en' ? (
+              <>You have the right to access, correct, or delete your personal information. You can also revoke our access to your YouTube data through the <Link href="https://security.google.com/settings/security/permissions" target="_blank" rel="noopener noreferrer">Google security settings page</Link>.</>
+            ) : (
+              <>Você tem o direito de acessar, corrigir ou excluir suas informações pessoais. Você também pode revogar nosso acesso aos seus dados do YouTube através da <Link href="https://security.google.com/settings/security/permissions" target="_blank" rel="noopener noreferrer">página de configurações de segurança do Google</Link>.</>
+            )}
+          </Paragraph>
         </Section>
         
         <Section>
-          <SectionTitle>{t.sections.sharing.title}</SectionTitle>
-          <Paragraph>{t.sections.sharing.content}</Paragraph>
+          <SectionTitle>{t.sections.cookies.title}</SectionTitle>
+          <Paragraph>{t.sections.cookies.content}</Paragraph>
+        </Section>
+        
+        <Section>
+          <SectionTitle>{t.sections.changes.title}</SectionTitle>
+          <Paragraph>{t.sections.changes.content}</Paragraph>
+        </Section>
+        
+        <Section>
+          <SectionTitle>{t.sections.contact.title}</SectionTitle>
+          <Paragraph>{t.sections.contact.content}</Paragraph>
           <List>
-            {t.sections.sharing.items.map((item: string, index: number) => (
+            {t.sections.contact.items.map((item: string, index: number) => (
               <ListItem key={index}>{item}</ListItem>
             ))}
           </List>

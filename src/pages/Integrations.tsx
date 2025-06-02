@@ -2,8 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import Card from '../components/Card';
 import { IconContext } from 'react-icons';
-import { FaYoutube, FaReddit, FaLinkedin, FaFacebook, FaTwitter, FaInstagram, 
-         FaPlug, FaCheck, FaExclamationTriangle, FaLock, FaShieldAlt, 
+import { FaYoutube, FaPlug, FaCheck, FaExclamationTriangle, FaLock, FaShieldAlt, 
          FaArrowRight, FaTimes, FaClock } from 'react-icons/fa';
 import { IconComponent } from '../utils/IconHelper';
 import { useProject } from '../context/ProjectContext';
@@ -586,72 +585,17 @@ const YOUTUBE_API_BASE = 'https://www.googleapis.com/youtube/v3';
 const integrations = [
   {
     id: 'youtube',
-    name: 'Youtube',
-    description: 'Monitor YouTube videos and comments. Engage with your audience by responding to comments.',
+    name: 'YouTube',
+    description: 'Organize YouTube comments and discover engagement opportunities. Build genuine relationships with your audience.',
     icon: FaYoutube,
     bgColor: '#FF0000',
     status: 'disconnected' as const, // Will be set dynamically
-    features: ['Comments', 'Mentions', 'Analytics'],
+    features: ['Comment Organization', 'Channel Discovery', 'Engagement Tools'],
     available: true
-  },
-  {
-    id: 'reddit',
-    name: 'Reddit',
-    description: 'Track Reddit posts and comments mentioning your product. Engage with communities directly.',
-    icon: FaReddit,
-    bgColor: '#FF4500',
-    status: 'disconnected' as const,
-    features: ['Posts', 'Comments', 'Subreddits'],
-    available: false,
-    comingSoon: true
-  },
-  {
-    id: 'linkedin',
-    name: 'LinkedIn',
-    description: 'Monitor LinkedIn posts and comments. Engage with professional audience.',
-    icon: FaLinkedin,
-    bgColor: '#0077B5',
-    status: 'disconnected' as const,
-    features: ['Posts', 'Comments', 'Company Pages'],
-    available: false,
-    comingSoon: true
-  },
-  {
-    id: 'facebook',
-    name: 'Facebook',
-    description: 'Track Facebook posts and comments. Engage with users on the largest social network.',
-    icon: FaFacebook,
-    bgColor: '#1877F2',
-    status: 'disconnected' as const,
-    features: ['Posts', 'Comments', 'Pages', 'Groups'],
-    available: false,
-    comingSoon: true
-  },
-  {
-    id: 'twitter',
-    name: 'Twitter',
-    description: 'Monitor tweets and mentions. Engage with users through real-time conversations.',
-    icon: FaTwitter,
-    bgColor: '#1DA1F2',
-    status: 'disconnected' as const,
-    features: ['Tweets', 'Mentions', 'Direct Messages'],
-    available: false,
-    comingSoon: true
-  },
-  {
-    id: 'instagram',
-    name: 'Instagram',
-    description: 'Track Instagram posts and comments. Engage with visual-focused audience.',
-    icon: FaInstagram,
-    bgColor: '#E4405F',
-    status: 'disconnected' as const,
-    features: ['Posts', 'Comments', 'Stories'],
-    available: false,
-    comingSoon: true
   }
 ];
 
-const categories = ['All', 'Connected', 'Available Soon'];
+const categories = ['All'];
 
 // Interface for integration data
 interface Integration {
@@ -908,8 +852,6 @@ const Integrations: React.FC = () => {
   const filteredIntegrations = combinedIntegrations.filter(integration => {
     // Filter by category
     if (activeCategory === 'Connected' && integration.status !== 'connected') return false;
-    if (activeCategory === 'Available Soon' && integration.available !== false) return false;
-    if (activeCategory === 'Social Media' && !['youtube', 'facebook', 'twitter', 'instagram'].includes(integration.id)) return false;
     
     // Filter by search term
     if (searchTerm && !integration.name.toLowerCase().includes(searchTerm.toLowerCase()) && 
@@ -1051,17 +993,6 @@ const Integrations: React.FC = () => {
           />
         </SearchContainer>
         
-        <Categories>
-          {categories.map(category => (
-            <CategoryTag 
-              key={category}
-              active={activeCategory === category}
-              onClick={() => setActiveCategory(category)}
-            >
-              {category}
-            </CategoryTag>
-          ))}
-        </Categories>
         
         {isLoading ? (
           <div style={{ textAlign: 'center', padding: '40px 0' }}>
@@ -1104,11 +1035,11 @@ const Integrations: React.FC = () => {
                     {integration.id === 'youtube' && integration.status !== 'connected' && (
                       <div style={{ 
                         fontSize: '12px', 
-                        color: '#FF5722', 
+                        color: theme.colors.text.secondary, 
                         marginTop: '5px',
-                        fontWeight: 500
+                        fontWeight: 400
                       }}>
-                        Connect your YouTube account to monitor video comments
+                        Connect your YouTube account to organize comments. By connecting, you agree to the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer" style={{ color: theme.colors.primary, textDecoration: 'underline' }}>YouTube Terms of Service</a>
                       </div>
                     )}
                   </IntegrationNameContainer>
@@ -1171,30 +1102,6 @@ const Integrations: React.FC = () => {
             ))}
           </IntegrationsGrid>
         )}
-        
-        <APICard>
-          <APICardContent>
-            <APICardHeader>
-              <APICardIconWrapper>
-                {renderIcon(FaPlug)}
-              </APICardIconWrapper>
-              <APICardTitle>API Connections</APICardTitle>
-            </APICardHeader>
-            
-            <APICardDescription>
-              Integrate with other platforms and services using our API. Direct API access coming soon for custom integrations and advanced workflows.
-            </APICardDescription>
-            
-            <APICardActions>
-              <ActionButton variant="secondary" disabled>
-                View Documentation {renderIcon(FaArrowRight)}
-              </ActionButton>
-              <ActionButton variant="primary" disabled>
-                Coming Soon {renderIcon(FaClock)}
-              </ActionButton>
-            </APICardActions>
-          </APICardContent>
-        </APICard>
       </div>
       
       {modalOpen && selectedIntegration && (
@@ -1213,7 +1120,7 @@ const Integrations: React.FC = () => {
             
             <ModalBody>
               <ModalText>
-                By connecting your {selectedIntegration.name} account, you allow Liftlio to monitor and interact with your content according to your settings.
+                By connecting your {selectedIntegration.name} account, you allow Sales Advocates to access and organize your YouTube comments according to your settings.
               </ModalText>
               
               <ModalInfo>
@@ -1221,7 +1128,7 @@ const Integrations: React.FC = () => {
                   {renderIcon(FaShieldAlt)} Important Information
                 </ModalInfoTitle>
                 <ModalText style={{ marginBottom: 0 }}>
-                  You will be directed to {selectedIntegration.name} authorization page. Please check all the authorization boxes so that Liftlio can connect to this account.
+                  You will be directed to {selectedIntegration.name} authorization page. Please check all the authorization boxes so that Sales Advocates can connect to this account.
                 </ModalText>
                 
                 {selectedIntegration.id === 'youtube' && (
@@ -1232,16 +1139,21 @@ const Integrations: React.FC = () => {
               </ModalInfo>
               
               {selectedIntegration.id === 'youtube' && (
-                <Checkbox onClick={() => setConfirmCheckbox(!confirmCheckbox)}>
-                  <CheckboxInput 
-                    type="checkbox" 
-                    checked={confirmCheckbox}
-                    onChange={() => setConfirmCheckbox(!confirmCheckbox)}
-                  />
-                  <CheckboxLabel>
-                    I confirm that my YouTube account has made at least two comments
-                  </CheckboxLabel>
-                </Checkbox>
+                <>
+                  <Checkbox onClick={() => setConfirmCheckbox(!confirmCheckbox)}>
+                    <CheckboxInput 
+                      type="checkbox" 
+                      checked={confirmCheckbox}
+                      onChange={() => setConfirmCheckbox(!confirmCheckbox)}
+                    />
+                    <CheckboxLabel>
+                      I accept the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer" style={{ color: theme.colors.primary, textDecoration: 'underline' }}>YouTube Terms of Service</a>
+                    </CheckboxLabel>
+                  </Checkbox>
+                  <ModalText style={{ fontSize: '12px', marginTop: '10px', color: theme.colors.text.secondary }}>
+                    By using Sales Advocates, you also agree to be bound by the YouTube Terms of Service.
+                  </ModalText>
+                </>
               )}
             </ModalBody>
             
