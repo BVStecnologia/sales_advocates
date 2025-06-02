@@ -233,9 +233,9 @@ const IntegrationStatus = styled.div<{ status: 'connected' | 'pending' | 'discon
       case 'pending':
         return props.theme.colors.warning;
       case 'disconnected':
-        return props.theme.colors.darkGrey;
+        return props.theme.colors.text.secondary;
       default:
-        return props.theme.colors.darkGrey;
+        return props.theme.colors.text.secondary;
     }
   }};
   display: flex;
