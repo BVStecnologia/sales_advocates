@@ -233,9 +233,13 @@ const IntegrationStatus = styled.div<{ status: 'connected' | 'pending' | 'discon
       case 'pending':
         return props.theme.colors.warning;
       case 'disconnected':
-        return props.theme.colors.text.secondary;
+        return props.theme.name === 'dark' 
+          ? 'rgba(228, 228, 231, 0.85)' 
+          : props.theme.colors.text.secondary;
       default:
-        return props.theme.colors.text.secondary;
+        return props.theme.name === 'dark' 
+          ? 'rgba(228, 228, 231, 0.85)' 
+          : props.theme.colors.text.secondary;
     }
   }};
   display: flex;
@@ -1035,7 +1039,7 @@ const Integrations: React.FC = () => {
                     {integration.id === 'youtube' && integration.status !== 'connected' && (
                       <div style={{ 
                         fontSize: '12px', 
-                        color: theme.colors.text.secondary, 
+                        color: theme.name === 'dark' ? 'rgba(228, 228, 231, 0.85)' : theme.colors.text.secondary, 
                         marginTop: '5px',
                         fontWeight: 400
                       }}>
