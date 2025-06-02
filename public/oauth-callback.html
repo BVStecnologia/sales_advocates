@@ -72,8 +72,9 @@
     // Handle the result
     if (code) {
       // Redirecionar de volta para a aplicação principal com o código
-      // Não precisamos mais usar window.opener pois estamos na mesma janela
-      window.location.href = `${window.location.origin}?code=${code}&state=${state || ''}&scope=${urlParams.get('scope') || ''}`;
+      // Preservar o caminho onde o usuário estava (geralmente /integrations ou /dashboard)
+      const returnPath = localStorage.getItem('oauthReturnPath') || '/dashboard';
+      window.location.href = `${window.location.origin}${returnPath}?code=${code}&state=${state || ''}&scope=${urlParams.get('scope') || ''}`;
     } else if (error) {
       // Handle error
       document.querySelector('.container').innerHTML = `

@@ -732,6 +732,9 @@ const Integrations: React.FC = () => {
       return;
     }
     
+    // Salvar o caminho atual para retornar após o OAuth
+    localStorage.setItem('oauthReturnPath', window.location.pathname);
+    
     // Use the redirect URI that is configured in Google Cloud
     // Importante: Este URI deve corresponder EXATAMENTE ao configurado no Google Cloud Console
     

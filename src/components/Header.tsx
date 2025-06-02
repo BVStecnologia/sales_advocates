@@ -1275,6 +1275,9 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
       return;
     }
     
+    // Salvar o caminho atual para retornar após o OAuth
+    localStorage.setItem('oauthReturnPath', window.location.pathname);
+    
     // Marcar como não verificado durante a autenticação
     setYoutubeStatus({ checked: false, connected: false });
     
