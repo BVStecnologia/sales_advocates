@@ -11,6 +11,7 @@ import { useProject } from '../context/ProjectContext';
 import { useTheme } from '../context/ThemeContext';
 import { useLanguage } from '../context/LanguageContext';
 import { supabase, supabaseUrl, supabaseAnonKey } from '../lib/supabaseClient';
+import { OAUTH_CONFIG } from '../config/oauth';
 
 // Import the MobileNavToggle from App.tsx
 const fadeIn = keyframes`
@@ -1283,10 +1284,10 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
       window.location.hostname === 'sales-advocates.fly.dev' ||
       window.location.hostname === 'liftlio.fly.dev';
     const redirectUri = isProduction 
-      ? `https://${window.location.hostname}` 
-      : 'http://localhost:3000';
+      ? `https://${window.location.hostname}/oauth-callback.html` 
+      : 'http://localhost:3000/oauth-callback.html';
       
-    const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID || "";
+    const clientId = OAUTH_CONFIG.GOOGLE_CLIENT_ID;
     const scopes = [
       "https://www.googleapis.com/auth/userinfo.email",
       "https://www.googleapis.com/auth/userinfo.profile",
@@ -1860,7 +1861,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
               />
               <span style={{ 
                 fontSize: '0.85rem', 
-                color: '#333',
+                color: theme.name === 'dark' ? 'rgba(255, 255, 255, 0.85)' : '#333',
                 fontWeight: 500,
                 position: 'relative',
                 zIndex: 2
