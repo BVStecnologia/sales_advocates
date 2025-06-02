@@ -230,8 +230,8 @@ const OAuthHandler = () => {
             window.location.hostname === 'sales-advocates.fly.dev' ||
             window.location.hostname === 'liftlio.fly.dev';
           const redirectUri = isProduction 
-            ? `https://${window.location.hostname}` 
-            : 'http://localhost:3000';
+            ? `https://${window.location.hostname}/oauth-callback.html` 
+            : 'http://localhost:3000/oauth-callback.html';
             
           console.log('Ambiente detectado:', isProduction ? 'Produção' : 'Desenvolvimento');
           console.log('Usando redirect URI:', redirectUri);
