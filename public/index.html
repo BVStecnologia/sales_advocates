@@ -66,6 +66,90 @@
     </style>
   </head>
   <body>
+    <!-- Static content for SEO and Google OAuth compliance -->
+    <div id="static-seo-content" style="
+      padding: 40px 20px;
+      text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+    ">
+      <h1 style="color: #333; font-size: 2.5em; margin-bottom: 20px;">Sales Advocates</h1>
+      <p style="color: #666; font-size: 1.2em; line-height: 1.6; margin-bottom: 30px;">
+        Manage YouTube comments strategically and discover relevant channels in your niche. 
+        Organize comments for manual review and build authentic relationships with your community.
+      </p>
+      
+      <!-- Privacy Policy and Terms links - HIGHLY VISIBLE -->
+      <nav style="margin: 30px 0;">
+        <a href="/privacy" style="
+          display: inline-block;
+          margin: 0 15px;
+          padding: 12px 24px;
+          background-color: #4285f4;
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+          font-weight: bold;
+          font-size: 16px;
+        ">Privacy Policy</a>
+        
+        <a href="/terms" style="
+          display: inline-block;
+          margin: 0 15px;
+          padding: 12px 24px;
+          background-color: #4285f4;
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+          font-weight: bold;
+          font-size: 16px;
+        ">Terms of Service</a>
+      </nav>
+      
+      <div style="margin-top: 40px; padding: 20px; background-color: #f5f5f5; border-radius: 8px;">
+        <h2 style="color: #333; font-size: 1.5em; margin-bottom: 15px;">How Sales Advocates Works</h2>
+        <ul style="text-align: left; max-width: 600px; margin: 0 auto; color: #555; line-height: 1.8;">
+          <li>Connect your YouTube account securely through Google OAuth</li>
+          <li>Discover relevant channels and videos in your niche</li>
+          <li>Organize comments by sentiment for efficient manual review</li>
+          <li>Build genuine relationships through thoughtful responses</li>
+          <li>Track your engagement and grow your community authentically</li>
+        </ul>
+      </div>
+      
+      <p style="margin-top: 30px; color: #888; font-size: 14px;">
+        © 2024 Sales Advocates. All rights reserved. | 
+        <a href="/privacy" style="color: #4285f4;">Privacy</a> | 
+        <a href="/terms" style="color: #4285f4;">Terms</a> | 
+        <a href="/security" style="color: #4285f4;">Security</a>
+      </p>
+    </div>
+    
+    <!-- Hide static content when React loads -->
+    <script>
+      // Monitor for React app initialization
+      const checkReactLoaded = setInterval(function() {
+        const root = document.getElementById('root');
+        const staticContent = document.getElementById('static-seo-content');
+        
+        // Check if React has rendered content
+        if (root && root.children.length > 0 && staticContent) {
+          staticContent.style.display = 'none';
+          clearInterval(checkReactLoaded);
+        }
+      }, 100);
+      
+      // Fallback timeout to hide static content
+      setTimeout(function() {
+        const staticContent = document.getElementById('static-seo-content');
+        if (staticContent) {
+          staticContent.style.display = 'none';
+        }
+        clearInterval(checkReactLoaded);
+      }, 3000);
+    </script>
+    
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--

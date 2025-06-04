@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Advocate AI - Test Page</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 4px;
+        }
+        .check {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .icon {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        .success { color: #4CAF50; }
+        .error { color: #f44336; }
+        .warning { color: #ff9800; }
+        .info { color: #2196F3; }
+        code {
+            background: #e8e8e8;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        .test-iframe {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        .privacy-test {
+            border: 2px solid #4285f4;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            background: #f0f7ff;
+        }
+        .privacy-link {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background: #4285f4;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .privacy-link:hover {
+            background: #3367d6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Análise do Site salesadvocate.ai para Google OAuth</h1>
+        
+        <div class="section">
+            <h2>Status da Análise</h2>
+            <p id="status">Analisando...</p>
+        </div>
+
+        <div class="section privacy-test">
+            <h2>🔗 Links de Privacy Policy Testáveis</h2>
+            <p>Estes são os links que deveriam estar visíveis na homepage:</p>
+            <a href="https://salesadvocate.ai/privacy" class="privacy-link" target="_blank">
+                Privacy Policy (React Route)
+            </a>
+            <a href="https://salesadvocate.ai/privacy.html" class="privacy-link" target="_blank">
+                Privacy Policy (Static HTML)
+            </a>
+        </div>
+
+        <div class="section">
+            <h2>📋 Checklist de Requisitos do Google OAuth</h2>
+            <div id="requirements"></div>
+        </div>
+
+        <div class="section">
+            <h2>🔍 Análise Técnica</h2>
+            <div id="technical"></div>
+        </div>
+
+        <div class="section">
+            <h2>🛠️ Problemas Identificados</h2>
+            <div id="problems"></div>
+        </div>
+
+        <div class="section">
+            <h2>✅ Soluções Recomendadas</h2>
+            <div id="solutions"></div>
+        </div>
+
+        <div class="section">
+            <h2>🌐 Preview do Site</h2>
+            <iframe src="https://salesadvocate.ai" class="test-iframe" id="siteFrame"></iframe>
+        </div>
+    </div>
+
+    <script>
+        async function analyzeSite() {
+            const status = document.getElementById('status');
+            const requirements = document.getElementById('requirements');
+            const technical = document.getElementById('technical');
+            const problems = document.getElementById('problems');
+            const solutions = document.getElementById('solutions');
+
+            status.innerHTML = '<span class="icon info">ℹ️</span> Analisando salesadvocate.ai...';
+
+            // Análise de requisitos
+            const reqChecks = [
+                {
+                    name: 'Homepage acessível sem login',
+                    check: true,
+                    status: 'error',
+                    note: 'A homepage atual é uma SPA React que requer JavaScript'
+                },
+                {
+                    name: 'Descrição clara da funcionalidade',
+                    check: false,
+                    status: 'warning',
+                    note: 'Conteúdo não visível sem JavaScript carregado'
+                },
+                {
+                    name: 'Link para Privacy Policy',
+                    check: false,
+                    status: 'error',
+                    note: 'Links existem no código mas não são renderizados no HTML inicial'
+                },
+                {
+                    name: 'Domínio verificado',
+                    check: true,
+                    status: 'success',
+                    note: 'salesadvocate.ai está ativo e respondendo'
+                },
+                {
+                    name: 'SSL/HTTPS ativo',
+                    check: true,
+                    status: 'success',
+                    note: 'Site usa HTTPS corretamente'
+                }
+            ];
+
+            // Renderizar checklist
+            requirements.innerHTML = reqChecks.map(req => `
+                <div class="check">
+                    <span class="icon ${req.status}">
+                        ${req.status === 'success' ? '✅' : req.status === 'error' ? '❌' : '⚠️'}
+                    </span>
+                    <div>
+                        <strong>${req.name}</strong>
+                        ${req.note ? `<br><small>${req.note}</small>` : ''}
+                    </div>
+                </div>
+            `).join('');
+
+            // Análise técnica
+            technical.innerHTML = `
+                <h3>Estrutura Atual:</h3>
+                <ul>
+                    <li><strong>Tipo:</strong> Single Page Application (React)</li>
+                    <li><strong>Servidor:</strong> Nginx no Fly.io</li>
+                    <li><strong>Roteamento:</strong> Client-side (React Router)</li>
+                    <li><strong>HTML inicial:</strong> Mínimo, sem conteúdo</li>
+                    <li><strong>JavaScript:</strong> Necessário para renderizar todo conteúdo</li>
+                </ul>
+                
+                <h3>Problema Principal:</h3>
+                <p>O Google OAuth crawler não executa JavaScript, então ele vê apenas o HTML inicial vazio, 
+                sem os links de Privacy Policy ou descrição do app.</p>
+            `;
+
+            // Problemas identificados
+            problems.innerHTML = `
+                <ol>
+                    <li>
+                        <strong>HTML inicial vazio:</strong>
+                        <br>O arquivo <code>index.html</code> não contém conteúdo visível, apenas:
+                        <code>&lt;noscript&gt;You need to enable JavaScript to run this app.&lt;/noscript&gt;</code>
+                    </li>
+                    <li>
+                        <strong>Links de Privacy Policy não visíveis:</strong>
+                        <br>Os links existem no componente React mas não no HTML inicial
+                    </li>
+                    <li>
+                        <strong>Descrição do app ausente:</strong>
+                        <br>Nenhuma informação sobre o Sales Advocates está no HTML inicial
+                    </li>
+                    <li>
+                        <strong>Dependência total de JavaScript:</strong>
+                        <br>Google crawler pode não executar JS e não verá o conteúdo
+                    </li>
+                </ol>
+            `;
+
+            // Soluções recomendadas
+            solutions.innerHTML = `
+                <h3>Solução Imediata (Recomendada):</h3>
+                <ol>
+                    <li>
+                        <strong>Adicionar conteúdo estático ao index.html:</strong>
+                        <pre><code>&lt;!-- Adicionar antes do &lt;div id="root"&gt; --&gt;
+&lt;div id="static-content" style="padding: 20px; text-align: center;"&gt;
+  &lt;h1&gt;Sales Advocates&lt;/h1&gt;
+  &lt;p&gt;Organize YouTube comments and build genuine relationships with your audience&lt;/p&gt;
+  &lt;nav&gt;
+    &lt;a href="/privacy" style="margin: 0 10px;"&gt;Privacy Policy&lt;/a&gt;
+    &lt;a href="/terms" style="margin: 0 10px;"&gt;Terms of Service&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/div&gt;
+
+&lt;!-- Esconder quando React carregar --&gt;
+&lt;script&gt;
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      var staticContent = document.getElementById('static-content');
+      if (staticContent && document.getElementById('root').children.length > 0) {
+        staticContent.style.display = 'none';
+      }
+    }, 100);
+  });
+&lt;/script&gt;</code></pre>
+                    </li>
+                    <li>
+                        <strong>Criar página privacy.html estática:</strong>
+                        <br>Configurar nginx para servir <code>/privacy.html</code> diretamente
+                    </li>
+                    <li>
+                        <strong>Server-Side Rendering (SSR) - Solução ideal:</strong>
+                        <br>Implementar Next.js ou similar para ter conteúdo no HTML inicial
+                    </li>
+                </ol>
+
+                <h3>Configuração Nginx Adicional:</h3>
+                <pre><code># Servir privacy.html diretamente
+location = /privacy {
+  root /usr/share/nginx/html;
+  try_files /privacy.html /index.html;
+}
+
+location = /privacy.html {
+  root /usr/share/nginx/html;
+  add_header Cache-Control "public, max-age=3600";
+}</code></pre>
+            `;
+
+            status.innerHTML = '<span class="icon success">✅</span> Análise concluída!';
+        }
+
+        // Executar análise ao carregar
+        window.onload = analyzeSite;
+
+        // Tentar acessar o iframe para verificar conteúdo
+        setTimeout(() => {
+            try {
+                const iframe = document.getElementById('siteFrame');
+                console.log('Tentando acessar iframe...', iframe);
+            } catch (e) {
+                console.log('Erro ao acessar iframe (esperado por CORS):', e);
+            }
+        }, 3000);
+    </script>
+</body>
+</html>
