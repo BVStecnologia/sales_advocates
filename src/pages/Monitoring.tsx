@@ -2151,9 +2151,7 @@ const VideoDetailModal = styled.div`
 `;
 
 const ModalContent = styled.div`
-  background: ${props => props.theme.name === 'dark' 
-    ? 'rgba(30, 30, 30, 0.95)' 
-    : 'white'};
+  background: ${props => props.theme.colors.bg.secondary};
   border-radius: ${props => props.theme.radius.lg};
   width: 85%;
   max-width: 1100px;
@@ -2165,9 +2163,7 @@ const ModalContent = styled.div`
     : '0 20px 50px rgba(0,0,0,0.3)'};
   transform: translateY(0);
   animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  border: 1px solid ${props => props.theme.name === 'dark'
-    ? 'rgba(255, 255, 255, 0.1)'
-    : 'rgba(0, 0, 0, 0.1)'};
+  border: 1px solid ${props => props.theme.colors.border};
   
   @keyframes slideUp {
     from {
@@ -2263,6 +2259,7 @@ const ModalClose = styled.button`
 
 const ModalBody = styled.div`
   padding: 30px;
+  background: transparent;
   
   @media (max-width: 768px) {
     padding: 20px;
@@ -2518,6 +2515,7 @@ const ModalGridContainer = styled.div`
 const ModalVideoInfo = styled.div`
   display: flex;
   flex-direction: column;
+  background: transparent;
 `;
 
 const ModalSidebar = styled.div`
@@ -5506,7 +5504,9 @@ const YoutubeMonitoring: React.FC = () => {
             <VideoDetailsSection style={{ 
               marginBottom: '32px', 
               padding: '0',
-              background: 'rgba(255, 255, 255, 0.85)',
+              background: theme.name === 'dark' 
+                ? 'rgba(30, 30, 30, 0.95)' 
+                : 'rgba(255, 255, 255, 0.85)',
               borderRadius: '16px',
               boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
               position: 'relative',
@@ -5738,8 +5738,10 @@ const YoutubeMonitoring: React.FC = () => {
                     margin: '0 0 16px 0',
                     fontSize: '22px',
                     fontWeight: '700',
-                    color: '#333',
-                    background: 'linear-gradient(135deg, #333, #555)',
+                    color: theme.name === 'dark' ? theme.colors.text.primary : '#333',
+                    background: theme.name === 'dark' 
+                      ? 'linear-gradient(135deg, #ccc, #fff)' 
+                      : 'linear-gradient(135deg, #333, #555)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     position: 'relative',
@@ -5778,7 +5780,7 @@ const YoutubeMonitoring: React.FC = () => {
                       boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)',
                       fontSize: '14px',
                       fontWeight: '600',
-                      color: '#444',
+                      color: theme.name === 'dark' ? theme.colors.text.primary : '#444',
                       transition: 'all 0.3s ease'
                     }}>
                       <IconComponent icon={FaIcons.FaEye} style={{ 
@@ -5808,7 +5810,7 @@ const YoutubeMonitoring: React.FC = () => {
                       boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)',
                       fontSize: '14px',
                       fontWeight: '600',
-                      color: '#444',
+                      color: theme.name === 'dark' ? theme.colors.text.primary : '#444',
                       transition: 'all 0.3s ease'
                     }}>
                       <IconComponent icon={FaIcons.FaComment} style={{ 
@@ -5831,7 +5833,7 @@ const YoutubeMonitoring: React.FC = () => {
                         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)',
                         fontSize: '14px',
                         fontWeight: '600',
-                        color: '#444',
+                        color: theme.name === 'dark' ? theme.colors.text.primary : '#444',
                         transition: 'all 0.3s ease'
                       }}>
                         <IconComponent icon={FaIcons.FaTag} style={{ 
@@ -5863,7 +5865,9 @@ const YoutubeMonitoring: React.FC = () => {
                         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)',
                         fontSize: '14px',
                         fontWeight: '600',
-                        color: selectedVideo.relevance_score > 0.5 ? '#444' : '#fff',
+                        color: theme.name === 'dark' 
+                        ? theme.colors.text.primary 
+                        : (selectedVideo.relevance_score > 0.5 ? '#444' : '#fff'),
                         transition: 'all 0.3s ease'
                       }}>
                         <IconComponent icon={FaIcons.FaChartLine} style={{ 
@@ -5884,11 +5888,11 @@ const YoutubeMonitoring: React.FC = () => {
                     <div style={{ 
                       fontSize: '15px',
                       lineHeight: '1.6',
-                      color: '#555',
+                      color: theme.name === 'dark' ? theme.colors.text.secondary : '#555',
                       maxHeight: '100px',
                       overflowY: 'auto',
                       padding: '16px',
-                      background: 'rgba(255, 255, 255, 0.6)',
+                      background: theme.name === 'dark' ? 'rgba(50, 50, 50, 0.6)' : 'rgba(255, 255, 255, 0.6)',
                       borderRadius: '12px',
                       backdropFilter: 'blur(8px)',
                       boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.9), 0 4px 12px rgba(0, 0, 0, 0.06)',
@@ -5901,7 +5905,9 @@ const YoutubeMonitoring: React.FC = () => {
                         left: 0,
                         right: 0,
                         height: '40px',
-                        background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8))',
+                        background: theme.name === 'dark' 
+                          ? 'linear-gradient(to bottom, rgba(30, 30, 30, 0), rgba(30, 30, 30, 0.8))' 
+                          : 'linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8))',
                         pointerEvents: 'none',
                         borderRadius: '0 0 12px 12px'
                       }}></div>
@@ -5913,7 +5919,9 @@ const YoutubeMonitoring: React.FC = () => {
                         left: 0,
                         right: 0,
                         bottom: 0,
-                        background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent)',
+                        background: theme.name === 'dark' 
+                          ? 'linear-gradient(90deg, transparent, rgba(50, 50, 50, 0.8), transparent)' 
+                          : 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent)',
                         transform: 'translateX(-100%) rotate(25deg)',
                         animation: 'shimmer 6s infinite',
                         pointerEvents: 'none',

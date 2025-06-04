@@ -142,8 +142,8 @@ const signalPulse = keyframes`
   }
 `;
 
-// LED flow animation keyframe
-const ledFlow = keyframes`
+// Data flow animation keyframe
+const dataFlow = keyframes`
   0%, 15% {
     opacity: 0;
     transform: translateX(-10px);
@@ -659,17 +659,17 @@ const FunnelArrowIcon = styled.div<{ index: number }>`
 `;
 
 // Modern tech indicator - ultra subtle and elegant
-const LedSignalDot = styled.div<{ index: number; active: boolean }>`
+const SignalDot = styled.div<{ index: number; active: boolean }>`
   position: absolute;
   top: ${props => (40 + props.index * 2)}%;
   right: -6px;
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background-color: ${COLORS.ACCENT}; // Using accent color for all LEDs
+  background-color: ${COLORS.ACCENT}; // Using accent color for all signals
   z-index: 15;
   opacity: ${props => props.active ? 0.8 : 0};
-  box-shadow: 0 0 3px ${withOpacity(COLORS.ACCENT, 0.5)}; // Unified shadow for all LEDs
+  box-shadow: 0 0 3px ${withOpacity(COLORS.ACCENT, 0.5)}; // Unified shadow for all signals
   transition: all 0.3s ease;
   
   &::before {
@@ -684,7 +684,7 @@ const LedSignalDot = styled.div<{ index: number; active: boolean }>`
       props.index === 0 ? 'rgba(33, 150, 243, 0.3)' : // Blue for Reach
       props.index === 1 ? 'rgba(255, 122, 48, 0.3)' : // Orange for Activities
       props.index === 2 ? `rgba(45, 62, 80, 0.3)` : // Blue (primary) for Engagements
-      'rgba(76, 175, 80, 0.3)'         // Green for LEDs
+      'rgba(76, 175, 80, 0.3)'         // Green for Data Points
     };
     transform: translate(-50%, -50%);
     opacity: ${props => props.active ? 0.4 : 0};
@@ -709,7 +709,7 @@ const LedSignalDot = styled.div<{ index: number; active: boolean }>`
 `;
 
 // Modern data connection - extremely minimal
-const LedConnectionLine = styled.div<{ index: number; active: boolean }>`
+const ConnectionLine = styled.div<{ index: number; active: boolean }>`
   position: absolute;
   top: ${props => (40 + props.index * 2)}%;
   right: -6px;
@@ -761,7 +761,7 @@ const FlowParticle = styled.div<{ index: number; active: boolean }>`
     props.index === 0 ? '#2196F3' : // Blue for Reach
     props.index === 1 ? '#FF7A30' : // Orange for Activities
     props.index === 2 ? '#673AB7' : // Purple for Engagements
-    '#4CAF50'         // Green for LEDs
+    '#4CAF50'         // Green for Data Points
   };
   z-index: 12;
   opacity: ${props => props.active ? 0.7 : 0};
@@ -769,9 +769,9 @@ const FlowParticle = styled.div<{ index: number; active: boolean }>`
     props.index === 0 ? 'rgba(33, 150, 243, 0.7)' : // Blue for Reach 
     props.index === 1 ? 'rgba(255, 122, 48, 0.7)' : // Orange for Activities
     props.index === 2 ? 'rgba(103, 58, 183, 0.7)' : // Purple for Engagements
-    'rgba(76, 175, 80, 0.7)'         // Green for LEDs
+    'rgba(76, 175, 80, 0.7)'         // Green for Data Points
   };
-  animation: ${ledFlow} 1.8s linear infinite;
+  animation: ${dataFlow} 1.8s linear infinite;
   animation-delay: ${props => props.index * 0.3}s;
   
   @media (max-width: 1200px) {
@@ -1660,12 +1660,12 @@ const Overview: React.FC = () => {
   const [dataView, setDataView] = useState<DataViewType>('overview');
   const [searchTerm, setSearchTerm] = useState('');
   
-  // LED Animation States
-  const [activeLeds, setActiveLeds] = useState<Record<number, boolean>>({
+  // Signal Animation States
+  const [activeSignals, setActiveSignals] = useState<Record<number, boolean>>({
     0: false, // Reach
     1: false, // Activities
     2: false, // Total Engagements
-    3: false  // LEDs
+    3: false  // Data Points
   });
   
   // Função para lidar com ações dos estados vazios
@@ -1675,9 +1675,8 @@ const Overview: React.FC = () => {
         setShowProjectModal(true);
         break;
       case 2: // Precisa configurar integração
-        // Redirecionar para página de integrações
-        // Usando window.location.href para forçar uma recarga completa da página
-        window.location.href = '/integrations';
+        // Redirecionar para página de integrações usando React Router
+        navigate('/integrations');
         break;
       case 3: // Aguardando dados
         // Não faz nada, só mostra o estado atual
@@ -1714,7 +1713,8 @@ const Overview: React.FC = () => {
       if (error) throw error;
       
       setShowProjectModal(false);
-      window.location.reload(); // Recarregar a página para atualizar os estados
+      // Recarregar a página para garantir que todos os dados sejam atualizados
+      window.location.reload();
     } catch (error) {
       console.error("Error creating project:", error);
     }
@@ -1727,32 +1727,32 @@ const Overview: React.FC = () => {
       // Professional data flow effect
       const sequence = [
         // Standard flow pattern - sequential activation
-        () => setActiveLeds(prev => ({ ...prev, 0: true, 1: false, 2: false, 3: false })),
-        () => setActiveLeds(prev => ({ ...prev, 0: true, 1: true, 2: false, 3: false })),
-        () => setActiveLeds(prev => ({ ...prev, 0: true, 1: true, 2: true, 3: false })),
-        () => setActiveLeds(prev => ({ ...prev, 0: true, 1: true, 2: true, 3: true })),
+        () => setActiveSignals(prev => ({ ...prev, 0: true, 1: false, 2: false, 3: false })),
+        () => setActiveSignals(prev => ({ ...prev, 0: true, 1: true, 2: false, 3: false })),
+        () => setActiveSignals(prev => ({ ...prev, 0: true, 1: true, 2: true, 3: false })),
+        () => setActiveSignals(prev => ({ ...prev, 0: true, 1: true, 2: true, 3: true })),
         
         // Hold the complete data path briefly 
-        () => setActiveLeds(prev => ({ ...prev, 0: true, 1: true, 2: true, 3: true })),
+        () => setActiveSignals(prev => ({ ...prev, 0: true, 1: true, 2: true, 3: true })),
         
         // Sequential deactivation
-        () => setActiveLeds(prev => ({ ...prev, 0: false, 1: true, 2: true, 3: true })),
-        () => setActiveLeds(prev => ({ ...prev, 0: false, 1: false, 2: true, 3: true })),
-        () => setActiveLeds(prev => ({ ...prev, 0: false, 1: false, 2: false, 3: true })),
-        () => setActiveLeds(prev => ({ ...prev, 0: false, 1: false, 2: false, 3: false })),
+        () => setActiveSignals(prev => ({ ...prev, 0: false, 1: true, 2: true, 3: true })),
+        () => setActiveSignals(prev => ({ ...prev, 0: false, 1: false, 2: true, 3: true })),
+        () => setActiveSignals(prev => ({ ...prev, 0: false, 1: false, 2: false, 3: true })),
+        () => setActiveSignals(prev => ({ ...prev, 0: false, 1: false, 2: false, 3: false })),
         
         // Brief pause
-        () => setActiveLeds(prev => ({ ...prev, 0: false, 1: false, 2: false, 3: false })),
+        () => setActiveSignals(prev => ({ ...prev, 0: false, 1: false, 2: false, 3: false })),
 
         // Secondary data processing pattern - shows individual processing
-        () => setActiveLeds(prev => ({ ...prev, 0: true, 1: false, 2: false, 3: false })),
-        () => setActiveLeds(prev => ({ ...prev, 0: false, 1: true, 2: false, 3: false })),
-        () => setActiveLeds(prev => ({ ...prev, 0: false, 1: false, 2: true, 3: false })),
-        () => setActiveLeds(prev => ({ ...prev, 0: false, 1: false, 2: false, 3: true })),
-        () => setActiveLeds(prev => ({ ...prev, 0: false, 1: false, 2: false, 3: false })),
+        () => setActiveSignals(prev => ({ ...prev, 0: true, 1: false, 2: false, 3: false })),
+        () => setActiveSignals(prev => ({ ...prev, 0: false, 1: true, 2: false, 3: false })),
+        () => setActiveSignals(prev => ({ ...prev, 0: false, 1: false, 2: true, 3: false })),
+        () => setActiveSignals(prev => ({ ...prev, 0: false, 1: false, 2: false, 3: true })),
+        () => setActiveSignals(prev => ({ ...prev, 0: false, 1: false, 2: false, 3: false })),
 
         // End of processing cycle
-        () => setActiveLeds(prev => ({ ...prev, 0: false, 1: false, 2: false, 3: false }))
+        () => setActiveSignals(prev => ({ ...prev, 0: false, 1: false, 2: false, 3: false }))
       ];
       
       // More professional timing sequence (in ms)
@@ -1760,7 +1760,7 @@ const Overview: React.FC = () => {
         0,     // Start at Reach
         800,   // Activate Activities
         1600,  // Activate Total Engagements
-        2400,  // Activate LEDs
+        2400,  // Activate Data Points
         
         4000,  // Hold complete data path
         
@@ -1774,7 +1774,7 @@ const Overview: React.FC = () => {
         11000, // Individual component processing - Reach
         12000, // Individual component processing - Activities
         13000, // Individual component processing - Total Engagements
-        14000, // Individual component processing - LEDs
+        14000, // Individual component processing - Data Points
         15000, // End individual processing
         
         18000  // Reset for next cycle
@@ -2404,12 +2404,20 @@ const Overview: React.FC = () => {
       z-index: 2;
     `;
     
-    // Etapa 1: Criar projeto - Redirecionar para a página dedicada
+    // Etapa 1: Criar projeto - Mostrar EmptyState ao invés de redirecionar
     if (onboardingStep === 1 && !hasProjects) {
-      // Redirecionar para a página dedicada de criação de projeto
-      // somente se não tiver projetos
-      navigate('/create-project');
-      return null;
+      return (
+        <OnboardingContainer>
+          {/* Conteúdo principal */}
+          <ContentWrapper>
+            <EmptyState 
+              type="project" 
+              onAction={handleEmptyStateAction}
+              currentStep={onboardingStep} 
+            />
+          </ContentWrapper>
+        </OnboardingContainer>
+      );
     }
     
     // Etapa 2: Configurar integrações
@@ -3043,44 +3051,44 @@ const Overview: React.FC = () => {
               key={stat.id} 
               gridSpan={3} 
               cardIndex={index}
-              active={!!activeLeds[index as keyof typeof activeLeds]}
+              active={!!activeSignals[index as keyof typeof activeSignals]}
             >
             {/* Card inner energy effect */}
             <CardEnergyEffect 
               index={index} 
-              active={!!activeLeds[index as keyof typeof activeLeds]} 
+              active={!!activeSignals[index as keyof typeof activeSignals]} 
             />
             
-            {/* LED Animation Elements */}
+            {/* Signal Animation Elements */}
             {index < 3 && (
               <>
-                {/* LED Signal Dot */}
-                <LedSignalDot 
+                {/* Signal Dot */}
+                <SignalDot 
                   index={index} 
-                  active={!!activeLeds[index as keyof typeof activeLeds]} 
+                  active={!!activeSignals[index as keyof typeof activeSignals]} 
                 />
                 
                 {/* Connection Line */}
-                <LedConnectionLine 
+                <ConnectionLine 
                   index={index} 
-                  active={!!activeLeds[index as keyof typeof activeLeds] && 
-                         !!activeLeds[(index + 1) as keyof typeof activeLeds]} 
+                  active={!!activeSignals[index as keyof typeof activeSignals] && 
+                         !!activeSignals[(index + 1) as keyof typeof activeSignals]} 
                 />
                 
                 {/* Flow Particle */}
                 <FlowParticle 
                   index={index} 
-                  active={!!activeLeds[index as keyof typeof activeLeds] && 
-                         !!activeLeds[(index + 1) as keyof typeof activeLeds]} 
+                  active={!!activeSignals[index as keyof typeof activeSignals] && 
+                         !!activeSignals[(index + 1) as keyof typeof activeSignals]} 
                 />
               </>
             )}
             
             {/* Last card only needs the signal dot */}
             {index === 3 && (
-              <LedSignalDot 
+              <SignalDot 
                 index={index} 
-                active={!!activeLeds[index as keyof typeof activeLeds]} 
+                active={!!activeSignals[index as keyof typeof activeSignals]} 
               />
             )}
             

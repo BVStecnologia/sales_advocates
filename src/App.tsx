@@ -209,6 +209,8 @@ const getThemeBackground = (): string => {
 
 // Componente OAuthHandler para processar códigos de autorização do YouTube em qualquer rota
 const OAuthHandler = () => {
+  const navigate = useNavigate();
+  
   useEffect(() => {
     // Verificar se há um código de autorização do YouTube na URL
     const checkForYouTubeOAuth = async () => {
@@ -457,8 +459,8 @@ const OAuthHandler = () => {
             
             // Aguardar um momento para garantir que o token foi salvo
             setTimeout(() => {
-              // Usar replace para garantir que não volte para a página com o código OAuth
-              window.location.replace('/dashboard');
+              // Usar navigate do React Router para manter a SPA
+              navigate('/dashboard', { replace: true });
             }, 1000);
           } else {
             alert('Erro: Nenhum ID de projeto encontrado para associar a esta integração.');
@@ -649,17 +651,36 @@ const ProtectedLayout = ({ sidebarOpen, toggleSidebar }: { sidebarOpen: boolean,
     const authKeys = Object.keys(localStorage).filter(key => key.includes('supabase') || key.includes('auth') || key.includes('sb-'));
     console.log('Auth keys in localStorage:', authKeys);
     
+    // IMPORTANTE: Se há tokens de autenticação mas não há usuário ainda,
+    // aguardar mais um pouco antes de redirecionar
+    if (authKeys.some(key => key.includes('auth-token'))) {
+      console.log('🔄 Auth tokens found but no user yet, waiting...');
+      return (
+        <div style={{
+          height: '100vh',
+          backgroundColor: getThemeBackground(),
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
+          <LoadingDataIndicator />
+        </div>
+      );
+    }
+    
     return <Navigate to="/" replace />;
   }
   
   // Se chegou aqui, o usuário está autenticado e o carregamento foi concluído
   
-  // Redirecionar para a página de criação de projeto se o usuário não tiver projetos
+  // REMOVIDO: Redirecionamento automático para /create-project
+  // O usuário agora pode acessar o dashboard mesmo sem projetos
+  // e criar projetos através do EmptyState no dashboard
+  /*
   if (!hasProjects) {
     return (
       <AppContainer>
         <MainContent>
-          {/* Header escondido na primeira etapa de criação de projeto */}
           <Routes>
             <Route path="*" element={<Navigate to="/create-project" replace />} />
             <Route path="/create-project" element={<ProjectCreationPage />} />
@@ -668,9 +689,11 @@ const ProtectedLayout = ({ sidebarOpen, toggleSidebar }: { sidebarOpen: boolean,
       </AppContainer>
     );
   }
+  */
   
-  // Nova condição: se o usuário tem apenas 1 projeto e não há integrações configuradas
-  // também redirecionar para a página de criação de projeto
+  // REMOVIDO: Redirecionamento automático para projetos sem integrações
+  // O usuário pode configurar integrações através do dashboard
+  /*
   if (projects.length === 1 && projectIntegrations.length === 0) {
     console.log('Usuário tem apenas 1 projeto sem integrações, redirecionando para criação de projeto');
     return (
@@ -687,6 +710,7 @@ const ProtectedLayout = ({ sidebarOpen, toggleSidebar }: { sidebarOpen: boolean,
       </AppContainer>
     );
   }
+  */
   
   // Para o onboarding, esconder completamente a sidebar e qualquer outro componente de layout
   if (isOnboarding) {
@@ -761,14 +785,14 @@ const ProtectedLayout = ({ sidebarOpen, toggleSidebar }: { sidebarOpen: boolean,
             <Header toggleSidebar={toggleSidebar} />
             <ContentWrapper>
               <Routes>
-                <Route path="/" element={<ProcessingWrapper><Overview /></ProcessingWrapper>} />
-                <Route path="/dashboard" element={<ProcessingWrapper><Overview /></ProcessingWrapper>} />
-                <Route path="/monitoring" element={<ProcessingWrapper><Monitoring /></ProcessingWrapper>} />
-                <Route path="/mentions" element={<ProcessingWrapper><Mentions /></ProcessingWrapper>} />
-                <Route path="/videos" element={<ProcessingWrapper><VideoManager /></ProcessingWrapper>} />
-                <Route path="/settings" element={<Settings />} />
-                <Route path="/integrations" element={<ProcessingWrapper><Integrations /></ProcessingWrapper>} />
-                <Route path="/url-test" element={<UrlDataTest />} />
+                <Route index element={<ProcessingWrapper><Overview /></ProcessingWrapper>} />
+                <Route path="dashboard" element={<ProcessingWrapper><Overview /></ProcessingWrapper>} />
+                <Route path="monitoring" element={<ProcessingWrapper><Monitoring /></ProcessingWrapper>} />
+                <Route path="mentions" element={<ProcessingWrapper><Mentions /></ProcessingWrapper>} />
+                <Route path="videos" element={<ProcessingWrapper><VideoManager /></ProcessingWrapper>} />
+                <Route path="settings" element={<Settings />} />
+                <Route path="integrations" element={<ProcessingWrapper><Integrations /></ProcessingWrapper>} />
+                <Route path="url-test" element={<UrlDataTest />} />
                 <Route path="*" element={<Navigate to="/dashboard" replace />} />
               </Routes>
             </ContentWrapper>
@@ -787,73 +811,19 @@ const ProtectedLayout = ({ sidebarOpen, toggleSidebar }: { sidebarOpen: boolean,
 
 // Componente para lidar com callbacks de autenticação
 const AuthCallback = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
   const { user, loading } = useAuth();
   
   useEffect(() => {
-    // Log all details for debugging
-    console.log('AuthCallback: Running authentication callback handler');
-    console.log('Current location:', window.location.href);
-    console.log('User state:', user ? 'Logged in' : 'Not logged in');
-    console.log('Loading state:', loading);
-    
-    // Check if there's an access token in the URL hash (direct hash redirect)
-    if (window.location.hash && window.location.hash.includes('access_token')) {
-      console.log('Found access token in URL hash, processing...');
-      
-      try {
-        // Need to manually process the hash for Supabase
-        const hashParams = new URLSearchParams(
-          window.location.hash.substring(1) // remove the # character
-        );
-        
-        if (hashParams.get('access_token')) {
-          console.log('Successfully extracted access token');
-          
-          // Let Supabase handle the token
-          import('./lib/supabaseClient').then(({ supabase }) => {
-            // Check current session
-            supabase.auth.getSession().then(({ data: sessionData }) => {
-              if (sessionData.session) {
-                console.log('Active session found, redirecting to dashboard');
-                navigate('/dashboard', { replace: true });
-              } else {
-                console.log('No active session, trying to establish one...');
-                
-                // Force a refresh based on the URL tokens
-                setTimeout(() => {
-                  navigate('/dashboard', { replace: true });
-                }, 1000);
-              }
-            });
-          });
-        }
-      } catch (error) {
-        console.error('Error processing auth callback:', error);
-        navigate('/login', { replace: true });
-      }
-    } else {
-      // Normal callback handling
-      if (!loading) {
-        console.log('Standard callback flow, user:', user ? 'Found' : 'Not found');
-        if (user) {
-          navigate('/dashboard', { replace: true });
-        } else {
-          navigate('/login', { replace: true });
-        }
-      }
+    if (!loading && user) {
+      // Usuário autenticado - ir para dashboard
+      window.location.href = '/dashboard';
+    } else if (!loading && !user) {
+      // Sem usuário - ir para login
+      window.location.href = '/login';
     }
-  }, [user, loading, navigate, location]);
+  }, [user, loading]);
   
-  return (
-    <div style={{
-      height: '100vh',
-      backgroundColor: getThemeBackground()
-    }}>
-      <LoadingDataIndicator />
-    </div>
-  );
+  return <LoadingDataIndicator />;
 };
 
 export default App;
