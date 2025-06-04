@@ -2175,19 +2175,49 @@ const LandingPage: React.FC = () => {
 
   return (
     <LandingContainer>
-      {/* Privacy Policy Banner for Google OAuth Compliance */}
+      {/* Privacy Policy Banner for Google OAuth Compliance - EXTREMELY VISIBLE */}
       <div style={{
-        background: theme.colors.primary + '10',
-        padding: '8px 0',
+        background: theme.name === 'dark' ? 'rgba(0, 123, 255, 0.2)' : 'rgba(0, 123, 255, 0.1)',
+        padding: '16px 0',
         textAlign: 'center',
-        fontSize: '14px',
-        borderBottom: '1px solid ' + theme.colors.borderLight
+        fontSize: '16px',
+        borderBottom: '2px solid ' + theme.colors.primary,
+        position: 'sticky',
+        top: 0,
+        zIndex: 1000
       }}>
-        <a href="/privacy" style={{ color: theme.colors.primary, marginRight: '20px' }}>Privacy Policy</a>
-        <a href="/terms" style={{ color: theme.colors.primary, marginRight: '20px' }}>Terms of Service</a>
-        <span style={{ color: theme.colors.text.secondary }}>
-          This app uses YouTube API Services
-        </span>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
+          <strong style={{ color: theme.colors.text.primary, marginRight: '15px' }}>
+            📋 Important Legal Information:
+          </strong>
+          <a href="/privacy" style={{ 
+            color: theme.colors.primary, 
+            marginRight: '20px',
+            fontWeight: 'bold',
+            fontSize: '18px',
+            textDecoration: 'underline',
+            padding: '4px 8px',
+            background: theme.name === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)',
+            borderRadius: '4px'
+          }}>
+            Privacy Policy
+          </a>
+          <a href="/terms" style={{ 
+            color: theme.colors.primary, 
+            marginRight: '20px',
+            fontWeight: 'bold',
+            fontSize: '18px',
+            textDecoration: 'underline',
+            padding: '4px 8px',
+            background: theme.name === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)',
+            borderRadius: '4px'
+          }}>
+            Terms of Service
+          </a>
+          <span style={{ color: theme.colors.text.secondary, fontSize: '14px' }}>
+            | This application uses YouTube API Services
+          </span>
+        </div>
       </div>
       
       <Header style={{ 
@@ -2252,6 +2282,34 @@ const LandingPage: React.FC = () => {
             <Description>
               {t.hero.subtitle}
             </Description>
+            
+            {/* Privacy Policy Link - HIGHLY VISIBLE */}
+            <div style={{
+              margin: '20px 0',
+              fontSize: '16px',
+              color: theme.colors.text.secondary,
+              textAlign: 'center'
+            }}>
+              <span>By using our service, you agree to our </span>
+              <a href="/privacy" style={{
+                color: theme.colors.primary,
+                fontWeight: 'bold',
+                textDecoration: 'underline',
+                fontSize: '16px'
+              }}>
+                Privacy Policy
+              </a>
+              <span> and </span>
+              <a href="/terms" style={{
+                color: theme.colors.primary,
+                fontWeight: 'bold',
+                textDecoration: 'underline',
+                fontSize: '16px'
+              }}>
+                Terms of Service
+              </a>
+            </div>
+            
             <CTAButtons>
               <PrimaryButton onClick={handleGetStarted}>
                 {renderIcon(FaRocket)}
@@ -2262,6 +2320,48 @@ const LandingPage: React.FC = () => {
                 {t.hero.cta.secondary}
               </SecondaryButton>
             </CTAButtons>
+            
+            {/* Additional Privacy Policy Button - SUPER VISIBLE */}
+            <div style={{ marginTop: '20px', display: 'flex', gap: '16px', justifyContent: 'center' }}>
+              <a href="/privacy" style={{ textDecoration: 'none' }}>
+                <button style={{
+                  padding: '12px 24px',
+                  fontSize: '16px',
+                  fontWeight: 'bold',
+                  color: theme.colors.primary,
+                  background: theme.name === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'white',
+                  border: `2px solid ${theme.colors.primary}`,
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+                }}>
+                  📄 View Privacy Policy
+                </button>
+              </a>
+              <a href="/terms" style={{ textDecoration: 'none' }}>
+                <button style={{
+                  padding: '12px 24px',
+                  fontSize: '16px',
+                  fontWeight: 'bold',
+                  color: theme.colors.primary,
+                  background: theme.name === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'white',
+                  border: `2px solid ${theme.colors.primary}`,
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+                }}>
+                  📋 Terms of Service
+                </button>
+              </a>
+            </div>
           </HeroText>
 
           <HeroVisual>
