@@ -165,12 +165,18 @@ const CommentList = styled.div`
   padding: 20px;
 `;
 
-const CommentItem = styled.div`
+const CommentItem = styled.div<{ isReply?: boolean }>`
   display: flex;
   gap: 12px;
-  margin-bottom: 24px;
+  margin-bottom: ${props => props.isReply ? '16px' : '24px'};
+  margin-left: ${props => props.isReply ? '52px' : '0'};
   padding-bottom: 16px;
   border-bottom: 1px solid ${props => props.theme.colors.border}20;
+  
+  ${props => props.isReply && `
+    border-bottom: none;
+    padding-bottom: 8px;
+  `}
 `;
 
 const AuthorAvatar = styled.img`
@@ -564,9 +570,15 @@ export default function VideoManager() {
         setVideos([]);
         console.log('Nenhum vídeo encontrado no canal');
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error loading videos:', err);
-      setError(texts.error);
+      
+      // Verificar se é erro de token expirado
+      if (err.message && err.message.includes('Token de acesso inválido ou expirado')) {
+        setError(texts.authExpired);
+      } else {
+        setError(texts.error);
+      }
     } finally {
       setLoadingVideos(false);
     }
@@ -715,10 +727,13 @@ export default function VideoManager() {
         console.log('Campos do primeiro comentário:', Object.keys(commentsData[0]));
         
         // Mapear os comentários do formato YouTube API para o formato esperado
-        const formattedComments = commentsData.map((item: any) => {
+        const formattedComments: Comment[] = [];
+        
+        commentsData.forEach((item: any) => {
           const topLevelComment = item.snippet?.topLevelComment?.snippet || item.snippet;
           
-          return {
+          // Adicionar comentário principal
+          formattedComments.push({
             id: item.id,
             authorDisplayName: topLevelComment.authorDisplayName || 'Unknown',
             authorProfileImageUrl: topLevelComment.authorProfileImageUrl || '',
@@ -727,11 +742,31 @@ export default function VideoManager() {
             likeCount: topLevelComment.likeCount || 0,
             totalReplyCount: item.snippet?.totalReplyCount || 0,
             videoId: topLevelComment.videoId || videoId,
-            parentId: topLevelComment.parentId
-          };
+            parentId: undefined
+          });
+          
+          // Adicionar respostas se existirem
+          if (item.replies?.comments && Array.isArray(item.replies.comments)) {
+            console.log(`📬 Encontradas ${item.replies.comments.length} respostas para o comentário ${item.id}`);
+            
+            item.replies.comments.forEach((reply: any) => {
+              const replySnippet = reply.snippet;
+              formattedComments.push({
+                id: reply.id,
+                authorDisplayName: replySnippet.authorDisplayName || 'Unknown',
+                authorProfileImageUrl: replySnippet.authorProfileImageUrl || '',
+                textDisplay: replySnippet.textDisplay || replySnippet.textOriginal || '',
+                publishedAt: replySnippet.publishedAt || '',
+                likeCount: replySnippet.likeCount || 0,
+                totalReplyCount: 0, // Respostas não têm sub-respostas
+                videoId: replySnippet.videoId || videoId,
+                parentId: item.id // ID do comentário pai
+              });
+            });
+          }
         });
         
-        console.log('Comentários formatados:', formattedComments);
+        console.log('Comentários formatados (incluindo respostas):', formattedComments);
         setComments(formattedComments);
       } else {
         console.log('❌ Nenhum comentário encontrado');
@@ -757,21 +792,33 @@ export default function VideoManager() {
     setSubmittingReply(true);
 
     try {
-      await callRPC('reply_to_comment', {
-        p_comment_id: replyingTo,
-        p_reply_text: replyText,
-        p_project_id: currentProject.id
+      console.log('📨 Enviando resposta ao comentário:', replyingTo);
+      console.log('📝 Texto da resposta:', replyText);
+      
+      const response = await callRPC('respond_to_youtube_comment', {
+        project_id: currentProject.id,
+        parent_comment_id: replyingTo,
+        response_text: replyText
       });
 
-      // Recarregar comentários
-      if (selectedVideo) {
-        await loadComments(selectedVideo.id);
-      }
+      console.log('✅ Resposta enviada com sucesso:', response);
+
+      // Aguardar um pouco para a API do YouTube processar
+      setTimeout(async () => {
+        // Recarregar comentários
+        if (selectedVideo) {
+          await loadComments(selectedVideo.id);
+        }
+      }, 2000);
 
       setReplyingTo(null);
       setReplyText('');
+      
+      // Mostrar feedback visual de sucesso (você pode adicionar um toast/notificação aqui)
+      console.log('✅ Comentário respondido com sucesso!');
     } catch (err) {
-      console.error('Error replying to comment:', err);
+      console.error('❌ Erro ao responder comentário:', err);
+      // Aqui você pode mostrar uma mensagem de erro ao usuário
     } finally {
       setSubmittingReply(false);
     }
@@ -862,7 +909,15 @@ export default function VideoManager() {
               <IconComponent icon={FaIcons.FaSpinner} />
             </LoadingContainer>
           ) : error ? (
-            <ErrorMessage>{error}</ErrorMessage>
+            <ErrorMessage>
+              <div>{error}</div>
+              {error === texts.authExpired && (
+                <Button onClick={() => navigate('/integrations')}>
+                  <IconComponent icon={FaIcons.FaYoutube} />
+                  {' '}{texts.reconnect}
+                </Button>
+              )}
+            </ErrorMessage>
           ) : videos.length === 0 ? (
             <EmptyState>
               <IconComponent icon={FaIcons.FaVideo} />
@@ -925,60 +980,85 @@ export default function VideoManager() {
                     <div>{texts.noComments}</div>
                   </EmptyState>
                 ) : (
-                  comments.map(comment => (
-                    <CommentItem key={comment.id}>
-                      <AuthorAvatar src={comment.authorProfileImageUrl} alt={comment.authorDisplayName} />
-                      <CommentContent>
-                        <AuthorName>
-                          {comment.authorDisplayName}
-                          <CommentDate>• {formatDate(comment.publishedAt)}</CommentDate>
-                        </AuthorName>
-                        <CommentText>{comment.textDisplay}</CommentText>
-                        <CommentActions>
-                          <ActionButton>
-                            <IconComponent icon={FaIcons.FaThumbsUp} />
-                            {comment.likeCount > 0 && formatNumber(comment.likeCount)}
-                          </ActionButton>
-                          <ActionButton
-                            onClick={() => setReplyingTo(comment.id)}
-                            disabled={replyingTo === comment.id}
-                          >
-                            <IconComponent icon={FaIcons.FaReply} />
-                            {texts.reply}
-                          </ActionButton>
-                        </CommentActions>
+                  <>
+                    {/* Renderizar apenas comentários principais (sem parentId) */}
+                    {comments.filter(c => !c.parentId).map(comment => (
+                      <div key={comment.id}>
+                        <CommentItem>
+                          <AuthorAvatar src={comment.authorProfileImageUrl} alt={comment.authorDisplayName} />
+                          <CommentContent>
+                            <AuthorName>
+                              {comment.authorDisplayName}
+                              <CommentDate>• {formatDate(comment.publishedAt)}</CommentDate>
+                            </AuthorName>
+                            <CommentText>{comment.textDisplay}</CommentText>
+                            <CommentActions>
+                              <ActionButton>
+                                <IconComponent icon={FaIcons.FaThumbsUp} />
+                                {comment.likeCount > 0 && formatNumber(comment.likeCount)}
+                              </ActionButton>
+                              <ActionButton
+                                onClick={() => setReplyingTo(comment.id)}
+                                disabled={replyingTo === comment.id}
+                              >
+                                <IconComponent icon={FaIcons.FaReply} />
+                                {texts.reply}
+                              </ActionButton>
+                            </CommentActions>
 
-                        {replyingTo === comment.id && (
-                          <ReplyBox>
-                            <ReplyInput
-                              placeholder={texts.replyPlaceholder}
-                              value={replyText}
-                              onChange={(e) => setReplyText(e.target.value)}
-                              disabled={submittingReply}
-                            />
-                            <ReplyActions>
-                              <Button
-                                onClick={() => {
-                                  setReplyingTo(null);
-                                  setReplyText('');
-                                }}
-                                disabled={submittingReply}
-                              >
-                                {texts.cancel}
-                              </Button>
-                              <Button
-                                primary
-                                onClick={handleReply}
-                                disabled={!replyText.trim() || submittingReply}
-                              >
-                                {submittingReply ? <IconComponent icon={FaIcons.FaSpinner} /> : texts.send}
-                              </Button>
-                            </ReplyActions>
-                          </ReplyBox>
-                        )}
-                      </CommentContent>
-                    </CommentItem>
-                  ))
+                            {replyingTo === comment.id && (
+                              <ReplyBox>
+                                <ReplyInput
+                                  placeholder={texts.replyPlaceholder}
+                                  value={replyText}
+                                  onChange={(e) => setReplyText(e.target.value)}
+                                  disabled={submittingReply}
+                                />
+                                <ReplyActions>
+                                  <Button
+                                    onClick={() => {
+                                      setReplyingTo(null);
+                                      setReplyText('');
+                                    }}
+                                    disabled={submittingReply}
+                                  >
+                                    {texts.cancel}
+                                  </Button>
+                                  <Button
+                                    primary
+                                    onClick={handleReply}
+                                    disabled={!replyText.trim() || submittingReply}
+                                  >
+                                    {submittingReply ? <IconComponent icon={FaIcons.FaSpinner} /> : texts.send}
+                                  </Button>
+                                </ReplyActions>
+                              </ReplyBox>
+                            )}
+                          </CommentContent>
+                        </CommentItem>
+                        
+                        {/* Renderizar respostas deste comentário */}
+                        {comments.filter(reply => reply.parentId === comment.id).map(reply => (
+                          <CommentItem key={reply.id} isReply>
+                            <AuthorAvatar src={reply.authorProfileImageUrl} alt={reply.authorDisplayName} />
+                            <CommentContent>
+                              <AuthorName>
+                                {reply.authorDisplayName}
+                                <CommentDate>• {formatDate(reply.publishedAt)}</CommentDate>
+                              </AuthorName>
+                              <CommentText>{reply.textDisplay}</CommentText>
+                              <CommentActions>
+                                <ActionButton>
+                                  <IconComponent icon={FaIcons.FaThumbsUp} />
+                                  {reply.likeCount > 0 && formatNumber(reply.likeCount)}
+                                </ActionButton>
+                              </CommentActions>
+                            </CommentContent>
+                          </CommentItem>
+                        ))}
+                      </div>
+                    ))}
+                  </>
                 )}
               </CommentList>
             </>
