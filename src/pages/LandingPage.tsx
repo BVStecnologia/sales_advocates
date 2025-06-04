@@ -2175,6 +2175,21 @@ const LandingPage: React.FC = () => {
 
   return (
     <LandingContainer>
+      {/* Privacy Policy Banner for Google OAuth Compliance */}
+      <div style={{
+        background: theme.colors.primary + '10',
+        padding: '8px 0',
+        textAlign: 'center',
+        fontSize: '14px',
+        borderBottom: '1px solid ' + theme.colors.borderLight
+      }}>
+        <a href="/privacy" style={{ color: theme.colors.primary, marginRight: '20px' }}>Privacy Policy</a>
+        <a href="/terms" style={{ color: theme.colors.primary, marginRight: '20px' }}>Terms of Service</a>
+        <span style={{ color: theme.colors.text.secondary }}>
+          This app uses YouTube API Services
+        </span>
+      </div>
+      
       <Header style={{ 
         background: scrolled ? theme.colors.headerBgSolid : theme.colors.headerBg,
         backdropFilter: scrolled ? 'blur(20px)' : 'blur(10px)'
@@ -2188,6 +2203,8 @@ const LandingPage: React.FC = () => {
             <NavLink href="#features">{t.nav.features}</NavLink>
             <NavLink href="#pricing">{t.nav.pricing}</NavLink>
             <NavLink href="#testimonials">{t.nav.testimonials}</NavLink>
+            <NavLink href="/privacy">Privacy</NavLink>
+            <NavLink href="/terms">Terms</NavLink>
             <NavButtons>
               <LangButton onClick={toggleLanguage}>
                 {renderIcon(FaGlobe)} {lang.toUpperCase()}
