@@ -13,6 +13,7 @@ const translations = {
     'nav.overview': 'Overview',
     'nav.monitoring': 'Monitoring',
     'nav.mentions': 'Mentions',
+    'nav.videos': 'My Channel',
     'nav.integrations': 'Integrations',
     'nav.settings': 'Settings',
     
@@ -474,6 +475,7 @@ const translations = {
     'nav.overview': 'Visão Geral',
     'nav.monitoring': 'Monitoramento',
     'nav.mentions': 'Menções',
+    'nav.videos': 'Meu Canal',
     'nav.integrations': 'Integrações',
     'nav.settings': 'Configurações',
     

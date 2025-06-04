@@ -30,6 +30,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import { ProjectProvider, useProject } from './context/ProjectContext';
 import { OAUTH_CONFIG } from './config/oauth';
 import Footer from './components/Footer';
+import VideoManager from './pages/VideoManager';
 
 const AppContainer = styled.div`
   display: flex;
@@ -479,6 +480,7 @@ const OAuthHandler = () => {
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   
+  
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
@@ -556,6 +558,15 @@ const ProtectedLayout = ({ sidebarOpen, toggleSidebar }: { sidebarOpen: boolean,
   
   // Effect para garantir que mostramos loading até tudo estar pronto
   useEffect(() => {
+    console.log('ProtectedLayout state check:', {
+      authLoading: loading,
+      onboardingReady,
+      projectIsLoading: isLoading,
+      isInitializing,
+      hasUser: !!user,
+      userEmail: user?.email
+    });
+    
     // Só remover o loading quando TODAS as condições estiverem resolvidas
     if (!loading && onboardingReady && !isLoading) {
       // Delay maior para garantir que tudo está carregado, especialmente após OAuth
@@ -564,7 +575,7 @@ const ProtectedLayout = ({ sidebarOpen, toggleSidebar }: { sidebarOpen: boolean,
       }, 1500);
       return () => clearTimeout(timer);
     }
-  }, [loading, onboardingReady, isLoading]);
+  }, [loading, onboardingReady, isLoading, user]);
   
   // Verificar se temos um destino pós-OAuth pendente
   useEffect(() => {
@@ -577,8 +588,38 @@ const ProtectedLayout = ({ sidebarOpen, toggleSidebar }: { sidebarOpen: boolean,
     }
   }, [user, loading, isLoading, navigate]);
   
+  // Log detailed state on every render
+  useEffect(() => {
+    console.log('🔍 ProtectedLayout Debug:', {
+      currentPath: window.location.pathname,
+      authLoading: loading,
+      hasUser: !!user,
+      userEmail: user?.email,
+      onboardingReady,
+      projectLoading: isLoading,
+      isInitializing,
+      timestamp: new Date().toISOString()
+    });
+  });
+  
+  // Add a small delay for localhost to ensure auth state is fully loaded
+  const [authCheckComplete, setAuthCheckComplete] = useState(false);
+  useEffect(() => {
+    // On localhost, add extra delay to ensure auth state is loaded
+    if (window.location.hostname === 'localhost' && !loading) {
+      const timer = setTimeout(() => {
+        console.log('🔐 Localhost auth check complete after delay');
+        setAuthCheckComplete(true);
+      }, 800); // Balanceado para evitar redirect mas não atrasar muito
+      return () => clearTimeout(timer);
+    } else if (!loading) {
+      setAuthCheckComplete(true);
+    }
+  }, [loading]);
+  
   // Mostrar loading até TODAS as verificações estarem completas
-  if (loading || !onboardingReady || isLoading || isInitializing) {
+  if (loading || !onboardingReady || isLoading || isInitializing || !authCheckComplete) {
+    console.log('Still loading...', { loading, onboardingReady, isLoading, isInitializing, authCheckComplete });
     return (
       <div style={{
         height: '100vh',
@@ -594,10 +635,20 @@ const ProtectedLayout = ({ sidebarOpen, toggleSidebar }: { sidebarOpen: boolean,
   
   // Redirecionar para a página inicial (login) se não estiver autenticado
   if (!user) {
-    console.log('No user found in ProtectedLayout, redirecting to login');
-    console.log('Auth loading state:', loading);
-    console.log('Project loading state:', isLoading);
-    console.log('Onboarding ready:', onboardingReady);
+    console.log('🚨 No user found in ProtectedLayout');
+    console.log('Current state:', {
+      authLoading: loading,
+      projectLoading: isLoading,
+      onboardingReady,
+      isInitializing,
+      authCheckComplete,
+      hostname: window.location.hostname
+    });
+    
+    // Double check localStorage for any auth data
+    const authKeys = Object.keys(localStorage).filter(key => key.includes('supabase') || key.includes('auth') || key.includes('sb-'));
+    console.log('Auth keys in localStorage:', authKeys);
+    
     return <Navigate to="/" replace />;
   }
   
@@ -714,6 +765,7 @@ const ProtectedLayout = ({ sidebarOpen, toggleSidebar }: { sidebarOpen: boolean,
                 <Route path="/dashboard" element={<ProcessingWrapper><Overview /></ProcessingWrapper>} />
                 <Route path="/monitoring" element={<ProcessingWrapper><Monitoring /></ProcessingWrapper>} />
                 <Route path="/mentions" element={<ProcessingWrapper><Mentions /></ProcessingWrapper>} />
+                <Route path="/videos" element={<ProcessingWrapper><VideoManager /></ProcessingWrapper>} />
                 <Route path="/settings" element={<Settings />} />
                 <Route path="/integrations" element={<ProcessingWrapper><Integrations /></ProcessingWrapper>} />
                 <Route path="/url-test" element={<UrlDataTest />} />

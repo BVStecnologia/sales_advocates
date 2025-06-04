@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
 import { Session, User, AuthChangeEvent } from '@supabase/supabase-js'
+import { cleanupOrphanedAuthTokens } from '../utils/authCleanup'
 
 type AuthContextType = {
   session: Session | null
@@ -22,69 +23,128 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Interceptar tentativas de redirecionamento para liftlio.com
-    const originalPushState = window.history.pushState;
-    const originalReplaceState = window.history.replaceState;
     
-    window.history.pushState = function(...args) {
-      if (args[2] && typeof args[2] === 'string' && args[2].includes('liftlio.com')) {
-        console.log('Interceptado redirecionamento para liftlio.com, mantendo no domínio atual');
-        args[2] = args[2].replace('liftlio.com', window.location.hostname);
-      }
-      return originalPushState.apply(window.history, args);
-    };
-    
-    window.history.replaceState = function(...args) {
-      if (args[2] && typeof args[2] === 'string' && args[2].includes('liftlio.com')) {
-        console.log('Interceptado redirecionamento para liftlio.com, mantendo no domínio atual');
-        args[2] = args[2].replace('liftlio.com', window.location.hostname);
-      }
-      return originalReplaceState.apply(window.history, args);
-    };
+    // Debug auth redirects without intercepting
+    if (window.location.hostname === 'localhost') {
+      console.log('[Auth] Running on localhost - OAuth debugging enabled');
+    }
     
     // Configura o listener para mudanças de autenticação
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event: AuthChangeEvent, session: Session | null) => {
+      async (_event: AuthChangeEvent, session: Session | null) => {
         console.log('Auth state changed:', _event, 'Session:', session ? 'Active' : 'None');
         
-        // Se detectar redirecionamento para liftlio.com, corrigir
-        if (_event === 'SIGNED_IN' && window.location.hostname !== 'localhost') {
-          setTimeout(() => {
-            if (window.location.href.includes('liftlio.com')) {
-              console.log('Corrigindo redirecionamento de liftlio.com');
-              const correctUrl = window.location.href.replace('liftlio.com', window.location.hostname);
-              window.location.replace(correctUrl);
-            }
-          }, 100);
+        // Log auth events for debugging
+        if (_event === 'SIGNED_IN') {
+          console.log('[Auth] User signed in successfully');
         }
         
-        setSession(session)
-        setUser(session?.user ?? null)
-        setLoading(false)
+        // Ensure the session is properly set
+        if (session) {
+          console.log('Setting session from auth state change');
+          setSession(session);
+          setUser(session.user);
+        } else if (_event === 'SIGNED_OUT') {
+          setSession(null);
+          setUser(null);
+        }
+        
+        // Only set loading to false after processing
+        setLoading(false);
       }
     )
 
     // Carrega a sessão atual na inicialização
-    supabase.auth.getSession().then(({ data }: { data: { session: Session | null } }) => {
-      const { session } = data
-      console.log('Initial session check:', session ? 'Found' : 'Not found', 'Environment:', window.location.hostname);
-      if (session) {
-        console.log('Session user:', session.user.email);
-        console.log('Session expires at:', new Date(session.expires_at! * 1000).toLocaleString());
+    const initializeAuth = async () => {
+      try {
+        // First, try to get session from Supabase
+        const { data } = await supabase.auth.getSession();
+        const { session } = data;
+        
+        console.log('Initial session check:', session ? 'Found' : 'Not found', 'Environment:', window.location.hostname);
+        
+        // Enhanced debug logging for localhost
+        if (window.location.hostname === 'localhost') {
+          console.log('🔍 Localhost debugging:');
+          console.log('- Storage keys:', Object.keys(localStorage).filter(k => k.includes('supabase')));
+          console.log('- Current URL:', window.location.href);
+          console.log('- Origin:', window.location.origin);
+          
+          // If no session but we have auth token in localStorage, try to recover
+          if (!session) {
+            const authKeys = Object.keys(localStorage).filter(k => k.includes('sb-') && k.includes('-auth-token'));
+            if (authKeys.length > 0) {
+              console.log('Found auth token in localStorage but no session, checking if orphaned...');
+              
+              // Check if tokens are orphaned/expired
+              const hasOrphanedTokens = cleanupOrphanedAuthTokens();
+              
+              if (hasOrphanedTokens) {
+                console.log('❌ Orphaned/expired tokens detected and cleaned up');
+                // Tokens were cleaned, user needs to login again
+                setLoading(false);
+                return;
+              }
+              
+              // Try to recover session with retries
+              console.log('Attempting to recover valid session...');
+              let recovered = false;
+              
+              for (let attempt = 1; attempt <= 3; attempt++) {
+                await new Promise(resolve => setTimeout(resolve, attempt * 500));
+                
+                try {
+                  // Try getting the session again first
+                  const { data: sessionData } = await supabase.auth.getSession();
+                  
+                  if (sessionData.session) {
+                    console.log(`✅ Session found on attempt ${attempt}`);
+                    setSession(sessionData.session);
+                    setUser(sessionData.session.user);
+                    recovered = true;
+                    break;
+                  }
+                  
+                  // If no session, try to get user
+                  const { data: userData } = await supabase.auth.getUser();
+                  if (userData.user) {
+                    console.log(`✅ User found on attempt ${attempt}`);
+                    setUser(userData.user);
+                    // Don't break, continue trying to get session
+                  }
+                } catch (err) {
+                  console.error(`Attempt ${attempt} failed:`, err);
+                }
+              }
+              
+              if (!recovered) {
+                console.log('❌ Failed to recover session after 3 attempts, cleaning up...');
+                cleanupOrphanedAuthTokens();
+              }
+            }
+          }
+        }
+        
+        if (session) {
+          console.log('Session user:', session.user.email);
+          console.log('Session expires at:', new Date(session.expires_at! * 1000).toLocaleString());
+          console.log('Access token present:', !!session.access_token);
+          console.log('Refresh token present:', !!session.refresh_token);
+        }
+        
+        setSession(session);
+        setUser(session?.user ?? null);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error getting initial session:', error);
+        setLoading(false);
       }
-      setSession(session)
-      setUser(session?.user ?? null)
-      setLoading(false)
-    }).catch(error => {
-      console.error('Error getting initial session:', error);
-      setLoading(false);
-    })
+    };
+    
+    initializeAuth();
 
     return () => {
       subscription.unsubscribe()
-      // Restaurar funções originais
-      window.history.pushState = originalPushState;
-      window.history.replaceState = originalReplaceState;
     }
   }, [])
 

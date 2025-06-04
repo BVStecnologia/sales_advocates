@@ -1102,6 +1102,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = false, onClose }) => {
     { path: '/dashboard', label: t('nav.overview'), icon: 'FaHome' },
     { path: '/mentions', label: t('nav.mentions'), icon: 'FaComments' },
     { path: '/monitoring', label: t('nav.monitoring'), icon: 'FaYoutube' },
+    { path: '/videos', label: t('nav.videos'), icon: 'FaVideo' },
     { path: '/settings', label: t('nav.settings'), icon: 'FaCog' },
     { path: '/integrations', label: t('nav.integrations'), icon: 'FaPlug' }
   ];
@@ -1126,8 +1127,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = false, onClose }) => {
       pt: `Adicionar mais uma plataforma pode aumentar seu alcance em <MetricValue>65%</MetricValue>.`
     },
     {
-      en: `Brands using Liftlio convert <MetricValue>3.6x</MetricValue> more leads on average.`,
-      pt: `Marcas que usam Liftlio convertem <MetricValue>3.6x</MetricValue> mais leads em média.`
+      en: `Brands using Sales Advocates convert <MetricValue>3.6x</MetricValue> more leads on average.`,
+      pt: `Marcas que usam Sales Advocates convertem <MetricValue>3.6x</MetricValue> mais leads em média.`
     },
     {
       en: `Increase your traffic by <MetricValue>24%</MetricValue> with optimal posting frequency.`,
@@ -1166,7 +1167,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = false, onClose }) => {
               role: 'user', 
               content: `Generate 3-5 marketing insights for a ${projectData.industry} project called ${projectData.name}. 
               ${projectData.description ? `The project description is: "${projectData.description}". Reference specific details from this description when possible.` : ''}
-              Each insight should highlight a benefit of using Liftlio for brand monitoring and engagement.
+              Each insight should highlight a benefit of using Sales Advocates for brand monitoring and engagement.
               Include a specific number/metric in each insight (like 47%, 2.5x, etc.).
               Return as JSON array with format: 
               [{"en": "English insight with <MetricValue>32%</MetricValue> and <Highlight>keyword</Highlight>",
@@ -1275,7 +1276,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = false, onClose }) => {
       <IconContext.Provider value={{ style: { marginRight: '10px' } }}>
         <SidebarContainer isOpen={isOpen}>
           {/* Removed close button */}
-          <Logo><span data-text="Liftlio">Liftlio</span></Logo>
+          <Logo><span data-text="SALES ADVOCATES">SALES ADVOCATES</span></Logo>
           
           <NavContainer>
             {navItems.map(item => (

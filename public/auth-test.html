@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Auth Test - Sales Advocates</title>
+  <style>
+    body {
+      font-family: monospace;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .test-section {
+      margin: 20px 0;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .success { color: green; }
+    .error { color: red; }
+    .info { color: blue; }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+    }
+    pre {
+      background: #f5f5f5;
+      padding: 10px;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sales Advocates - Auth Test Page</h1>
+  
+  <div class="test-section">
+    <h2>1. Environment Check</h2>
+    <div id="env-check"></div>
+  </div>
+  
+  <div class="test-section">
+    <h2>2. LocalStorage Check</h2>
+    <div id="storage-check"></div>
+  </div>
+  
+  <div class="test-section">
+    <h2>3. Supabase Connection Test</h2>
+    <button onclick="testSupabase()">Test Supabase Connection</button>
+    <div id="supabase-result"></div>
+  </div>
+  
+  <div class="test-section">
+    <h2>4. Auth Test</h2>
+    <button onclick="testAuth()">Check Current Auth</button>
+    <button onclick="testSignIn()">Test Sign In (Email)</button>
+    <div id="auth-result"></div>
+  </div>
+  
+  <div class="test-section">
+    <h2>5. Clear Data</h2>
+    <button onclick="clearAll()">Clear All Auth Data</button>
+  </div>
+
+  <script>
+    // Supabase config
+    const SUPABASE_URL = 'https://suqjifkhmekcdflwowiw.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN1cWppZmtobWVrY2RmbHdvd2l3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY1MDkzNDQsImV4cCI6MjA0MjA4NTM0NH0.ajtUy21ib_z5O6jWaAYwZ78_D5Om_cWra5zFq-0X-3I';
+    
+    // Environment check
+    function checkEnvironment() {
+      const envDiv = document.getElementById('env-check');
+      envDiv.innerHTML = `
+        <p class="info">Location: ${window.location.href}</p>
+        <p class="info">Origin: ${window.location.origin}</p>
+        <p class="info">Hostname: ${window.location.hostname}</p>
+        <p class="info">Protocol: ${window.location.protocol}</p>
+        <p class="info">User Agent: ${navigator.userAgent}</p>
+      `;
+    }
+    
+    // Storage check
+    function checkStorage() {
+      const storageDiv = document.getElementById('storage-check');
+      const authKeys = Object.keys(localStorage).filter(k => 
+        k.includes('supabase') || k.includes('auth') || k.includes('sb-')
+      );
+      
+      if (authKeys.length === 0) {
+        storageDiv.innerHTML = '<p class="error">No auth keys found in localStorage</p>';
+      } else {
+        storageDiv.innerHTML = '<h3>Found auth keys:</h3><pre>' + 
+          authKeys.map(k => `${k}: ${localStorage.getItem(k)?.substring(0, 100)}...`).join('\n') + 
+          '</pre>';
+      }
+    }
+    
+    // Test Supabase connection
+    async function testSupabase() {
+      const resultDiv = document.getElementById('supabase-result');
+      resultDiv.innerHTML = '<p class="info">Testing connection...</p>';
+      
+      try {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/`, {
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+          }
+        });
+        
+        if (response.ok) {
+          resultDiv.innerHTML = '<p class="success">✓ Supabase connection successful</p>';
+        } else {
+          resultDiv.innerHTML = `<p class="error">✗ Supabase connection failed: ${response.status}</p>`;
+        }
+      } catch (error) {
+        resultDiv.innerHTML = `<p class="error">✗ Connection error: ${error.message}</p>`;
+      }
+    }
+    
+    // Test auth
+    async function testAuth() {
+      const resultDiv = document.getElementById('auth-result');
+      resultDiv.innerHTML = '<p class="info">Checking auth...</p>';
+      
+      try {
+        // Import Supabase client
+        const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2');
+        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        
+        const { data: { session } } = await supabase.auth.getSession();
+        const { data: { user } } = await supabase.auth.getUser();
+        
+        resultDiv.innerHTML = `
+          <h3>Session Status:</h3>
+          <pre>${JSON.stringify({ 
+            hasSession: !!session,
+            hasUser: !!user,
+            userEmail: user?.email,
+            sessionExpiry: session?.expires_at ? new Date(session.expires_at * 1000).toLocaleString() : null
+          }, null, 2)}</pre>
+        `;
+      } catch (error) {
+        resultDiv.innerHTML = `<p class="error">✗ Auth check error: ${error.message}</p>`;
+      }
+    }
+    
+    // Test sign in
+    async function testSignIn() {
+      const email = prompt('Enter test email:');
+      const password = prompt('Enter test password:');
+      
+      if (!email || !password) return;
+      
+      const resultDiv = document.getElementById('auth-result');
+      resultDiv.innerHTML = '<p class="info">Attempting sign in...</p>';
+      
+      try {
+        const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2');
+        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email,
+          password
+        });
+        
+        if (error) {
+          resultDiv.innerHTML = `<p class="error">✗ Sign in failed: ${error.message}</p>`;
+        } else {
+          resultDiv.innerHTML = `<p class="success">✓ Sign in successful! User: ${data.user?.email}</p>`;
+          setTimeout(() => {
+            checkStorage();
+            testAuth();
+          }, 1000);
+        }
+      } catch (error) {
+        resultDiv.innerHTML = `<p class="error">✗ Sign in error: ${error.message}</p>`;
+      }
+    }
+    
+    // Clear all data
+    function clearAll() {
+      if (confirm('Clear all auth data?')) {
+        localStorage.clear();
+        sessionStorage.clear();
+        alert('All data cleared. Refresh the page.');
+        location.reload();
+      }
+    }
+    
+    // Run initial checks
+    checkEnvironment();
+    checkStorage();
+  </script>
+</body>
+</html>

@@ -129,14 +129,14 @@ const About: React.FC = () => {
   const content = {
     en: {
       back: "Back",
-      title: "About Liftlio",
+      title: "About Sales Advocates",
       mission: {
         title: "Our Mission",
         description: "We believe in democratizing digital marketing. While traditional advertising platforms charge exorbitant prices for fleeting visibility, we've pioneered a revolutionary approach that creates lasting value through intelligent organic engagement."
       },
       story: {
         title: "Our Story",
-        description: "Born from the frustration of burning through advertising budgets with diminishing returns, Liftlio emerged as the answer to a simple question: What if every marketing dollar spent created permanent value instead of temporary visibility?",
+        description: "Born from the frustration of burning through advertising budgets with diminishing returns, Sales Advocates emerged as the answer to a simple question: What if every marketing dollar spent created permanent value instead of temporary visibility?",
         description2: "Our founding team, composed of seasoned digital marketers and AI engineers, recognized that genuine engagement creates exponentially more value than paid impressions. By combining cutting-edge AI with deep understanding of social dynamics, we've created a platform that doesn't just find customers – it builds lasting relationships."
       },
       values: {
@@ -166,19 +166,19 @@ const About: React.FC = () => {
       },
       team: {
         title: "The Technology",
-        description: "Powered by advanced AI and real-time monitoring systems, Liftlio operates 24/7 to ensure no opportunity is missed. Our proprietary algorithms understand context, sentiment, and timing to create engagement that feels natural because it is natural – just intelligently amplified."
+        description: "Powered by advanced monitoring systems, Sales Advocates operates 24/7 to ensure no opportunity is missed. Our proprietary algorithms understand context, sentiment, and timing to create engagement that feels natural because it is natural – just intelligently organized."
       }
     },
     pt: {
       back: "Voltar",
-      title: "Sobre o Liftlio",
+      title: "Sobre o Sales Advocates",
       mission: {
         title: "Nossa Missão",
         description: "Acreditamos em democratizar o marketing digital. Enquanto plataformas tradicionais de publicidade cobram preços exorbitantes por visibilidade temporária, nós pioneiramos uma abordagem revolucionária que cria valor duradouro através de engajamento orgânico inteligente."
       },
       story: {
         title: "Nossa História",
-        description: "Nascido da frustração de queimar orçamentos de publicidade com retornos decrescentes, o Liftlio surgiu como resposta a uma pergunta simples: E se cada real gasto em marketing criasse valor permanente em vez de visibilidade temporária?",
+        description: "Nascido da frustração de queimar orçamentos de publicidade com retornos decrescentes, o Sales Advocates surgiu como resposta a uma pergunta simples: E se cada real gasto em marketing criasse valor permanente em vez de visibilidade temporária?",
         description2: "Nossa equipe fundadora, composta por veteranos do marketing digital e engenheiros de IA, reconheceu que engajamento genuíno cria exponencialmente mais valor que impressões pagas. Combinando IA de ponta com profundo entendimento de dinâmicas sociais, criamos uma plataforma que não apenas encontra clientes – ela constrói relacionamentos duradouros."
       },
       values: {
@@ -208,7 +208,7 @@ const About: React.FC = () => {
       },
       team: {
         title: "A Tecnologia",
-        description: "Alimentado por IA avançada e sistemas de monitoramento em tempo real, o Liftlio opera 24/7 para garantir que nenhuma oportunidade seja perdida. Nossos algoritmos proprietários entendem contexto, sentimento e timing para criar engajamento que parece natural porque é natural – apenas inteligentemente amplificado."
+        description: "Alimentado por sistemas avançados de monitoramento em tempo real, o Sales Advocates opera 24/7 para garantir que nenhuma oportunidade seja perdida. Nossos algoritmos proprietários entendem contexto, sentimento e timing para criar engajamento que parece natural porque é natural – apenas inteligentemente organizado."
       }
     }
   };
@@ -225,7 +225,7 @@ const About: React.FC = () => {
         </BackButton>
         <Logo>
           <IconComponent icon={BiPulse} />
-          LIFTLIO
+          SALES ADVOCATES
         </Logo>
       </Header>
       

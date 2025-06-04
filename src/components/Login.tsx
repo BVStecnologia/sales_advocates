@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import styled, { keyframes } from 'styled-components'
+import { cleanupAllAuthData } from '../utils/authCleanup'
 // Ícones personalizados
 const SpinnerIcon = () => (
   <span className="icon-spinner">⟳</span>
@@ -542,7 +543,7 @@ const Login: React.FC = () => {
     <LoginContainer>
       <LogoContainer>
         <EnergyLine />
-        <Logo>Liftlio</Logo>
+        <Logo>Sales Advocates</Logo>
         <Tagline>Monitor your digital presence</Tagline>
       </LogoContainer>
       
@@ -739,6 +740,28 @@ const Login: React.FC = () => {
       
       <Footer>
         By logging in, you agree to our Terms of Service and Privacy Policy
+        {window.location.hostname === 'localhost' && (
+          <div style={{ marginTop: '10px', fontSize: '12px' }}>
+            <button
+              onClick={() => {
+                if (window.confirm('Limpar todos os dados de autenticação?')) {
+                  cleanupAllAuthData();
+                  window.location.reload();
+                }
+              }}
+              style={{
+                background: 'transparent',
+                border: '1px solid #ccc',
+                padding: '4px 8px',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontSize: '11px'
+              }}
+            >
+              🧽 Limpar Cache de Auth (Dev)
+            </button>
+          </div>
+        )}
       </Footer>
     </LoginContainer>
   )

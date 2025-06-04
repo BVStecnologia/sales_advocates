@@ -1,5 +1,5 @@
 /**
- * SISTEMA GLOBAL DE TEMAS - LIFTLIO
+ * SISTEMA GLOBAL DE TEMAS - SALES ADVOCATES
  * =================================
  * Este arquivo controla TODOS os estilos da aplicação
  * Qualquer componente novo automaticamente herda estes estilos

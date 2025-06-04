@@ -1,6 +1,6 @@
 # Instruções de Deploy para Fly.io
 
-Este documento descreve como fazer deploy da aplicação Liftlio no Fly.io.
+Este documento descreve como fazer deploy da aplicação Sales Advocates no Fly.io.
 
 ## Pré-requisitos
 

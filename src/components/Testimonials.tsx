@@ -231,7 +231,7 @@ const testimonialsData = {
       name: "Carlos Silva",
       role: "CEO",
       company: "TechStartup Brasil",
-      content: "O Liftlio transformou completamente nossa estratégia de marketing. Encontramos leads que nunca imaginaríamos alcançar. ROI de 450% em apenas 3 meses!",
+      content: "O Sales Advocates transformou completamente nossa estratégia de marketing. Encontramos leads que nunca imaginaríamos alcançar. ROI de 450% em apenas 3 meses!",
       rating: 5,
       avatar: "CS"
     },
@@ -249,7 +249,7 @@ const testimonialsData = {
       name: "Roberto Oliveira",
       role: "Fundador",
       company: "Digital Agency Pro",
-      content: "Uso o Liftlio para todos os meus clientes. A economia de tempo é brutal - o que levava dias agora leva minutos. Melhor investimento do ano!",
+      content: "Uso o Sales Advocates para todos os meus clientes. A economia de tempo é brutal - o que levava dias agora leva minutos. Melhor investimento do ano!",
       rating: 5,
       avatar: "RO"
     },
@@ -258,7 +258,7 @@ const testimonialsData = {
       name: "Mariana Costa",
       role: "Growth Manager",
       company: "SaaS Solutions",
-      content: "Os insights gerados pelo Liftlio são ouro puro. Descobrimos nichos inexplorados e duplicamos nossa base de clientes em 6 meses.",
+      content: "Os insights gerados pelo Sales Advocates são ouro puro. Descobrimos nichos inexplorados e duplicamos nossa base de clientes em 6 meses.",
       rating: 5,
       avatar: "MC"
     },
@@ -267,7 +267,7 @@ const testimonialsData = {
       name: "Pedro Almeida",
       role: "CMO",
       company: "Fintech Innovations",
-      content: "A precisão na identificação de oportunidades é surreal. Cada real investido no Liftlio retorna multiplicado. Indispensável!",
+      content: "A precisão na identificação de oportunidades é surreal. Cada real investido no Sales Advocates retorna multiplicado. Indispensável!",
       rating: 5,
       avatar: "PA"
     },
@@ -285,7 +285,7 @@ const testimonialsData = {
       name: "Fernando Lima",
       role: "Diretor Comercial",
       company: "Tech Solutions BR",
-      content: "O Liftlio paga o investimento na primeira semana. Identificamos oportunidades que nossos concorrentes nem sonham em alcançar.",
+      content: "O Sales Advocates paga o investimento na primeira semana. Identificamos oportunidades que nossos concorrentes nem sonham em alcançar.",
       rating: 5,
       avatar: "FL"
     },
@@ -303,7 +303,7 @@ const testimonialsData = {
       name: "Ricardo Mendes",
       role: "Empreendedor",
       company: "Startup Valley",
-      content: "De 0 a 1000 clientes em 4 meses usando o Liftlio. A ferramenta é um divisor de águas para qualquer negócio digital.",
+      content: "De 0 a 1000 clientes em 4 meses usando o Sales Advocates. A ferramenta é um divisor de águas para qualquer negócio digital.",
       rating: 5,
       avatar: "RM"
     },
@@ -312,7 +312,7 @@ const testimonialsData = {
       name: "Camila Souza",
       role: "VP de Marketing",
       company: "Retail Giants",
-      content: "ROI comprovado! Cada campanha baseada nos dados do Liftlio supera as anteriores. Crescimento consistente mês após mês.",
+      content: "ROI comprovado! Cada campanha baseada nos dados do Sales Advocates supera as anteriores. Crescimento consistente mês após mês.",
       rating: 5,
       avatar: "CS"
     },
@@ -330,7 +330,7 @@ const testimonialsData = {
       name: "Patricia Gomes",
       role: "Diretora Digital",
       company: "Fashion Brand",
-      content: "O Liftlio nos conectou com nosso público de forma única. Engajamento triplicou, vendas dobraram. Ferramenta essencial!",
+      content: "O Sales Advocates nos conectou com nosso público de forma única. Engajamento triplicou, vendas dobraram. Ferramenta essencial!",
       rating: 5,
       avatar: "PG"
     },
@@ -348,7 +348,7 @@ const testimonialsData = {
       name: "Daniela Rocha",
       role: "Consultora",
       company: "Business Consulting",
-      content: "Recomendo o Liftlio para todos os meus clientes. Os resultados falam por si. Crescimento garantido e mensurável.",
+      content: "Recomendo o Sales Advocates para todos os meus clientes. Os resultados falam por si. Crescimento garantido e mensurável.",
       rating: 5,
       avatar: "DR"
     },
@@ -357,7 +357,7 @@ const testimonialsData = {
       name: "Gabriel Torres",
       role: "Fundador",
       company: "AI Startup",
-      content: "A inteligência do Liftlio é impressionante. Encontra oportunidades onde outros nem procuram. Nosso crescimento explodiu!",
+      content: "A inteligência do Sales Advocates é impressionante. Encontra oportunidades onde outros nem procuram. Nosso crescimento explodiu!",
       rating: 5,
       avatar: "GT"
     }
@@ -368,7 +368,7 @@ const testimonialsData = {
       name: "John Smith",
       role: "CEO",
       company: "TechVentures USA",
-      content: "Liftlio completely transformed our marketing strategy. We found leads we never imagined reaching. 450% ROI in just 3 months!",
+      content: "Sales Advocates completely transformed our marketing strategy. We found leads we never imagined reaching. 450% ROI in just 3 months!",
       rating: 5,
       avatar: "JS"
     },
@@ -386,7 +386,7 @@ const testimonialsData = {
       name: "Michael Brown",
       role: "Founder",
       company: "Digital Agency Pro",
-      content: "I use Liftlio for all my clients. The time savings is brutal - what took days now takes minutes. Best investment of the year!",
+      content: "I use Sales Advocates for all my clients. The time savings is brutal - what took days now takes minutes. Best investment of the year!",
       rating: 5,
       avatar: "MB"
     },
@@ -395,7 +395,7 @@ const testimonialsData = {
       name: "Emily Davis",
       role: "Growth Manager",
       company: "SaaS Solutions",
-      content: "The insights generated by Liftlio are pure gold. We discovered untapped niches and doubled our customer base in 6 months.",
+      content: "The insights generated by Sales Advocates are pure gold. We discovered untapped niches and doubled our customer base in 6 months.",
       rating: 5,
       avatar: "ED"
     },
@@ -404,7 +404,7 @@ const testimonialsData = {
       name: "David Wilson",
       role: "CMO",
       company: "Fintech Innovations",
-      content: "The precision in identifying opportunities is surreal. Every dollar invested in Liftlio returns multiplied. Indispensable!",
+      content: "The precision in identifying opportunities is surreal. Every dollar invested in Sales Advocates returns multiplied. Indispensable!",
       rating: 5,
       avatar: "DW"
     },
@@ -422,7 +422,7 @@ const testimonialsData = {
       name: "Robert Anderson",
       role: "Commercial Director",
       company: "Tech Solutions Inc",
-      content: "Liftlio pays for itself in the first week. We identify opportunities our competitors don't even dream of reaching.",
+      content: "Sales Advocates pays for itself in the first week. We identify opportunities our competitors don't even dream of reaching.",
       rating: 5,
       avatar: "RA"
     },
@@ -440,7 +440,7 @@ const testimonialsData = {
       name: "William Thomas",
       role: "Entrepreneur",
       company: "Startup Valley",
-      content: "From 0 to 1000 customers in 4 months using Liftlio. The tool is a game-changer for any digital business.",
+      content: "From 0 to 1000 customers in 4 months using Sales Advocates. The tool is a game-changer for any digital business.",
       rating: 5,
       avatar: "WT"
     },
@@ -449,7 +449,7 @@ const testimonialsData = {
       name: "Amanda White",
       role: "VP of Marketing",
       company: "Retail Giants",
-      content: "Proven ROI! Every campaign based on Liftlio data outperforms the previous ones. Consistent growth month after month.",
+      content: "Proven ROI! Every campaign based on Sales Advocates data outperforms the previous ones. Consistent growth month after month.",
       rating: 5,
       avatar: "AW"
     },
@@ -467,7 +467,7 @@ const testimonialsData = {
       name: "Patricia Miller",
       role: "Digital Director",
       company: "Fashion Brand",
-      content: "Liftlio connected us with our audience uniquely. Engagement tripled, sales doubled. Essential tool!",
+      content: "Sales Advocates connected us with our audience uniquely. Engagement tripled, sales doubled. Essential tool!",
       rating: 5,
       avatar: "PM"
     },
@@ -485,7 +485,7 @@ const testimonialsData = {
       name: "Jennifer Clark",
       role: "Consultant",
       company: "Business Consulting",
-      content: "I recommend Liftlio to all my clients. The results speak for themselves. Guaranteed and measurable growth.",
+      content: "I recommend Sales Advocates to all my clients. The results speak for themselves. Guaranteed and measurable growth.",
       rating: 5,
       avatar: "JC"
     },
@@ -494,7 +494,7 @@ const testimonialsData = {
       name: "Daniel Rodriguez",
       role: "Founder",
       company: "AI Startup",
-      content: "Liftlio's intelligence is impressive. It finds opportunities where others don't even look. Our growth exploded!",
+      content: "Sales Advocates's intelligence is impressive. It finds opportunities where others don't even look. Our growth exploded!",
       rating: 5,
       avatar: "DR"
     }

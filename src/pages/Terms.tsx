@@ -129,11 +129,11 @@ const Terms: React.FC = () => {
         agreement: {
           title: "The Agreement",
           icon: FaFileContract,
-          content: "By using Liftlio, you're entering a partnership designed for mutual success. These terms ensure we can deliver exceptional value while protecting both parties."
+          content: "By using Sales Advocates, you're entering a partnership designed for mutual success. These terms ensure we can deliver exceptional value while protecting both parties."
         },
         service: {
           title: "Our Service",
-          content: "Liftlio provides intelligent YouTube monitoring and engagement automation that:",
+          content: "Sales Advocates provides intelligent YouTube monitoring and engagement automation that:",
           items: [
             "Monitors channels relevant to your business 24/7",
             "Identifies opportunities for organic engagement",
@@ -148,7 +148,7 @@ const Terms: React.FC = () => {
           content: "To ensure success for everyone:",
           items: [
             "Provide accurate business information",
-            "Use Liftlio for legitimate business purposes only",
+            "Use Sales Advocates for legitimate business purposes only",
             "Respect YouTube's terms of service",
             "Maintain confidentiality of your account credentials",
             "Review and approve content before publishing"
@@ -170,7 +170,7 @@ const Terms: React.FC = () => {
           content: "Clear ownership rules:",
           items: [
             "You own all content about your business",
-            "We own the Liftlio platform and technology",
+            "We own the Sales Advocates platform and technology",
             "Generated content becomes your property once published",
             "You grant us license to use your content for service delivery"
           ]
@@ -206,11 +206,11 @@ const Terms: React.FC = () => {
         agreement: {
           title: "O Acordo",
           icon: FaFileContract,
-          content: "Ao usar o Liftlio, você está entrando em uma parceria projetada para o sucesso mútuo. Estes termos garantem que possamos entregar valor excepcional enquanto protegemos ambas as partes."
+          content: "Ao usar o Sales Advocates, você está entrando em uma parceria projetada para o sucesso mútuo. Estes termos garantem que possamos entregar valor excepcional enquanto protegemos ambas as partes."
         },
         service: {
           title: "Nosso Serviço",
-          content: "O Liftlio fornece monitoramento inteligente do YouTube e automação de engajamento que:",
+          content: "O Sales Advocates fornece monitoramento inteligente do YouTube e automação de engajamento que:",
           items: [
             "Monitora canais relevantes para seu negócio 24/7",
             "Identifica oportunidades de engajamento orgânico",
@@ -225,7 +225,7 @@ const Terms: React.FC = () => {
           content: "Para garantir sucesso para todos:",
           items: [
             "Fornecer informações comerciais precisas",
-            "Usar o Liftlio apenas para fins comerciais legítimos",
+            "Usar o Sales Advocates apenas para fins comerciais legítimos",
             "Respeitar os termos de serviço do YouTube",
             "Manter a confidencialidade de suas credenciais",
             "Revisar e aprovar conteúdo antes de publicar"
@@ -247,7 +247,7 @@ const Terms: React.FC = () => {
           content: "Regras claras de propriedade:",
           items: [
             "Você possui todo conteúdo sobre seu negócio",
-            "Nós possuímos a plataforma e tecnologia Liftlio",
+            "Nós possuímos a plataforma e tecnologia Sales Advocates",
             "Conteúdo gerado torna-se sua propriedade após publicação",
             "Você nos concede licença para usar seu conteúdo na entrega do serviço"
           ]
@@ -289,7 +289,7 @@ const Terms: React.FC = () => {
         </BackButton>
         <Logo>
           <IconComponent icon={BiPulse} />
-          LIFTLIO
+          SALES ADVOCATES
         </Logo>
       </Header>
       

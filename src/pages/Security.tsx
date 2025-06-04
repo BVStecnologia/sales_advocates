@@ -166,7 +166,7 @@ const Security: React.FC = () => {
     en: {
       back: "Back",
       title: "Security Center",
-      intro: "Your trust is our foundation. We've built Liftlio with enterprise-grade security from day one, because your business data deserves nothing less.",
+      intro: "Your trust is our foundation. We've built Sales Advocates with enterprise-grade security from day one, because your business data deserves nothing less.",
       sections: {
         infrastructure: {
           title: "Infrastructure Security",
@@ -256,7 +256,7 @@ const Security: React.FC = () => {
     pt: {
       back: "Voltar",
       title: "Central de Segurança",
-      intro: "Sua confiança é nossa base. Construímos o Liftlio com segurança de nível empresarial desde o primeiro dia, porque seus dados comerciais merecem nada menos.",
+      intro: "Sua confiança é nossa base. Construímos o Sales Advocates com segurança de nível empresarial desde o primeiro dia, porque seus dados comerciais merecem nada menos.",
       sections: {
         infrastructure: {
           title: "Segurança da Infraestrutura",
@@ -357,7 +357,7 @@ const Security: React.FC = () => {
         </BackButton>
         <Logo>
           <IconComponent icon={BiPulse} />
-          LIFTLIO
+          SALES ADVOCATES
         </Logo>
       </Header>
       

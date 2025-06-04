@@ -177,7 +177,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       <SidebarHeader>
         <SidebarLogo collapsed={collapsed}>
           <img src="/logo192.png" alt="Logo" />
-          <span>Liftlio</span>
+          <span>Sales Advocates</span>
         </SidebarLogo>
         {onToggle && (
           <SidebarToggle onClick={onToggle}>

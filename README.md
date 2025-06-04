@@ -1,4 +1,4 @@
-# Liftlio React
+# Sales Advocates React
 
 ## Configuração do Ambiente
 

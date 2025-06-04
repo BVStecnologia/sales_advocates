@@ -1,5 +1,5 @@
 /**
- * Global Color System - LIFTLIO
+ * Global Color System - SALES ADVOCATES
  * -------------------------------------------------
  * This file implements the 60:30:10 color rule for Liftlio's UI color scheme.
  * 

@@ -1,7 +1,7 @@
 {
-  "name": "liftlio-supabase-functions",
+  "name": "sales-advocates-supabase-functions",
   "version": "1.0.0",
-  "description": "Funções Edge do Supabase para o Liftlio",
+  "description": "Funções Edge do Supabase para o Sales Advocates",
   "type": "module",
   "scripts": {
     "test-claude-proxy": "node functions/test-edge-function.js"

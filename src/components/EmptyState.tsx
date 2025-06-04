@@ -95,7 +95,7 @@ const EmptyState: React.FC<EmptyStateProps> = ({ type, onAction, currentStep }) 
   switch (type) {
     case 'project':
       icon = FaIcons.FaFolderPlus;
-      title = "Welcome to Liftlio! Let's get started";
+      title = "Welcome to Sales Advocates! Let's get started";
       description = "The first step is to create a project to monitor. A project can be your product, service, or brand that you want to track across digital platforms.";
       buttonText = "Create my first project";
       break;

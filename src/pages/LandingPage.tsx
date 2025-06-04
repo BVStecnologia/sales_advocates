@@ -888,47 +888,6 @@ const FloatingElement = styled.div`
   animation: ${floatAnimation} 6s ease-in-out infinite;
 `;
 
-const VideoContainer = styled.div`
-  width: 100%;
-  max-width: 800px;
-  margin: 40px auto;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
-  position: relative;
-  background: #000;
-  border: 2px solid ${props => props.theme.name === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'};
-  
-  video {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  
-  @media (max-width: 968px) {
-    max-width: 600px;
-  }
-  
-  @media (max-width: 768px) {
-    width: 95%;
-    max-width: 500px;
-    margin: 20px auto;
-  }
-`;
-
-const FloatingVideo = styled.div`
-  position: absolute;
-  width: 200px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px ${props => props.theme.colors.shadowMedium};
-  
-  video {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-`;
 
 const LiveCounter = styled.div`
   position: fixed;
@@ -2374,41 +2333,6 @@ const LandingPage: React.FC = () => {
         </TrustContainer>
       </TrustSection>
 
-      {/* Video Section */}
-      <section style={{
-        padding: '100px 64px',
-        background: theme.name === 'dark' ? '#0a0a0a' : '#fafafa',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
-        <SectionHeader>
-          <SectionTitle>
-            {lang === 'pt' ? 'Veja o Liftlio em' : 'See Liftlio in'} 
-            <Gradient> {lang === 'pt' ? 'Ação' : 'Action'}</Gradient>
-          </SectionTitle>
-          <SectionDescription>
-            {lang === 'pt' 
-              ? 'Descubra como transformamos comentários em oportunidades de negócio reais'
-              : 'Discover how we transform comments into real business opportunities'
-            }
-          </SectionDescription>
-        </SectionHeader>
-        
-        <VideoContainer>
-          <video 
-            controls
-            autoPlay
-            loop 
-            muted 
-            playsInline
-            poster="/imagens/dashboard-hero-dark.png"
-            style={{ borderRadius: '20px' }}
-          >
-            <source src="/Videos/video-liftlio-comentarios-clientes.mp4" type="video/mp4" />
-            {lang === 'pt' ? 'Seu navegador não suporta vídeos HTML5.' : 'Your browser does not support HTML5 video.'}
-          </video>
-        </VideoContainer>
-      </section>
 
 
       <FeaturesSection id="features">

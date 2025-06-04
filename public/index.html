@@ -7,53 +7,30 @@
     <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/logo192.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#282c34" />
-    <!-- Interceptador de redirecionamentos -->
-    <script src="%PUBLIC_URL%/redirect-interceptor.js"></script>
+    <!-- Removido interceptador de redirecionamentos para corrigir OAuth -->
     <meta
       name="description"
       content="Sales Advocates - Organize YouTube comments and build genuine relationships with your audience"
     />
-    <!-- Add support for Supabase authentication redirects -->
+    <!-- Fix for publicPath error on localhost -->
     <script>
-      // Interceptar redirecionamentos do Supabase de liftlio.com
+      // Workaround for "Automatic publicPath is not supported in this browser" error
+      if (!window.__webpack_public_path__) {
+        window.__webpack_public_path__ = '';
+      }
+    </script>
+    <!-- Simplified auth redirect handler -->
+    <script>
+      // Only handle auth redirects when necessary
       (function() {
-        // Se estamos vindo de liftlio.com com token de autenticação
-        const referrer = document.referrer;
-        const currentUrl = window.location.href;
-        
-        if (referrer && referrer.includes('liftlio.com') && window.location.hash.includes('access_token')) {
-          console.log('Redirecionamento de liftlio.com detectado, corrigindo...');
-          // Manter na URL atual, não redirecionar
-          window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
-        }
-        
-        // Se veio de liftlio.com/dashboard, redirecionar para nossa dashboard
-        if (currentUrl.includes('liftlio.com/dashboard')) {
-          console.log('Redirecionando de liftlio.com para sales-advocates');
-          const newUrl = currentUrl.replace('liftlio.com', window.location.hostname);
-          window.location.replace(newUrl);
-          return;
+        // If we have an auth token at the root, redirect to callback
+        if (window.location.hash && window.location.hash.includes('access_token')) {
+          if (window.location.pathname === '/' || window.location.pathname === '') {
+            console.log('[Auth] Redirecting to callback handler');
+            window.location.href = '/auth/callback' + window.location.hash;
+          }
         }
       })();
-      
-      // Special handling for OAuth redirects
-      if (window.location.hash && window.location.hash.includes('access_token')) {
-        console.log('Auth redirect detected:', window.location.href);
-        
-        // If we're at the root and not at the callback path, redirect to the callback
-        if (window.location.pathname === '/' || window.location.pathname === '') {
-          console.log('Redirecting hash to proper callback handler');
-          window.location.href = '/auth/callback' + window.location.hash;
-        } 
-        // If we're in a popup window, post a message to the parent
-        else if (window.opener) {
-          console.log('Sending auth data to parent window');
-          window.opener.postMessage({ 
-            type: 'supabase.auth.callback', 
-            hash: window.location.hash 
-          }, window.location.origin);
-        }
-      }
     </script>
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
