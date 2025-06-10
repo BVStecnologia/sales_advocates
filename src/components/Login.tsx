@@ -544,7 +544,7 @@ const Login: React.FC = () => {
       <LogoContainer>
         <EnergyLine />
         <Logo>Sales Advocates</Logo>
-        <Tagline>Monitor your digital presence</Tagline>
+        <Tagline>Powered by Liftlio Growth Engine</Tagline>
       </LogoContainer>
       
       <PowerPhrase>Find your leads wherever they are</PowerPhrase>

@@ -66,8 +66,50 @@
     </style>
   </head>
   <body>
+    <!-- Loading screen -->
+    <div id="initial-loading" style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    ">
+      <div style="text-align: center;">
+        <div style="
+          font-size: 48px;
+          font-weight: bold;
+          background: linear-gradient(135deg, #00a9db 0%, #0080ff 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 20px;
+        ">Sales Advocates</div>
+        <div style="color: #666; font-size: 14px;">Powered by Liftlio Growth Engine</div>
+        <div style="
+          margin-top: 30px;
+          width: 40px;
+          height: 40px;
+          border: 3px solid #333;
+          border-top-color: #00a9db;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+        "></div>
+      </div>
+    </div>
+    
+    <style>
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+    
     <!-- Static content for SEO and Google OAuth compliance -->
     <div id="static-seo-content" style="
+      display: none;
       padding: 40px 20px;
       text-align: center;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -126,23 +168,33 @@
       </p>
     </div>
     
-    <!-- Hide static content when React loads -->
+    <!-- Hide loading screen when React loads -->
     <script>
       // Monitor for React app initialization
       const checkReactLoaded = setInterval(function() {
         const root = document.getElementById('root');
+        const loadingScreen = document.getElementById('initial-loading');
         const staticContent = document.getElementById('static-seo-content');
         
         // Check if React has rendered content
-        if (root && root.children.length > 0 && staticContent) {
-          staticContent.style.display = 'none';
+        if (root && root.children.length > 0) {
+          if (loadingScreen) {
+            loadingScreen.style.display = 'none';
+          }
+          if (staticContent) {
+            staticContent.style.display = 'none';
+          }
           clearInterval(checkReactLoaded);
         }
       }, 100);
       
-      // Fallback timeout to hide static content
+      // Fallback timeout
       setTimeout(function() {
+        const loadingScreen = document.getElementById('initial-loading');
         const staticContent = document.getElementById('static-seo-content');
+        if (loadingScreen) {
+          loadingScreen.style.display = 'none';
+        }
         if (staticContent) {
           staticContent.style.display = 'none';
         }

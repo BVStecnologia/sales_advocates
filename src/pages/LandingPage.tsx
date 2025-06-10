@@ -11,6 +11,16 @@ import { useTheme } from '../context/ThemeContext';
 import Cookies from 'js-cookie';
 import Testimonials from '../components/Testimonials';
 
+// Animações
+const shimmerAnimation = keyframes`
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+`;
+
 // Internacionalização
 const translations = {
   en: {
@@ -24,7 +34,7 @@ const translations = {
       badge: "Strategic Comment Management",
       title: "Manage Comments and",
       titleHighlight: "Discover Opportunities",
-      subtitle: "Sales Advocates helps you manage YouTube comments strategically and discover relevant channels in your niche. Organize comments for manual review and build authentic relationships with your community.",
+      subtitle: "Sales Advocates, powered by Liftlio Growth Engine, helps you manage YouTube comments strategically and discover relevant channels in your niche. Organize comments for manual review and build authentic relationships with your community.",
       cta: {
         primary: "Start Growing Today",
         secondary: "See How It Works"
@@ -233,7 +243,7 @@ const translations = {
       badge: "Gestão Estratégica de Comentários",
       title: "Gerencie Comentários e",
       titleHighlight: "Descubra Oportunidades",
-      subtitle: "O Sales Advocates ajuda você a gerenciar comentários do YouTube de forma estratégica e descobrir canais relevantes do seu nicho. Organize comentários para revisão manual e construa relacionamentos autênticos com sua comunidade.",
+      subtitle: "O Sales Advocates, impulsionado pelo Liftlio Growth Engine, ajuda você a gerenciar comentários do YouTube de forma estratégica e descobrir canais relevantes do seu nicho. Organize comentários para revisão manual e construa relacionamentos autênticos com sua comunidade.",
       cta: {
         primary: "Comece a Crescer Hoje",
         secondary: "Veja Como Funciona"
@@ -602,11 +612,6 @@ const LoginButton = styled.button`
 const floatAnimation = keyframes`
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-20px); }
-`;
-
-const shimmerAnimation = keyframes`
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
 `;
 
 const HeroSection = styled.section`

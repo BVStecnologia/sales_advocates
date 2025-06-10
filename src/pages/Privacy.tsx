@@ -135,7 +135,7 @@ const Privacy: React.FC = () => {
         introduction: {
           title: "Introduction",
           icon: FaShieldAlt,
-          content: "Welcome to Sales Advocates. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our application and services, including our use of the YouTube API Services."
+          content: "Welcome to Sales Advocates, powered by Liftlio Growth Engine. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our application and services, including our use of the YouTube API Services."
         },
         dataCollection: {
           title: "Information We Collect",
@@ -209,7 +209,7 @@ const Privacy: React.FC = () => {
         introduction: {
           title: "Introdução",
           icon: FaShieldAlt,
-          content: "Bem-vindo ao Sales Advocates. Esta Política de Privacidade explica como coletamos, usamos, divulgamos e protegemos suas informações quando você usa nosso aplicativo e serviços, incluindo nosso uso dos Serviços da API do YouTube."
+          content: "Bem-vindo ao Sales Advocates, impulsionado pelo Liftlio Growth Engine. Esta Política de Privacidade explica como coletamos, usamos, divulgamos e protegemos suas informações quando você usa nosso aplicativo e serviços, incluindo nosso uso dos Serviços da API do YouTube."
         },
         dataCollection: {
           title: "Informações que Coletamos",
