@@ -2177,6 +2177,34 @@ const LandingPage: React.FC = () => {
     Cookies.set('language', newLang, { expires: 365, path: '/' });
   };
 
+  const renderSubtitleWithLink = (text: string) => {
+    const parts = text.split(/(Liftlio)/g);
+    return (
+      <>
+        {parts.map((part, index) => 
+          part === 'Liftlio' ? (
+            <a 
+              key={index}
+              href="https://liftlio.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{
+                color: theme.colors.primary,
+                textDecoration: 'none',
+                fontWeight: 'bold',
+                borderBottom: `2px solid ${theme.colors.primary}`
+              }}
+            >
+              {part}
+            </a>
+          ) : (
+            part
+          )
+        )}
+      </>
+    );
+  };
+
 
   return (
     <LandingContainer>
@@ -2285,7 +2313,7 @@ const LandingPage: React.FC = () => {
               <Gradient>{t.hero.titleHighlight}</Gradient>
             </Title>
             <Description>
-              {t.hero.subtitle}
+              {renderSubtitleWithLink(t.hero.subtitle)}
             </Description>
             
             {/* Privacy Policy Link - HIGHLY VISIBLE */}
